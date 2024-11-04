@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Web", "VehicleShowroom.Web\VehicleShowroom.Web.csproj", "{4F8A3730-37CB-4847-A582-37B82509EED8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Web", "VehicleShowroom.Web\VehicleShowroom.Web.csproj", "{4F8A3730-37CB-4847-A582-37B82509EED8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Web.ViewModels", "VehicleShowroom.Web.ViewModels\VehicleShowroom.Web.ViewModels.csproj", "{78E4A644-D1F8-4BC3-BBF3-2E7688A42D9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Web.ViewModels", "VehicleShowroom.Web.ViewModels\VehicleShowroom.Web.ViewModels.csproj", "{78E4A644-D1F8-4BC3-BBF3-2E7688A42D9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Common", "VehicleShowroom.Common\VehicleShowroom.Common.csproj", "{399D62E1-A36B-4F4B-ACF2-F3D7319C66A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Common", "VehicleShowroom.Common\VehicleShowroom.Common.csproj", "{399D62E1-A36B-4F4B-ACF2-F3D7319C66A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Data.Models", "VehicleShowroom.Data.Models\VehicleShowroom.Data.Models.csproj", "{71CD4169-D1CB-47F2-8887-4F38499B8D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Data.Models", "VehicleShowroom.Data.Models\VehicleShowroom.Data.Models.csproj", "{71CD4169-D1CB-47F2-8887-4F38499B8D01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{846F470F-0A0C-4FC7-9290-73B09EE045FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{2362975E-281D-49A4-9463-4F5ACEB055B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Data", "VehicleShowroom.Data\VehicleShowroom.Data.csproj", "{68306EB6-81C6-4435-80B4-0665B583DE86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{71CD4169-D1CB-47F2-8887-4F38499B8D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71CD4169-D1CB-47F2-8887-4F38499B8D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71CD4169-D1CB-47F2-8887-4F38499B8D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68306EB6-81C6-4435-80B4-0665B583DE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68306EB6-81C6-4435-80B4-0665B583DE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68306EB6-81C6-4435-80B4-0665B583DE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68306EB6-81C6-4435-80B4-0665B583DE86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{4F8A3730-37CB-4847-A582-37B82509EED8} = {846F470F-0A0C-4FC7-9290-73B09EE045FE}
 		{78E4A644-D1F8-4BC3-BBF3-2E7688A42D9E} = {846F470F-0A0C-4FC7-9290-73B09EE045FE}
 		{71CD4169-D1CB-47F2-8887-4F38499B8D01} = {2362975E-281D-49A4-9463-4F5ACEB055B5}
+		{68306EB6-81C6-4435-80B4-0665B583DE86} = {2362975E-281D-49A4-9463-4F5ACEB055B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E37015E-FCB6-45EC-8E52-6D4DE4BBACBB}
