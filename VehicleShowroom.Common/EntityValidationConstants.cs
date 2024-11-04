@@ -16,5 +16,31 @@ namespace VehicleShowroom.Common
             public const int ColorMaxLenght = 70;
             public const int FuelTypeLenght = 50; 
         }
+        public static class Customer
+        {
+            public const int FirstNameMaxLenght = 50;
+            public const int LastNameMaxLenght = 50;
+            public const int PhoneNumberMaxLenght = 70;
+
+        }
+        public static class Car
+        {
+            public const int DescriptionMaxLenght = 1000;
+        }
+        public static class Bus
+        {
+            public const int DescriptionMaxLenght = 1000;
+        }
+        public static class Truck
+        {
+            public const int EuroNumberMaxLenght = 10;
+            public const int DescriptionMaxLenght = 1000;
+        }
+        public static class Motorcycle 
+        {
+            public const int DescriptionMaxLenght = 1000;
+        }
+
+
     }
 }

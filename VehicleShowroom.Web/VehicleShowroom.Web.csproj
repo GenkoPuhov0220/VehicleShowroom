@@ -14,11 +14,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VehicleShowroom.Common\VehicleShowroom.Common.csproj" />
+    <ProjectReference Include="..\VehicleShowroom.Data\VehicleShowroom.Data.csproj" />
     <ProjectReference Include="..\VehicleShowroom.Web.ViewModels\VehicleShowroom.Web.ViewModels.csproj" />
   </ItemGroup>
 
