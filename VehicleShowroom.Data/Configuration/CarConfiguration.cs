@@ -10,10 +10,7 @@ namespace VehicleShowroom.Data.Configuration
         {
             builder.HasKey(c => c.CarId);
 
-           // builder
-             //   .HasOne(c => c.Vehicle)
-              //  .WithMany(c => c.Cars)
-              //  .HasForeignKey(c => c.VehicleId);
+  
 
             builder
               .Property(c => c.Description)

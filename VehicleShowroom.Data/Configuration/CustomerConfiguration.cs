@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Reflection.Emit;
 using VehicleShowroom.Data.Models;
 using static VehicleShowroom.Common.EntityValidationConstants.Customer;
 namespace VehicleShowroom.Data.Configuration

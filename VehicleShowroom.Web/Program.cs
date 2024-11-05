@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VehicleShowroom.Data;
-using VehicleShowroom.Web.Data;
+
 
 namespace VehicleShowroom.Web
 {
