@@ -9,7 +9,8 @@ namespace VehicleShowroom.Common
             public const int MakeMaxLenght = 150;
             public const int ModelMaxLenght = 150;
             public const int ColorMaxLenght = 70;
-            public const int FuelTypeLenght = 50; 
+            public const int FuelTypeLenght = 50;
+            public const string YearFormating = "MM/dd/yyyy";
         }
         public static class Customer
         {
