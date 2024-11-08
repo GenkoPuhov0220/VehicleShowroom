@@ -62,6 +62,50 @@ namespace VehicleShowroom.Data.Configuration
                 .IsRequired()
                 .HasMaxLength(FuelTypeLenght);
 
+            builder
+                .HasData(this.SeedVehicle());
+
+        }
+        private List<Vehicle> SeedVehicle()
+        {
+            List<Vehicle> vehicles = new List<Vehicle>()
+            {
+                 new Vehicle
+                 {
+                     VehicleId = 1,
+                     VehicleType = "Car",
+                     Make = "BMW",
+                     Model = "330D E91",
+                     Year = new DateTime(2012, 08, 12),
+                     Price = 21500,
+                     Color = "White",
+                     FuelType = "Disel"
+                 },
+                 new Vehicle
+                 {
+                     VehicleId = 2,
+                     VehicleType = "Car",
+                     Make = "Merces",
+                     Model = "e-clas E320CDI",
+                     Year = new DateTime(2006, 08, 08),
+                     Price = 22500,
+                     Color = "Black",
+                     FuelType = "Disel"
+                 },
+                 new Vehicle
+                 {
+                     VehicleId = 3,
+                     VehicleType = "Car",
+                     Make = "AUDI",
+                     Model = "A8 Long",
+                     Year = new DateTime(2022, 10, 15),
+                     Price = 150000,
+                     Color = "White",
+                     FuelType = "Petrol"
+                 }
+            };
+
+            return vehicles;
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleShowroom.Data;
 
@@ -11,9 +12,11 @@ using VehicleShowroom.Data;
 namespace VehicleShowroom.Web.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241108170800_TestMigration")]
+    partial class TestMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,35 +288,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Cars");
-
-                    b.HasData(
-                        new
-                        {
-                            CarId = 1,
-                            Description = "Fast and comfort",
-                            ImageUrl = "https://d3ok64umd5ysj.cloudfront.net/dev/assets/images/gallery/alpine-white-e91-bmw-335i-wagon-estate-forgestar-f14-bagged-stance-c.jpg",
-                            Kilometers = 150000,
-                            NumberOfDoors = 4,
-                            VehicleId = 1
-                        },
-                        new
-                        {
-                            CarId = 2,
-                            Description = "Lazy car",
-                            ImageUrl = "https://garrybase.com/images/full/uploads/2021/AWEsL34IiTvPxXp2k8M7JcCdJrsZKJEiqimwpWpi.jpg",
-                            Kilometers = 300000,
-                            NumberOfDoors = 4,
-                            VehicleId = 2
-                        },
-                        new
-                        {
-                            CarId = 3,
-                            Description = "Luxury car",
-                            ImageUrl = "https://frankfurt.apollo.olxcdn.com/v1/files/r8lz4w93so09-BG/image",
-                            Kilometers = 22200,
-                            NumberOfDoors = 4,
-                            VehicleId = 3
-                        });
                 });
 
             modelBuilder.Entity("VehicleShowroom.Data.Models.Customer", b =>
@@ -484,18 +458,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             Price = 22500m,
                             VehicleType = "Car",
                             Year = new DateTime(2006, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 3,
-                            Color = "White",
-                            FuelType = "Petrol",
-                            IsDelete = false,
-                            Make = "AUDI",
-                            Model = "A8 Long",
-                            Price = 150000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

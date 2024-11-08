@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VehicleShowroom.Data;
+using VehicleShowroom.Data.Models;
+using VehicleShowroom.Web.Data;
 
 
 namespace VehicleShowroom.Web
@@ -17,8 +19,9 @@ namespace VehicleShowroom.Web
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<VehicleDbContext>();
+      
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
@@ -39,6 +42,7 @@ namespace VehicleShowroom.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
 
             app.UseAuthorization();
 
