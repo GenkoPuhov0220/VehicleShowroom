@@ -22,15 +22,18 @@ namespace VehicleShowroom.Common
         public static class Car
         {
             public const int DescriptionMaxLenght = 1000;
+            public const int TransmissionMaxLenght = 100;
         }
         public static class Bus
         {
             public const int DescriptionMaxLenght = 1000;
+            public const int TransmissionMaxLenght = 100;
         }
         public static class Truck
         {
             public const int EuroNumberMaxLenght = 10;
             public const int DescriptionMaxLenght = 1000;
+            public const int TransmissionMaxLenght = 100;
         }
         public static class Motorcycle 
         {

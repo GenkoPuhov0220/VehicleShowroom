@@ -18,6 +18,11 @@ namespace VehicleShowroom.Data.Configuration
                 .Property(b => b.ImageUrl)
                 .IsRequired();
             builder
+                .Property(c => c.Transmission)
+                .IsRequired()
+                .HasMaxLength(TransmissionMaxLenght);
+
+            builder
                 .HasData(this.SeedBus());
         }
         private List<Bus> SeedBus()
@@ -28,6 +33,8 @@ namespace VehicleShowroom.Data.Configuration
                 {
                     BusId = 1,
                     Capacity = 66,
+                    Transmission = "Automatic",
+                    HorsePower = 445,
                     Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
                     ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
                     VehicleId = 4

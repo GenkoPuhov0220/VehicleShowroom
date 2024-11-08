@@ -79,7 +79,7 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2012, 08, 12),
                      Price = 21500,
                      Color = "White",
-                     FuelType = "Disel"
+                     FuelType = "Diesel"
                  },
                  new Vehicle
                  {
@@ -90,7 +90,7 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2006, 08, 08),
                      Price = 22500,
                      Color = "Black",
-                     FuelType = "Disel"
+                     FuelType = "Diesel"
                  },
                  new Vehicle
                  {
@@ -112,8 +112,30 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2022, 9, 10),
                      Price = 198222,
                      Color = "Brown",
-                     FuelType = "Disel"
+                     FuelType = "Diesel"
                  },
+                  new Vehicle
+                  {
+                     VehicleId = 5,
+                     VehicleType = "Motorcycle",
+                     Make = "Honda",
+                     Model = "450",
+                     Year = new DateTime(2022, 9, 10),
+                     Price = 19800,
+                     Color = "red",
+                     FuelType = "Petrol"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 6,
+                     VehicleType = "Truck",
+                     Make = "Man",
+                     Model = "TGC",
+                     Year = new DateTime(2016, 9, 11),
+                     Price = 198000,
+                     Color = "Orange",
+                     FuelType = "Diesel"
+                  }
 
             };
 

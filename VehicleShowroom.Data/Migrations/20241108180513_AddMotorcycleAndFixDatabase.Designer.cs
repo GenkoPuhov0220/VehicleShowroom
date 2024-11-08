@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleShowroom.Data;
 
@@ -11,9 +12,11 @@ using VehicleShowroom.Data;
 namespace VehicleShowroom.Web.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241108180513_AddMotorcycleAndFixDatabase")]
+    partial class AddMotorcycleAndFixDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,9 +243,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("HorsePower")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -267,7 +267,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             BusId = 1,
                             Capacity = 66,
                             Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
-                            HorsePower = 445,
                             ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
                             Transmission = "Automatic",
                             VehicleId = 4
@@ -286,9 +285,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
-
-                    b.Property<int>("HorsePower")
-                        .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -319,7 +315,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         {
                             CarId = 1,
                             Description = "Fast and comfort",
-                            HorsePower = 245,
                             ImageUrl = "https://d3ok64umd5ysj.cloudfront.net/dev/assets/images/gallery/alpine-white-e91-bmw-335i-wagon-estate-forgestar-f14-bagged-stance-c.jpg",
                             Kilometers = 150000,
                             NumberOfDoors = 4,
@@ -330,7 +325,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         {
                             CarId = 2,
                             Description = "Lazy car",
-                            HorsePower = 224,
                             ImageUrl = "https://garrybase.com/images/full/uploads/2021/AWEsL34IiTvPxXp2k8M7JcCdJrsZKJEiqimwpWpi.jpg",
                             Kilometers = 300000,
                             NumberOfDoors = 4,
@@ -341,7 +335,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         {
                             CarId = 3,
                             Description = "Luxury car",
-                            HorsePower = 356,
                             ImageUrl = "https://frankfurt.apollo.olxcdn.com/v1/files/r8lz4w93so09-BG/image",
                             Kilometers = 22200,
                             NumberOfDoors = 4,
@@ -440,9 +433,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("HorsePower")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -458,19 +448,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                     b.HasKey("VehicleId");
 
                     b.ToTable("Trucks");
-
-                    b.HasData(
-                        new
-                        {
-                            VehicleId = 6,
-                            CargoCapacity = 12000,
-                            Description = "Best truck",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 650,
-                            ImageUrl = "https://www.hobbies.co.uk/media/catalog/product/cache/084ca19aa5ee10728706fd297654f270/1/5/156325man_1.jpg",
-                            Transmission = "Automatic",
-                            TruckId = 1
-                        });
                 });
 
             modelBuilder.Entity("VehicleShowroom.Data.Models.Vehicle", b =>
@@ -524,7 +501,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                         {
                             VehicleId = 1,
                             Color = "White",
-                            FuelType = "Diesel",
+                            FuelType = "Disel",
                             IsDelete = false,
                             Make = "BMW",
                             Model = "330D E91",
@@ -536,7 +513,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                         {
                             VehicleId = 2,
                             Color = "Black",
-                            FuelType = "Diesel",
+                            FuelType = "Disel",
                             IsDelete = false,
                             Make = "Merces",
                             Model = "e-clas E320CDI",
@@ -560,7 +537,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                         {
                             VehicleId = 4,
                             Color = "Brown",
-                            FuelType = "Diesel",
+                            FuelType = "Disel",
                             IsDelete = false,
                             Make = "Volvo",
                             Model = "9900 DD",
@@ -579,18 +556,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             Price = 19800m,
                             VehicleType = "Motorcycle",
                             Year = new DateTime(2022, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 6,
-                            Color = "Orange",
-                            FuelType = "Diesel",
-                            IsDelete = false,
-                            Make = "Man",
-                            Model = "TGC",
-                            Price = 198000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2016, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

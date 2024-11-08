@@ -31,7 +31,7 @@ namespace VehicleShowroom.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
- 
+
         }
     }
 }

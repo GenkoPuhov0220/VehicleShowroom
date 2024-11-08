@@ -20,6 +20,9 @@ namespace VehicleShowroom.Data.Models
         [Required]
         public string ImageUrl { get; set; } = null!;
         [Required]
+        public string Transmission { get; set; } = null!;
+        public int HorsePower { get; set; } 
+        [Required]
         [ForeignKey(nameof(VehicleId))]
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; } = null!;
