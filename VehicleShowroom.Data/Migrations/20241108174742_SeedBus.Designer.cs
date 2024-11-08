@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleShowroom.Data;
 
@@ -11,9 +12,11 @@ using VehicleShowroom.Data;
 namespace VehicleShowroom.Web.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241108174742_SeedBus")]
+    partial class SeedBus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,16 +255,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Buses");
-
-                    b.HasData(
-                        new
-                        {
-                            BusId = 1,
-                            Capacity = 66,
-                            Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
-                            ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
-                            VehicleId = 4
-                        });
                 });
 
             modelBuilder.Entity("VehicleShowroom.Data.Models.Car", b =>

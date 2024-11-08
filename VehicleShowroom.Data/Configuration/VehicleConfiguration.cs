@@ -102,7 +102,19 @@ namespace VehicleShowroom.Data.Configuration
                      Price = 150000,
                      Color = "White",
                      FuelType = "Petrol"
-                 }
+                 },
+                  new Vehicle
+                 {
+                     VehicleId = 4,
+                     VehicleType = "Bus",
+                     Make = "Volvo",
+                     Model = "9900 DD",
+                     Year = new DateTime(2022, 9, 10),
+                     Price = 198222,
+                     Color = "Brown",
+                     FuelType = "Disel"
+                 },
+
             };
 
             return vehicles;

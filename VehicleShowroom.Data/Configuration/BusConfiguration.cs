@@ -17,6 +17,23 @@ namespace VehicleShowroom.Data.Configuration
             builder
                 .Property(b => b.ImageUrl)
                 .IsRequired();
+            builder
+                .HasData(this.SeedBus());
+        }
+        private List<Bus> SeedBus()
+        {
+            List<Bus> buses = new List<Bus>()
+            {
+                new Bus
+                {
+                    BusId = 1,
+                    Capacity = 66,
+                    Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
+                    ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
+                    VehicleId = 4
+                }
+            };
+            return buses;
         }
     }
 }
