@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using VehicleShowroom.Data.Models;
 
 namespace VehicleShowroom.Data
 {
-    public class VehicleDbContext : IdentityDbContext
+    public class VehicleDbContext : IdentityDbContext<ApplicationUser>
     {
 
         public VehicleDbContext()
@@ -29,6 +30,7 @@ namespace VehicleShowroom.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
