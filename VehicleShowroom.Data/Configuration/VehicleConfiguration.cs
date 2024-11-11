@@ -135,8 +135,40 @@ namespace VehicleShowroom.Data.Configuration
                      Price = 198000,
                      Color = "Orange",
                      FuelType = "Diesel"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 7,
+                     VehicleType = "Supercar",
+                     Make = "Ferrari",
+                     Model = "F8",
+                     Year = new DateTime(2022, 9, 11), 
+                     Price= 450000,
+                     Color = "Crimson Red",
+                     FuelType = "Petrol"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId= 8,
+                     VehicleType ="Supercar",
+                     Make = "Pagani",
+                     Model = "Huayra",
+                     Year = new DateTime(2022, 01, 09),
+                     Price = 3400000,
+                     Color ="Carbon Fiber Black",
+                     FuelType = "Petrol"
+                  },
+                  new Vehicle
+                  {
+                      VehicleId = 9,
+                      VehicleType= "Supercar",
+                      Make= "Lamborghini",
+                      Model= "Aventador",
+                      Year = new DateTime(2023, 10, 09),
+                      Price =550000,
+                      Color = "Lamborghini Yellow",
+                      FuelType = "Petrol"
                   }
-
             };
 
             return vehicles;
