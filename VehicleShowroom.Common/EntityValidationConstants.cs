@@ -12,12 +12,12 @@ namespace VehicleShowroom.Common
             public const int FuelTypeLenght = 50;
             public const string YearFormating = "MM/dd/yyyy";
         }
-        public static class Customer
+        public static class SuperCar
         {
-            public const int FirstNameMaxLenght = 50;
-            public const int LastNameMaxLenght = 50;
-            public const int PhoneNumberMaxLenght = 70;
-
+            public const int DescriptionMaxLenght = 1000;
+            public const int TransmissionMaxLenght = 100;
+            public const int MaxSpeedMaxLenght = 600;
+            public const int WeightMaxLenght = 1700;
         }
         public static class Car
         {

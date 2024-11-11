@@ -27,6 +27,7 @@ namespace VehicleShowroom.Data.Models
         public ICollection<Bus> Buses = new List<Bus>();
         public ICollection<Truck> Trucks = new List<Truck>();
         public ICollection<Motorcycle> Motorcycles = new List<Motorcycle>();
+        public ICollection<SuperCar> SuperCars = new List<SuperCar>();
 
     }
 }
