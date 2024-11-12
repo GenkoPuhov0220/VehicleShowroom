@@ -1,3 +1,58 @@
-﻿<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Messege"]</h3>
-<p>Find your car much easier with us</p>
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    #carouselExampleIndicators .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .carousel-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+</style>
+
+<div class="text-center">
+    <h2 class="display-4">Welcome to the VehicleShowroom</h2>
+
+    <h3 class="display-5">Choose your dream car here</h3>
+
+    <div class="carousel-container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://bmw-mcar.bg/files/slider/gkl-slider-1680x756.jpg?c9ae40fd51" class="d-block mx-auto" style="max-width: 650px; height: auto;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.valgardena.it/fileadmin/files/_processed_/6/c/csm_Anreise_mit_dem_Bus_1b557ef1cb.jpg" class="d-block mx-auto" style="max-width: 650px; height: auto;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9yDNnrCk1zDxhqIXyqrqAossHfsh9hi5DuQ&s" style="max-width: 800px; height: auto;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://f1rst-motors.s3.me-central-1.amazonaws.com/cars/1714771477000-7_af30cb62ef.jpg" class="d-block mx-auto" style="max-width: 650px; height: auto;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.daimlertruck.com/fileadmin/_processed_/3/d/csm_Motiv2_240327_2_LoRes_1fa62eec2b.jpg" class="d-block mx-auto" style="max-width: 650px; height: auto;" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
