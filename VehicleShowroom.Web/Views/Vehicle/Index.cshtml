@@ -25,62 +25,6 @@
                             <strong>Color:</strong> @vehicle.Color<br />
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
-
-                        @if (vehicle.Cars != null && vehicle.Cars.Any())
-                        {
-                            <hr />
-                            @foreach (var car in vehicle.Cars)
-                            {
-                                <div class="car-details mb-2">
-                                    <strong>Kilometers:</strong> @car.Kilometers <br />
-                                    <strong>Doors:</strong> @car.NumberOfDoors <br />
-                                    <strong>Description:</strong> @car.Description <br />
-                                    <strong>Transmission:</strong> @car.Transmission <br />
-                                    <strong>Horse Power:</strong> @car.HorsePower <br />
-                                </div>
-                                <hr />
-                            }
-                        }
-                        @if (vehicle.Buses != null && vehicle.Buses.Any())
-                        {
-                            <hr />
-                            @foreach (var bus in vehicle.Buses)
-                            {
-                                <div class="car-details mb-2">
-                                    <strong>Capacity:</strong> @bus.Capacity <br />
-                                    <strong>HorsePower:</strong> @bus.HorsePower <br />
-                                    <strong>Transmission:</strong> @bus.Transmission <br />
-                                    <strong>Description:</strong> @bus.Description <br />
-                                </div>
-                                <hr />
-                            }
-                        }
-                        @if (vehicle.Trucks != null && vehicle.Trucks.Any())
-                        {
-                            <hr />
-                            @foreach (var truck in vehicle.Trucks)
-                            {
-                                <div class="car-details mb-2">
-                                    <strong>CargoCapacity:</strong> @truck.CargoCapacity <br />
-                                    <strong>EuroNumber:</strong> @truck.EuroNumber <br />
-                                    <strong>Transmission:</strong> @truck.Transmission <br />
-                                    <strong>HorsePower:</strong> @truck.HorsePower <br />
-                                    <strong>Description:</strong> @truck.Description <br />
-                                </div>
-                                <hr />
-                            }
-                        }
-                        @if (vehicle.Motorcycles != null && vehicle.Motorcycles.Any())
-                        {
-                            <hr />
-                            @foreach (var motorcycle in vehicle.Motorcycles)
-                            {
-                                <div class="car-details mb-2">
-                                    <strong>Kw:</strong> @motorcycle.Kw <br />
-                                </div>
-                                <hr />
-                            }
-                        }
                     </div>
                 </div>
             </div>

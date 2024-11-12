@@ -15,13 +15,9 @@ namespace VehicleShowroom.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var AllVehicle = await context.Vehicles
-                .Include(v => v.Cars)
-                .Include(v => v.Trucks)
-                .Include(v => v.Buses)
-                .Include(v => v.Motorcycles)
                 .ToListAsync();
                
-            return View(AllVehicle);
+            return  View(AllVehicle);
         }
     }
 }
