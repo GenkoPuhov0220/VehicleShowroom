@@ -13,8 +13,7 @@ namespace VehicleShowroom.Data.Models
         [Key]
         public int MotorcycleId { get; set; }
         public int Kw { get; set; }
-        [Required]
-        public string ImageUrl { get; set; } = null!;
+
         [Required]
         [ForeignKey(nameof(VehicleId))]
         public int VehicleId { get; set; }

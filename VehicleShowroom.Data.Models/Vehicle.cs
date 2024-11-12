@@ -21,6 +21,8 @@ namespace VehicleShowroom.Data.Models
         public string Color { get; set; } = null!;
         [Required]
         public string FuelType { get; set; } = null!;
+        [Required]
+        public string ImageUrl { get; set; } = null!;
         public bool IsDelete { get; set; }
 
         public ICollection<Car> Cars = new List<Car>();

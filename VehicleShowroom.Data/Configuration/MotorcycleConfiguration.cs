@@ -12,9 +12,6 @@ namespace VehicleShowroom.Data.Configuration
             builder.HasKey(m => m.MotorcycleId);
 
             builder
-                .Property(m => m.ImageUrl)
-                .IsRequired();
-            builder
                 .HasData(this.SeedMotorcycles());
         }
         private List<Motorcycle> SeedMotorcycles()
@@ -25,7 +22,6 @@ namespace VehicleShowroom.Data.Configuration
                 {
                     MotorcycleId = 1,
                     Kw = 45,
-                    ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUkEaOz8kEyPTk3ansNtGsVrlm4zR0PBuMQ&s",
                     VehicleId = 5,
                 }
             };

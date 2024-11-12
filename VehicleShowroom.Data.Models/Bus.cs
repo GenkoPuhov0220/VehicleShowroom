@@ -16,8 +16,7 @@ namespace VehicleShowroom.Data.Models
         [Required]
         public string Description { get; set; } = null!;
         public int HorsePower { get; set; }
-        [Required]
-        public string ImageUrl { get; set; } = null!;
+
         [Required]
         public string Transmission { get; set; } = null!;
         [Required]

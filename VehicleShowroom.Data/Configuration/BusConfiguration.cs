@@ -15,9 +15,6 @@ namespace VehicleShowroom.Data.Configuration
               .IsRequired()
               .HasMaxLength(DescriptionMaxLenght);
             builder
-                .Property(b => b.ImageUrl)
-                .IsRequired();
-            builder
                 .Property(c => c.Transmission)
                 .IsRequired()
                 .HasMaxLength(TransmissionMaxLenght);
@@ -36,7 +33,6 @@ namespace VehicleShowroom.Data.Configuration
                     Transmission = "Automatic",
                     HorsePower = 445,
                     Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
-                    ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
                     VehicleId = 4
                 }
             };

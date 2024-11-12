@@ -16,9 +16,6 @@ namespace VehicleShowroom.Data.Configuration
               .IsRequired()
               .HasMaxLength(DescriptionMaxLenght);
             builder
-                .Property(c => c.ImageUrl)
-                .IsRequired();
-            builder
                 .Property(c => c.Transmission)
                 .IsRequired()
                 .HasMaxLength(TransmissionMaxLenght);
@@ -47,7 +44,6 @@ namespace VehicleShowroom.Data.Configuration
                     HorsePower = 710,
                     MaxSpeed = "350",
                     Weight = "1400",
-                    ImageUrl = "https://ferrari-cdn.thron.com/delivery/public/thumbnail/ferrari/e9677798-7b8b-42b1-becf-387235c70b2a/bocxuw/std/488x325/e9677798-7b8b-42b1-becf-387235c70b2a?scalemode=auto",
                     VehicleId = 7
                 },
                 new SuperCar
@@ -60,7 +56,6 @@ namespace VehicleShowroom.Data.Configuration
                     HorsePower = 791,
                     MaxSpeed = "383",
                     Weight = "1350",
-                    ImageUrl= "https://assets.newatlas.com/dims4/default/7afc3de/2147483647/strip/true/crop/1024x576+0+47/resize/1200x675!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Fpagani-huayra-supercar.jpg",
                     VehicleId = 8
                 },
                 new SuperCar
@@ -73,7 +68,6 @@ namespace VehicleShowroom.Data.Configuration
                    HorsePower = 769,
                    MaxSpeed = "355",
                    Weight = "1575",
-                   ImageUrl = "https://www.exoticcarhacks.com/wp-content/uploads/2024/02/uFcbfiuL-scaled.jpeg",
                    VehicleId = 9
                 }
             };

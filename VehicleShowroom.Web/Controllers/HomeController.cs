@@ -9,8 +9,6 @@ namespace VehicleShowroom.Web.Controllers
        
         public async Task<IActionResult> Index()
         {
-            ViewData["Title"] = "Home Page";
-            ViewData["Messege"] = "Welcome to the VehicleShowroom";
             return View();
         }
 

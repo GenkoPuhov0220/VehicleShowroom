@@ -18,9 +18,7 @@ namespace VehicleShowroom.Data.Configuration
              .Property(t => t.Description)
              .IsRequired()
              .HasMaxLength(DescriptionMaxLenght);
-            builder
-                .Property(t => t.ImageUrl)
-                .IsRequired();
+          
             builder
                 .Property(c => c.Transmission)
                 .IsRequired()
@@ -40,7 +38,6 @@ namespace VehicleShowroom.Data.Configuration
                    Description = "Best truck",
                    HorsePower = 650,
                    Transmission = "Automatic",
-                   ImageUrl = "https://www.hobbies.co.uk/media/catalog/product/cache/084ca19aa5ee10728706fd297654f270/1/5/156325man_1.jpg",
                    VehicleId = 6
                }
             };

@@ -61,6 +61,9 @@ namespace VehicleShowroom.Data.Configuration
                 .Property(v => v.FuelType)
                 .IsRequired()
                 .HasMaxLength(FuelTypeLenght);
+            builder
+               .Property(b => b.ImageUrl)
+               .IsRequired();
 
             builder
                 .HasData(this.SeedVehicle());
@@ -79,7 +82,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2012, 08, 12),
                      Price = 21500,
                      Color = "White",
-                     FuelType = "Diesel"
+                     FuelType = "Diesel",
+                     ImageUrl = "https://d3ok64umd5ysj.cloudfront.net/dev/assets/images/gallery/alpine-white-e91-bmw-335i-wagon-estate-forgestar-f14-bagged-stance-c.jpg"
                  },
                  new Vehicle
                  {
@@ -90,7 +94,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2006, 08, 08),
                      Price = 22500,
                      Color = "Black",
-                     FuelType = "Diesel"
+                     FuelType = "Diesel",
+                     ImageUrl = "https://garrybase.com/images/full/uploads/2021/AWEsL34IiTvPxXp2k8M7JcCdJrsZKJEiqimwpWpi.jpg"
                  },
                  new Vehicle
                  {
@@ -101,7 +106,9 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2022, 10, 15),
                      Price = 150000,
                      Color = "White",
-                     FuelType = "Petrol"
+                     FuelType = "Petrol",
+                     ImageUrl = "https://frankfurt.apollo.olxcdn.com/v1/files/r8lz4w93so09-BG/image"
+
                  },
                   new Vehicle
                  {
@@ -112,7 +119,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2022, 9, 10),
                      Price = 198222,
                      Color = "Brown",
-                     FuelType = "Diesel"
+                     FuelType = "Diesel",
+                     ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg"
                  },
                   new Vehicle
                   {
@@ -123,7 +131,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2022, 9, 10),
                      Price = 19800,
                      Color = "red",
-                     FuelType = "Petrol"
+                     FuelType = "Petrol",
+                      ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUkEaOz8kEyPTk3ansNtGsVrlm4zR0PBuMQ&s"
                   },
                   new Vehicle
                   {
@@ -134,7 +143,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2016, 9, 11),
                      Price = 198000,
                      Color = "Orange",
-                     FuelType = "Diesel"
+                     FuelType = "Diesel",
+                     ImageUrl = "https://www.hobbies.co.uk/media/catalog/product/cache/084ca19aa5ee10728706fd297654f270/1/5/156325man_1.jpg"
                   },
                   new Vehicle
                   {
@@ -145,7 +155,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2022, 9, 11), 
                      Price= 450000,
                      Color = "Crimson Red",
-                     FuelType = "Petrol"
+                     FuelType = "Petrol",
+                     ImageUrl = "https://ferrari-cdn.thron.com/delivery/public/thumbnail/ferrari/e9677798-7b8b-42b1-becf-387235c70b2a/bocxuw/std/488x325/e9677798-7b8b-42b1-becf-387235c70b2a?scalemode=auto"
                   },
                   new Vehicle
                   {
@@ -156,7 +167,8 @@ namespace VehicleShowroom.Data.Configuration
                      Year = new DateTime(2022, 01, 09),
                      Price = 3400000,
                      Color ="Carbon Fiber Black",
-                     FuelType = "Petrol"
+                     FuelType = "Petrol",
+                     ImageUrl= "https://assets.newatlas.com/dims4/default/7afc3de/2147483647/strip/true/crop/1024x576+0+47/resize/1200x675!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Fpagani-huayra-supercar.jpg"
                   },
                   new Vehicle
                   {
@@ -167,7 +179,8 @@ namespace VehicleShowroom.Data.Configuration
                       Year = new DateTime(2023, 10, 09),
                       Price =550000,
                       Color = "Lamborghini Yellow",
-                      FuelType = "Petrol"
+                      FuelType = "Petrol",
+                      ImageUrl = "https://www.exoticcarhacks.com/wp-content/uploads/2024/02/uFcbfiuL-scaled.jpeg"
                   }
             };
 
