@@ -60,7 +60,7 @@ namespace VehicleShowroom.Data.Configuration
             builder
                 .Property(v => v.FuelType)
                 .IsRequired()
-                .HasMaxLength(FuelTypeLenght);
+                .HasMaxLength(FuelTypeMaxLenght);
             builder
                .Property(b => b.ImageUrl)
                .IsRequired();

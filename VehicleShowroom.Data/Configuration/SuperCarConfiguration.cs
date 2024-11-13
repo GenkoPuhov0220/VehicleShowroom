@@ -14,19 +14,19 @@ namespace VehicleShowroom.Data.Configuration
             builder
               .Property(c => c.Description)
               .IsRequired()
-              .HasMaxLength(DescriptionMaxLenght);
+              .HasMaxLength(SuperCarDescriptionMaxLenght);
             builder
                 .Property(c => c.Transmission)
                 .IsRequired()
-                .HasMaxLength(TransmissionMaxLenght);
+                .HasMaxLength(SuperCarTransmissionMaxLenght);
             builder
                .Property(c => c.MaxSpeed)
                .IsRequired()
-               .HasMaxLength(MaxSpeedMaxLenght);
+               .HasMaxLength(SuperCarMaxSpeedMaxLenght);
             builder
                .Property(c => c.Weight)
                .IsRequired()
-               .HasMaxLength(WeightMaxLenght);
+               .HasMaxLength(SuperCarWeightMaxLenght);
             builder
                 .HasData(this.SeedSuperCar());
         }

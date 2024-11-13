@@ -13,11 +13,11 @@ namespace VehicleShowroom.Data.Configuration
             builder
               .Property(b => b.Description)
               .IsRequired()
-              .HasMaxLength(DescriptionMaxLenght);
+              .HasMaxLength(BusDescriptionMaxLenght);
             builder
                 .Property(c => c.Transmission)
                 .IsRequired()
-                .HasMaxLength(TransmissionMaxLenght);
+                .HasMaxLength(BusTransmissionMaxLenght);
 
             builder
                 .HasData(this.SeedBus());

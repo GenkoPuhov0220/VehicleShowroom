@@ -17,12 +17,12 @@ namespace VehicleShowroom.Data.Configuration
             builder
              .Property(t => t.Description)
              .IsRequired()
-             .HasMaxLength(DescriptionMaxLenght);
+             .HasMaxLength(TruckDescriptionMaxLenght);
           
             builder
                 .Property(c => c.Transmission)
                 .IsRequired()
-                .HasMaxLength(TransmissionMaxLenght);
+                .HasMaxLength(TruckTransmissionMaxLenght);
             builder
                 .HasData(this.SeedTrucks());
         }

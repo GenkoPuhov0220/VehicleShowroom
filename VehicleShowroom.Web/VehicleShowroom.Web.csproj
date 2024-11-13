@@ -21,7 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\VehicleShowroom.Common\VehicleShowroom.Common.csproj" />
     <ProjectReference Include="..\VehicleShowroom.Data\VehicleShowroom.Data.csproj" />
-    <ProjectReference Include="..\VehicleShowroom.Web.ViewModels\VehicleShowroom.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
