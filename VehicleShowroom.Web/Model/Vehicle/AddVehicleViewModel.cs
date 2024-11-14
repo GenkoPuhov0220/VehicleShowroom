@@ -38,73 +38,73 @@ namespace VehicleShowroom.Web
         public string ImageUrl { get; set; } = null!;
 
         //Car
-        [Required]
-        public int Kilometers { get; set; }
-        [Required]
-        public int NumberOfDoors { get; set; }
-        [Required]
-        [MinLength(CarDescriptionMinLenght)]
-        [MaxLength(CarDescriptionMaxLenght)]
-        public string CarDescription { get; set; } = null!;
-        [Required]
-        [MinLength(CarTransmissionMinLenght)]
-        [MaxLength(CarTransmissionMaxLenght)]
-        public string CarTransmission { get; set; } = null!;
-        [Required]
-        public int CarHorsePower { get; set; }
+        //[Required]
+        public int? Kilometers { get; set; }
+        //[Required]
+        public int? NumberOfDoors { get; set; }
+       // [Required]
+        //[MinLength(CarDescriptionMinLenght)]
+        //[MaxLength(CarDescriptionMaxLenght)]
+        public string? CarDescription { get; set; } 
+        //[Required]
+        //[MinLength(CarTransmissionMinLenght)]
+        //[MaxLength(CarTransmissionMaxLenght)]
+        public string? CarTransmission { get; set; } 
+       // [Required]
+        public int? CarHorsePower { get; set; }
 
         //Bus
-        [Required]
-        public int Capacity { get; set; }
-        [Required]
-        [MinLength(BusDescriptionMinLenght)]
-        [MaxLength(BusDescriptionMaxLenght)]
-        public string BusDescription { get; set; } = null!;
-        [Required]
-        [MinLength(BusTransmissionMinLenght)]
-        [MaxLength(BusTransmissionMaxLenght)]
-        public string BusTransmission { get; set; } = null!;
-        [Required]
+       // [Required]
+        public int? Capacity { get; set; }
+       // [Required]
+        //[MinLength(BusDescriptionMinLenght)]
+        //[MaxLength(BusDescriptionMaxLenght)]
+        public string? BusDescription { get; set; } 
+       // [Required]
+        //[MinLength(BusTransmissionMinLenght)]
+        //[MaxLength(BusTransmissionMaxLenght)]
+        public string? BusTransmission { get; set; }
+        //[Required]
         public int? BusHorsePower { get; set; }
 
         //Motorcycle
         public int? Kw { get; set; }
 
         //SuperCar
-        [Required]
-        [MinLength(SuperCarMaxSpeedMinLenght)]
-        [MaxLength(SuperCarMaxSpeedMaxLenght)]
-        public string MaxSpeed { get; set; } = null!;
-        [Required]
-        [MinLength(SuperCarWeightMinLenght)]
-        [MaxLength(SuperCarWeightMaxLenght)]
-        public string Weight { get; set; } = null!;
+       // [Required]
+       // [MinLength(SuperCarMaxSpeedMinLenght)]
+       // [MaxLength(SuperCarMaxSpeedMaxLenght)]
+        public string? MaxSpeed { get; set; } 
+        //[Required]
+        //[MinLength(SuperCarWeightMinLenght)]
+       // [MaxLength(SuperCarWeightMaxLenght)]
+        public string? Weight { get; set; } 
         public int? SuperCarKilometers { get; set; }
-        public int SuperCarDoors { get; set; }
-        [Required]
-        [MinLength(SuperCarDescriptionMinLenght)]
-        [MaxLength(SuperCarDescriptionMaxLenght)]
-        public string SuperCarDescription { get; set; } = null!;
-        [Required]
-        [MinLength(SuperCarTransmissionMinLenght)]
-        [MaxLength(SuperCarTransmissionMaxLenght)]
-        public string SuperCarTransmission { get; set; } = null!;
-        public int SuperCarHorsePower { get; set; }
+        public int? SuperCarDoors { get; set; }
+        //[Required]
+        //[MinLength(SuperCarDescriptionMinLenght)]
+       // [MaxLength(SuperCarDescriptionMaxLenght)]
+        public string? SuperCarDescription { get; set; }
+        //[Required]
+        //[MinLength(SuperCarTransmissionMinLenght)]
+       // [MaxLength(SuperCarTransmissionMaxLenght)]
+        public string? SuperCarTransmission { get; set; }
+        public int? SuperCarHorsePower { get; set; }
 
          //Truck
         public int? CargoCapacity { get; set; }
-        [Required]
-        [MinLength(EuroNumberMinLenght)]
-        [MaxLength(EuroNumberMaxLenght)]
-        public string EuroNumber { get; set; } = null!;
-        [Required]
-        [MinLength(TruckDescriptionMinLenght)]
-        [MaxLength(TruckDescriptionMaxLenght)]
-        public string TruckDescription { get; set; } = null!;
-        [Required]
-        [MinLength(TruckTransmissionMinLenght)]
-        [MaxLength(TruckTransmissionMaxLenght)]
-        public string TruckTransmission { get; set; } = null!;
+        //[Required]
+        //[MinLength(EuroNumberMinLenght)]
+       // [MaxLength(EuroNumberMaxLenght)]
+        public string? EuroNumber { get; set; } 
+        //[Required]
+        //[MinLength(TruckDescriptionMinLenght)]
+        //[MaxLength(TruckDescriptionMaxLenght)]
+        public string? TruckDescription { get; set; } 
+        //[Required]
+        //[MinLength(TruckTransmissionMinLenght)]
+        //[MaxLength(TruckTransmissionMaxLenght)]
+        public string?TruckTransmission { get; set; }
         public int? TruckHorsePower { get; set; }
     }
 }

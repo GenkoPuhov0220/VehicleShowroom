@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
-using VehicleShowroom.Web;
-
 
 namespace VehicleShowroom.Web.Controllers
 {
@@ -31,7 +29,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(models);
+              return View(models);
             }
             var vehicle = new Vehicle
             {
@@ -54,11 +52,11 @@ namespace VehicleShowroom.Web.Controllers
                     var car = new Car
                     {
                         VehicleId = vehicle.VehicleId,
-                        Kilometers = models.Kilometers,
-                        NumberOfDoors = models.NumberOfDoors,
-                        Description = models.CarDescription,
-                        Transmission = models.CarTransmission,
-                        HorsePower = models.CarHorsePower
+                        Kilometers = models.Kilometers ?? 0,
+                        NumberOfDoors = models.NumberOfDoors ?? 0,
+                        Description = models.CarDescription ?? string.Empty,
+                        Transmission = models.CarTransmission ?? string.Empty,
+                        HorsePower = models.CarHorsePower ?? 0
                     };
                     context.Cars.Add(car);
                     break;
@@ -67,9 +65,9 @@ namespace VehicleShowroom.Web.Controllers
                     var bus = new Bus
                     {
                         VehicleId = vehicle.VehicleId,
-                        Capacity = models.Capacity,
-                        Description = models.BusDescription,
-                        Transmission = models.BusTransmission,
+                        Capacity = models.Capacity ?? 0,
+                        Description = models.BusDescription ?? string.Empty,
+                        Transmission = models.BusTransmission ?? string.Empty,
                         HorsePower = models.BusHorsePower ?? 0
                     };
                     context.Buses.Add(bus);
@@ -89,12 +87,12 @@ namespace VehicleShowroom.Web.Controllers
                     {
                         VehicleId = vehicle.VehicleId,
                         Kilometers = models.SuperCarKilometers ?? 0,
-                        NumberOfDoors = models.SuperCarDoors,
-                        Description = models.SuperCarDescription,
-                        Transmission = models.SuperCarTransmission,
-                        HorsePower = models.SuperCarHorsePower,
-                        MaxSpeed = models.MaxSpeed,
-                        Weight = models.Weight
+                        NumberOfDoors = models.SuperCarDoors ?? 0,
+                        Description = models.SuperCarDescription ?? string.Empty,
+                        Transmission = models.SuperCarTransmission ?? string.Empty,
+                        HorsePower = models.SuperCarHorsePower ?? 0,
+                        MaxSpeed = models.MaxSpeed ?? string.Empty,
+                        Weight = models.Weight ?? string.Empty
                     };
                     context.SuperCars.Add(superCar);
                     break;
@@ -104,9 +102,9 @@ namespace VehicleShowroom.Web.Controllers
                     {
                         VehicleId = vehicle.VehicleId,
                         CargoCapacity = models.CargoCapacity ?? 0,
-                        EuroNumber = models.EuroNumber,
-                        Description = models.TruckDescription,
-                        Transmission = models.TruckTransmission,
+                        EuroNumber = models.EuroNumber ?? string.Empty,
+                        Description = models.TruckDescription ?? string.Empty,
+                        Transmission = models.TruckTransmission ?? string.Empty,
                         HorsePower = models.TruckHorsePower ?? 0
                     };
                     context.Trucks.Add(truck);

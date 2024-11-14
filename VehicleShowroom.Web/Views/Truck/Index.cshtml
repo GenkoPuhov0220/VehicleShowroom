@@ -1,0 +1,30 @@
+﻿@using VehicleShowroom.Data.Models
+@using static VehicleShowroom.Common.EntityValidationConstants.Vehicle
+@model IEnumerable<Vehicle>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var vehicle in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2" style="width: auto;" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
+                        <p class="card-text">
+                            <strong>Type:</strong> @vehicle.VehicleType<br />
+                            <strong>Year:</strong> @vehicle.Year.ToString(YearFormating)<br />
+                            <strong>Price:</strong> @vehicle.Price.ToString("C")<br />
+                            <strong>Color:</strong> @vehicle.Color<br />
+                            <strong>Fuel Type:</strong> @vehicle.FuelType<br />
+                        </p>
+                    </div>
+                    <a asp-action="Details" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
