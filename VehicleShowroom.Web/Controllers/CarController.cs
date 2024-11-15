@@ -33,7 +33,7 @@ namespace VehicleShowroom.Web.Controllers
                      VehicleType = c.Vehicle.VehicleType,
                      Make = c.Vehicle.Make,
                      Model = c.Vehicle.Model,
-                     Year = c.Vehicle.Year,
+                     Year = c.Vehicle.Year.ToString(),
                      Price = c.Vehicle.Price,
                      Color = c.Vehicle.Color,
                      FuelType = c.Vehicle.FuelType,

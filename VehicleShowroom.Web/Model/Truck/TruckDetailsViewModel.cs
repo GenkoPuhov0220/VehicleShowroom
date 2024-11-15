@@ -1,8 +1,6 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-namespace VehicleShowroom.Web
-{
-    public class CarDetailsViewModel
+﻿namespace VehicleShowroom.Web
+{ 
+    public class TruckDetailsViewModel
     {
         //Vehicle
         public int VehicleId { get; set; }
@@ -15,11 +13,11 @@ namespace VehicleShowroom.Web
         public string FuelType { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
 
-        //Car
-        public int Kilometers { get; set; }
-        public int NumberOfDoors { get; set; }
-        public string CarDescription { get; set; } = null!;
-        public string? CarTransmission { get; set; }
-        public int? CarHorsePower { get; set; }
+        //Truck
+        public int CargoCapacity { get; set; }
+        public string EuroNumber { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string Transmission { get; set; } = null!;
+        public int HorsePower { get; set; }
     }
 }

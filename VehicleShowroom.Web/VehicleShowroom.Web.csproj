@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VehicleShowroom.Common\VehicleShowroom.Common.csproj" />
+    <ProjectReference Include="..\VehicleShowroom.Data.Models\VehicleShowroom.Data.Models.csproj" />
     <ProjectReference Include="..\VehicleShowroom.Data\VehicleShowroom.Data.csproj" />
   </ItemGroup>
 

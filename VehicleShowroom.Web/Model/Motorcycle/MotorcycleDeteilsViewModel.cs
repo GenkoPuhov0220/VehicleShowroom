@@ -1,8 +1,6 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-namespace VehicleShowroom.Web
+﻿namespace VehicleShowroom.Web
 {
-    public class CarDetailsViewModel
+    public class MotorcycleDeteilsViewModel
     {
         //Vehicle
         public int VehicleId { get; set; }
@@ -14,12 +12,10 @@ namespace VehicleShowroom.Web
         public string Color { get; set; } = null!;
         public string FuelType { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
+        //Motorcycle
+        public int Kw { get; set; }
 
-        //Car
-        public int Kilometers { get; set; }
-        public int NumberOfDoors { get; set; }
-        public string CarDescription { get; set; } = null!;
-        public string? CarTransmission { get; set; }
-        public int? CarHorsePower { get; set; }
+
     }
 }
+
