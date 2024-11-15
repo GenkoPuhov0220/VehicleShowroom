@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using VehicleShowroom.Data.Models;
-using static VehicleShowroom.Common.EntityValidationConstants.Bus;
+using static VehicleShowroom.Common.EntityValidationConstants;
 namespace VehicleShowroom.Data.Configuration
 {
     public class BusConfiguration : IEntityTypeConfiguration<Bus>

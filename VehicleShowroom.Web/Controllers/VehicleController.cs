@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
-
+using static VehicleShowroom.Common.EntityValidationConstants;
 namespace VehicleShowroom.Web.Controllers
 {
     public class VehicleController : Controller
@@ -27,6 +28,16 @@ namespace VehicleShowroom.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddVehicle(AddVehicleViewModel models)
         {
+
+            bool IsReleasedDateValis = DateTime
+                .TryParseExact(models.Year, YearFormating, CultureInfo.InvariantCulture, DateTimeStyles.None,
+                out DateTime releaseDate);
+
+            if (!IsReleasedDateValis)
+            {
+                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: dd/MM/yyyy");
+
+            }
             if (!ModelState.IsValid)
             {
               return View(models);
@@ -36,7 +47,7 @@ namespace VehicleShowroom.Web.Controllers
                 VehicleType = models.VehicleType,
                 Make = models.Make,
                 Model = models.Model,
-                Year = models.Year,
+                Year = releaseDate,
                 Price = models.Price,
                 Color = models.Color,
                 FuelType = models.FuelType,

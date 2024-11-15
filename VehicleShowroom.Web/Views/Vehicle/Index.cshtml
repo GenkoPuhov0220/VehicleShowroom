@@ -1,5 +1,5 @@
 ﻿@using VehicleShowroom.Data.Models
-@using static VehicleShowroom.Common.EntityValidationConstants.Vehicle
+@using static VehicleShowroom.Common.EntityValidationConstants
 @model IEnumerable<Vehicle>
 
 @{
@@ -27,6 +27,10 @@
                             <strong>Color:</strong> @vehicle.Color<br />
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
+                    </div>
+                    <div>
+                        <a asp-action="Edit" class="btn btn-primary me-2">Edit vehicle</a>
+                        <a asp-action="Delete" class="btn btn-secondary">Delete vehicle</a>
                     </div>
                 </div>
             </div>

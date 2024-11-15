@@ -14,7 +14,7 @@ namespace VehicleShowroom.Data.Models
         [Required]
         public string Model { get; set; } = null!;
         [Required]
-        public DateTime Year { get; set; }
+        public DateTime Year { get; set; } 
         [Required]
         public decimal Price { get; set; }
         [Required]
@@ -25,7 +25,7 @@ namespace VehicleShowroom.Data.Models
         public string ImageUrl { get; set; } = null!;
         public bool IsDelete { get; set; }
 
-        public ICollection<Car> Cars = new List<Car>();
+        public IList<Car> Cars = new List<Car>();
         public ICollection<Bus> Buses = new List<Bus>();
         public ICollection<Truck> Trucks = new List<Truck>();
         public ICollection<Motorcycle> Motorcycles = new List<Motorcycle>();

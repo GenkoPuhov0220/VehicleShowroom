@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using VehicleShowroom.Data.Models;
-using static VehicleShowroom.Common.EntityValidationConstants.Vehicle;
+using static VehicleShowroom.Common.EntityValidationConstants;
 namespace VehicleShowroom.Data.Configuration
 {
     public class VehicleConfiguration : IEntityTypeConfiguration<Vehicle>
@@ -29,6 +29,11 @@ namespace VehicleShowroom.Data.Configuration
                 .OnDelete(DeleteBehavior.NoAction);
             builder
                 .HasMany(v => v.Motorcycles)
+                .WithOne(m => m.Vehicle)
+                .HasForeignKey(m => m.VehicleId)
+                .OnDelete(DeleteBehavior.NoAction);
+            builder
+                .HasMany(v => v.SuperCars)
                 .WithOne(m => m.Vehicle)
                 .HasForeignKey(m => m.VehicleId)
                 .OnDelete(DeleteBehavior.NoAction);
@@ -64,7 +69,9 @@ namespace VehicleShowroom.Data.Configuration
             builder
                .Property(b => b.ImageUrl)
                .IsRequired();
-
+            builder
+              .Property(b => b.Year)
+              .IsRequired();
             builder
                 .HasData(this.SeedVehicle());
 

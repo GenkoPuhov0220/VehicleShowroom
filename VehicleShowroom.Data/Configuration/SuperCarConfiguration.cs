@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using VehicleShowroom.Data.Models;
-using static VehicleShowroom.Common.EntityValidationConstants.SuperCar;
+using static VehicleShowroom.Common.EntityValidationConstants;
 namespace VehicleShowroom.Data.Configuration
 {
     public class SuperCarConfiguration : IEntityTypeConfiguration<SuperCar>

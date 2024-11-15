@@ -1,5 +1,5 @@
 ﻿@using VehicleShowroom.Data.Models
-@using static VehicleShowroom.Common.EntityValidationConstants.Vehicle
+@using static VehicleShowroom.Common.EntityValidationConstants
 @model IEnumerable<Vehicle>
 
 
@@ -21,7 +21,7 @@
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
                     </div>
-                    <a asp-action="Details" class="btn btn-primary">Details</a>
+                    <a asp-action="Details" asp-route-id = "@vehicle.VehicleId" class="btn btn-primary">Details</a>
                 </div>
             </div>
         }

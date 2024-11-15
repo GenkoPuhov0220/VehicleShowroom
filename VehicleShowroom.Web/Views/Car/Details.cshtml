@@ -1,0 +1,33 @@
+﻿
+@model CarDetailsViewModel
+
+@{
+    ViewData["Title"] = "Vehicle Details";
+}
+<div class="card" style="width: 18rem;">
+  <img src="@Model.ImageUrl" alt="Car image" class="card-img-top" style="width: auto;" />
+  <div class="card-body">
+    <h5 class="card-title">Vehicle Details</h5>
+    <p class="card-text">
+      <strong>Vehicle Type:</strong> VehicleType<br>
+      <strong>Make:</strong> Make<br>
+      <strong>Model:</strong> Model<br>
+      <strong>Year:</strong> Year<br>
+      <strong>Price:</strong> Price<br>
+      <strong>Color:</strong> Color<br>
+      <strong>Fuel Type:</strong> FuelType<br>
+    </p>
+    <h6>Car Details</h6>
+    <p class="card-text">
+      <strong>Kilometers: </strong>@Model.Kilometers.ToString()<br>
+      <strong>Number of Doors: </strong>@Model.NumberOfDoors.ToString()<br>
+      <strong>Transmission: </strong>@Model.CarTransmission.ToString()<br>
+      <strong>HorsePower: </strong>@Model.CarHorsePower.ToString()<br>
+      <strong>Description: </strong>@Model.CarDescription.ToString()
+    </p>
+    <div>
+     <a asp-action="Index" class="btn btn-primary me-2">Back</a>
+     <a asp-action="AddToFavorite" class="btn btn-secondary">Add to favorite</a>
+    </div>
+  </div>
+</div>
