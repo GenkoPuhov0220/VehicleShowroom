@@ -6,7 +6,7 @@ using VehicleShowroom.Data.Models;
 
 namespace VehicleShowroom.Data
 {
-    public class VehicleDbContext : IdentityDbContext<IdentityUser>
+    public class VehicleDbContext : IdentityDbContext<ApplicationUser>
     {
 
         public VehicleDbContext()

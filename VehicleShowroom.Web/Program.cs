@@ -20,14 +20,14 @@ namespace VehicleShowroom.Web
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
 
                 })
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<VehicleDbContext>();
-                //.AddSignInManager<SignInManager<IdentityUser>>()
-                //.AddUserManager<UserManager<IdentityUser>>();
+                .AddEntityFrameworkStores<VehicleDbContext>()
+                .AddSignInManager<SignInManager<ApplicationUser>>()
+                .AddUserManager<UserManager<ApplicationUser>>();
                 //.AddDefaultTokenProviders();
                 //.AddUserStore<ApplicationUser>();
       
