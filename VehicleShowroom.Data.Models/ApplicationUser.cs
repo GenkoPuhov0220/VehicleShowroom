@@ -9,5 +9,6 @@ namespace VehicleShowroom.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
     }
 }

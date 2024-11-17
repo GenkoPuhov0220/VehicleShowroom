@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
-using VehicleShowroom.Web.Data;
+using VehicleShowroom.Web;
 
 
 namespace VehicleShowroom.Web
@@ -19,11 +19,20 @@ namespace VehicleShowroom.Web
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            builder.Services
+                .AddDefaultIdentity<IdentityUser>(options =>
+                {
+
+                })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<VehicleDbContext>();
+                //.AddSignInManager<SignInManager<IdentityUser>>()
+                //.AddUserManager<UserManager<IdentityUser>>();
+                //.AddDefaultTokenProviders();
+                //.AddUserStore<ApplicationUser>();
       
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddRazorPages();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -32,7 +41,7 @@ namespace VehicleShowroom.Web
                 app.UseMigrationsEndPoint();
             }
             else
-            {
+           {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -43,7 +52,7 @@ namespace VehicleShowroom.Web
 
             app.UseRouting();
 
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

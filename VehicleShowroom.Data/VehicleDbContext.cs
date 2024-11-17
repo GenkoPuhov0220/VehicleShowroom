@@ -6,7 +6,7 @@ using VehicleShowroom.Data.Models;
 
 namespace VehicleShowroom.Data
 {
-    public class VehicleDbContext : IdentityDbContext<ApplicationUser>
+    public class VehicleDbContext : IdentityDbContext<IdentityUser>
     {
 
         public VehicleDbContext()
@@ -30,10 +30,7 @@ namespace VehicleShowroom.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
         }
     }
 }

@@ -36,7 +36,7 @@ namespace VehicleShowroom.Web.Controllers
 
             if (!IsReleasedDateValis)
             {
-                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: ${}dd/MM/yyyy");
+                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: dd/MM/yyyy");
 
             }
             if (!ModelState.IsValid)

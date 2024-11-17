@@ -7,34 +7,42 @@ namespace VehicleShowroom.Web
     public class AddVehicleViewModel
     {
         public int VehicleId { get; set; }
+
         [Required(ErrorMessage = VehicleTypeMessages)]
         [MinLength(VehicleTypeMinLenght, ErrorMessage = VehicleTypeMinLenghtMessages)]
         [MaxLength(VehicleTypeMaxLenght, ErrorMessage = VehicleTypeMaxLenghtMessages)]
         public string VehicleType { get; set; } = null!;
+
         [Required(ErrorMessage = VehicleMakeMessages)]
         [MinLength(MakeMinLenght, ErrorMessage = VehicleMakeMinLenghtMessages)]
         [MaxLength(MakeMaxLenght, ErrorMessage = VehicleMakeMaxLenghtMessages)]
         public string Make { get; set; } = null!;
+
         [Required(ErrorMessage = VehicleModelMessages )]
         [MinLength(ModelMinLenght, ErrorMessage = VehicleModelMinLenghtMessages)]
         [MaxLength(ModelMaxLenght, ErrorMessage = VehicleModelMaxLenghtMessages)]
-        public string Model { get; set; } = null!;
+        public  string Model { get; set; } = null!;
+
         [Required]
-        public string Year { get; set; } = null!;
+        public  string Year { get; set; } = null!;
+
         [Required(ErrorMessage = VehiclePriceMessages)]
         public decimal Price { get; set; }
+
         [Required(ErrorMessage = VehicleColorMessages)]
         [MinLength(ColorMinLenght)]
         [MaxLength(ColorMaxLenght)]
-        public string Color { get; set; } = null!;
+        public  string Color { get; set; } = null!;
+
         [Required(ErrorMessage = VehicleFuelTypeMessages)]
         [MinLength(FuelTypeMinLenght)]
         [MaxLength(FuelTypeMaxLenght)]
-        public string FuelType { get; set; } = null!;
-        [Required]
-        public string ImageUrl { get; set; } = null!;
+        public  string FuelType { get; set; } = null!;
 
-       //Car
+        [Required]
+        public  string ImageUrl { get; set; } = null!;
+
+        //Car
         public int? Kilometers { get; set; }
         public int? NumberOfDoors { get; set; }
         public string? CarDescription { get; set; } 
