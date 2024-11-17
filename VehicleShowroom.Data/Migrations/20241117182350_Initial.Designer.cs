@@ -9,11 +9,11 @@ using VehicleShowroom.Data;
 
 #nullable disable
 
-namespace VehicleShowroom.Web.Data.Migrations
+namespace VehicleShowroom.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    [Migration("20241111130525_SeedInformationSuperCar")]
-    partial class SeedInformationSuperCar
+    [Migration("20241117182350_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,12 +105,10 @@ namespace VehicleShowroom.Web.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -147,12 +145,10 @@ namespace VehicleShowroom.Web.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -246,10 +242,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Transmission")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -271,7 +263,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             Capacity = 66,
                             Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
                             HorsePower = 445,
-                            ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
                             Transmission = "Automatic",
                             VehicleId = 4
                         });
@@ -292,10 +283,6 @@ namespace VehicleShowroom.Web.Data.Migrations
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Kilometers")
                         .HasColumnType("int");
@@ -323,7 +310,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             CarId = 1,
                             Description = "Fast and comfort",
                             HorsePower = 245,
-                            ImageUrl = "https://d3ok64umd5ysj.cloudfront.net/dev/assets/images/gallery/alpine-white-e91-bmw-335i-wagon-estate-forgestar-f14-bagged-stance-c.jpg",
                             Kilometers = 150000,
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
@@ -334,7 +320,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             CarId = 2,
                             Description = "Lazy car",
                             HorsePower = 224,
-                            ImageUrl = "https://garrybase.com/images/full/uploads/2021/AWEsL34IiTvPxXp2k8M7JcCdJrsZKJEiqimwpWpi.jpg",
                             Kilometers = 300000,
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
@@ -345,7 +330,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             CarId = 3,
                             Description = "Luxury car",
                             HorsePower = 356,
-                            ImageUrl = "https://frankfurt.apollo.olxcdn.com/v1/files/r8lz4w93so09-BG/image",
                             Kilometers = 22200,
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
@@ -360,10 +344,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MotorcycleId"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Kw")
                         .HasColumnType("int");
@@ -381,7 +361,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                         new
                         {
                             MotorcycleId = 1,
-                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUkEaOz8kEyPTk3ansNtGsVrlm4zR0PBuMQ&s",
                             Kw = 45,
                             VehicleId = 5
                         });
@@ -402,10 +381,6 @@ namespace VehicleShowroom.Web.Data.Migrations
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Kilometers")
                         .HasColumnType("int");
@@ -443,7 +418,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             SuperCarId = 1,
                             Description = "The F8 Tributo uses the same engine from the 488 Pista, a 3.9 L twin-turbocharged V8 engine with a power output of 720 PS (530 kW; 710 hp) at 8000 rpm and 770 N⋅m (568 lb⋅ft) of torque at 3250 rpm",
                             HorsePower = 710,
-                            ImageUrl = "https://ferrari-cdn.thron.com/delivery/public/thumbnail/ferrari/e9677798-7b8b-42b1-becf-387235c70b2a/bocxuw/std/488x325/e9677798-7b8b-42b1-becf-387235c70b2a?scalemode=auto",
                             Kilometers = 8500,
                             MaxSpeed = "350",
                             NumberOfDoors = 2,
@@ -456,7 +430,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             SuperCarId = 2,
                             Description = "The Pagani Huayra is a masterpiece of automotive engineering, renowned for its breathtaking design and performance. With an aerodynamic, lightweight body crafted from carbon-titanium, it achieves exceptional speed and agility. The Huayra’s performance is complemented by luxurious Italian craftsmanship and cutting-edge technology, making it a unique blend of art and science on wheels.",
                             HorsePower = 791,
-                            ImageUrl = "https://assets.newatlas.com/dims4/default/7afc3de/2147483647/strip/true/crop/1024x576+0+47/resize/1200x675!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Fpagani-huayra-supercar.jpg",
                             Kilometers = 1500,
                             MaxSpeed = "383",
                             NumberOfDoors = 2,
@@ -469,7 +442,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             SuperCarId = 3,
                             Description = "The Lamborghini Aventador is an iconic supercar that combines Lamborghini's signature aggressive design with world-class performance. Equipped with a naturally aspirated V12 engine, it delivers a raw and thrilling driving experience. The Aventador is known for its sharp lines, scissor doors, and a commanding presence, making it a favorite among supercar enthusiasts.",
                             HorsePower = 769,
-                            ImageUrl = "https://www.exoticcarhacks.com/wp-content/uploads/2024/02/uFcbfiuL-scaled.jpeg",
                             Kilometers = 3200,
                             MaxSpeed = "355",
                             NumberOfDoors = 2,
@@ -500,10 +472,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Transmission")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -524,7 +492,6 @@ namespace VehicleShowroom.Web.Data.Migrations
                             Description = "Best truck",
                             EuroNumber = "Euro 6",
                             HorsePower = 650,
-                            ImageUrl = "https://www.hobbies.co.uk/media/catalog/product/cache/084ca19aa5ee10728706fd297654f270/1/5/156325man_1.jpg",
                             Transmission = "Automatic",
                             TruckId = 1
                         });
@@ -548,8 +515,14 @@ namespace VehicleShowroom.Web.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Make")
                         .IsRequired()
@@ -582,6 +555,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 1,
                             Color = "White",
                             FuelType = "Diesel",
+                            ImageUrl = "https://d3ok64umd5ysj.cloudfront.net/dev/assets/images/gallery/alpine-white-e91-bmw-335i-wagon-estate-forgestar-f14-bagged-stance-c.jpg",
                             IsDelete = false,
                             Make = "BMW",
                             Model = "330D E91",
@@ -594,6 +568,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 2,
                             Color = "Black",
                             FuelType = "Diesel",
+                            ImageUrl = "https://garrybase.com/images/full/uploads/2021/AWEsL34IiTvPxXp2k8M7JcCdJrsZKJEiqimwpWpi.jpg",
                             IsDelete = false,
                             Make = "Merces",
                             Model = "e-clas E320CDI",
@@ -606,6 +581,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 3,
                             Color = "White",
                             FuelType = "Petrol",
+                            ImageUrl = "https://frankfurt.apollo.olxcdn.com/v1/files/r8lz4w93so09-BG/image",
                             IsDelete = false,
                             Make = "AUDI",
                             Model = "A8 Long",
@@ -618,6 +594,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 4,
                             Color = "Brown",
                             FuelType = "Diesel",
+                            ImageUrl = "https://www.lectura-specs.bg/models/renamed/detail_max_retina/avtobusi-za-turisticeski-avtobusi-9700-dd-volvo-buses.jpg",
                             IsDelete = false,
                             Make = "Volvo",
                             Model = "9900 DD",
@@ -630,6 +607,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 5,
                             Color = "red",
                             FuelType = "Petrol",
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUkEaOz8kEyPTk3ansNtGsVrlm4zR0PBuMQ&s",
                             IsDelete = false,
                             Make = "Honda",
                             Model = "450",
@@ -642,6 +620,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 6,
                             Color = "Orange",
                             FuelType = "Diesel",
+                            ImageUrl = "https://www.hobbies.co.uk/media/catalog/product/cache/084ca19aa5ee10728706fd297654f270/1/5/156325man_1.jpg",
                             IsDelete = false,
                             Make = "Man",
                             Model = "TGC",
@@ -654,6 +633,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 7,
                             Color = "Crimson Red",
                             FuelType = "Petrol",
+                            ImageUrl = "https://ferrari-cdn.thron.com/delivery/public/thumbnail/ferrari/e9677798-7b8b-42b1-becf-387235c70b2a/bocxuw/std/488x325/e9677798-7b8b-42b1-becf-387235c70b2a?scalemode=auto",
                             IsDelete = false,
                             Make = "Ferrari",
                             Model = "F8",
@@ -666,6 +646,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 8,
                             Color = "Carbon Fiber Black",
                             FuelType = "Petrol",
+                            ImageUrl = "https://assets.newatlas.com/dims4/default/7afc3de/2147483647/strip/true/crop/1024x576+0+47/resize/1200x675!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Fpagani-huayra-supercar.jpg",
                             IsDelete = false,
                             Make = "Pagani",
                             Model = "Huayra",
@@ -678,6 +659,7 @@ namespace VehicleShowroom.Web.Data.Migrations
                             VehicleId = 9,
                             Color = "Lamborghini Yellow",
                             FuelType = "Petrol",
+                            ImageUrl = "https://www.exoticcarhacks.com/wp-content/uploads/2024/02/uFcbfiuL-scaled.jpeg",
                             IsDelete = false,
                             Make = "Lamborghini",
                             Model = "Aventador",
@@ -774,9 +756,9 @@ namespace VehicleShowroom.Web.Data.Migrations
             modelBuilder.Entity("VehicleShowroom.Data.Models.SuperCar", b =>
                 {
                     b.HasOne("VehicleShowroom.Data.Models.Vehicle", "Vehicle")
-                        .WithMany()
+                        .WithMany("SuperCars")
                         .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Vehicle");
@@ -800,6 +782,8 @@ namespace VehicleShowroom.Web.Data.Migrations
                     b.Navigation("Cars");
 
                     b.Navigation("Motorcycles");
+
+                    b.Navigation("SuperCars");
 
                     b.Navigation("Trucks");
                 });
