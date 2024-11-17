@@ -1,33 +1,33 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 using static VehicleShowroom.Common.EntityValidationConstants;
-
+using static VehicleShowroom.Common.EntityValidationMessages;
 namespace VehicleShowroom.Web
 {
     public class AddVehicleViewModel
     {
         public int VehicleId { get; set; }
-        [Required]
-        [MinLength(VehicleTypeMinLenght)]
-        [MaxLength(VehicleTypeMaxLenght)]
+        [Required(ErrorMessage = VehicleTypeMessages)]
+        [MinLength(VehicleTypeMinLenght, ErrorMessage = VehicleTypeMinLenghtMessages)]
+        [MaxLength(VehicleTypeMaxLenght, ErrorMessage = VehicleTypeMaxLenghtMessages)]
         public string VehicleType { get; set; } = null!;
-        [Required]
-        [MinLength(MakeMinLenght)]
-        [MaxLength(MakeMaxLenght)]
+        [Required(ErrorMessage = VehicleMakeMessages)]
+        [MinLength(MakeMinLenght, ErrorMessage = VehicleMakeMinLenghtMessages)]
+        [MaxLength(MakeMaxLenght, ErrorMessage = VehicleMakeMaxLenghtMessages)]
         public string Make { get; set; } = null!;
-        [Required]
-        [MinLength(ModelMinLenght)]
-        [MaxLength(ModelMaxLenght)]
+        [Required(ErrorMessage = VehicleModelMessages )]
+        [MinLength(ModelMinLenght, ErrorMessage = VehicleModelMinLenghtMessages)]
+        [MaxLength(ModelMaxLenght, ErrorMessage = VehicleModelMaxLenghtMessages)]
         public string Model { get; set; } = null!;
         [Required]
         public string Year { get; set; } = null!;
-        [Required]
+        [Required(ErrorMessage = VehiclePriceMessages)]
         public decimal Price { get; set; }
-        [Required]
+        [Required(ErrorMessage = VehicleColorMessages)]
         [MinLength(ColorMinLenght)]
         [MaxLength(ColorMaxLenght)]
         public string Color { get; set; } = null!;
-        [Required]
+        [Required(ErrorMessage = VehicleFuelTypeMessages)]
         [MinLength(FuelTypeMinLenght)]
         [MaxLength(FuelTypeMaxLenght)]
         public string FuelType { get; set; } = null!;

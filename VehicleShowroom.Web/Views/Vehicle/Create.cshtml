@@ -7,10 +7,10 @@
 
 <h2>Add New Vehicle</h2>
 
-<form asp-action="AddVehicle" method="post">
+<form asp-action="AddVehicle" method="post" enctype="multipart/form-data">
     <div>
-        <label asp-for="VehicleType">Vehicle Type</label>
-        <select asp-for="VehicleType" class="form-control" id="vehicleType">
+        <label asp-for="@Model.VehicleType">Vehicle Type</label>
+        <select asp-for="@Model.VehicleType" class="form-control" id="vehicleType">
             <option value="Car">Car</option>
             <option value="Bus">Bus</option>
             <option value="Motorcycle">Motorcycle</option>
@@ -21,38 +21,38 @@
 
    
     <div>
-        <label asp-for="Make">Make</label>
-        <input asp-for="Make" class="form-control" />
-        <span asp-validation-for="@Model.Make" class ="text-danger"></span>
+        <label asp-for="@Model.Make" class="form-label-add-edit">Make</label>
+        <input asp-for="@Model.Make" class="form-control" aria-required="true" />
+        <span asp-validation-for="@Model.Make" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="Model">Model</label>
-        <input asp-for="Model" class="form-control" />
+        <label asp-for="@Model.Model" class="form-label-add-edit">Model</label>
+        <input asp-for="@Model.Model" class="form-control" aria-required="true" />
         <span asp-validation-for="@Model.Model" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="Year">Year</label>
-        <input asp-for="Year" type="date" class="form-control" />
+        <label asp-for="@Model.Year" class="form-label-add-edit">Year</label>
+        <input asp-for="@Model.Year" class="form-control" aria-required="true" />
         <span asp-validation-for="@Model.Year" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="Price">Price</label>
-        <input asp-for="Price" type="number" class="form-control" />
+        <label asp-for="@Model.Price" class="form-label-add-edit">Price</label>
+        <input asp-for="@Model.Price" type="number" class="form-control" aria-required="true" />
         <span asp-validation-for="@Model.Price" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="Color">Color</label>
-        <input asp-for="Color" class="form-control" />
+        <label asp-for="@Model.Color" class="form-label-add-edit">Color</label>
+        <input asp-for="@Model.Color" class="form-control" aria-required="true" />
         <span asp-validation-for="@Model.Color" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="FuelType">Fuel Type</label>
-        <input asp-for="FuelType" class="form-control" />
+        <label asp-for="@Model.FuelType" class="form-label-add-edit">Fuel Type</label>
+        <input asp-for="@Model.FuelType" class="form-control" aria-required="true" />
         <span asp-validation-for="@Model.FuelType" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="ImageUrl">Image URL</label>
-        <input asp-for="ImageUrl" class="form-control" />
+        <label asp-for="@Model.ImageUrl" class="form-label-add-edit">Image URL</label>
+        <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
         <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
     </div>
 
@@ -61,27 +61,27 @@
         <div>
             <label asp-for="Kilometers">Kilometers</label>
             <input asp-for="Kilometers" type="number" class="form-control" />
-            <span asp-validation-for="@Model.Kilometers" class="text-danger"></span>
+            <span asp-validation-for="Kilometers" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="NumberOfDoors">Number of Doors</label>
             <input asp-for="NumberOfDoors" type="number" class="form-control" />
-            <span asp-validation-for="@Model.NumberOfDoors" class="text-danger"></span>
+            <span asp-validation-for="NumberOfDoors" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="CarDescription">Description</label>
             <input asp-for="CarDescription" class="form-control" />
-            <span asp-validation-for="@Model.CarDescription" class="text-danger"></span>
+            <span asp-validation-for="CarDescription" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="CarTransmission">Transmission</label>
             <input asp-for="CarTransmission" class="form-control" />
-            <span asp-validation-for="@Model.CarTransmission" class="text-danger"></span>
+            <span asp-validation-for="CarTransmission" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="CarHorsePower">Horse Power</label>
             <input asp-for="CarHorsePower" type="number" class="form-control" />
-            <span asp-validation-for="@Model.CarHorsePower" class="text-danger"></span>
+            <span asp-validation-for="CarHorsePower" class="text-danger"></span>
         </div>
     </div>
 
@@ -90,22 +90,22 @@
         <div>
             <label asp-for="Capacity">Capacity</label>
             <input asp-for="Capacity" type="number" class="form-control" />
-            <span asp-validation-for="@Model.Capacity" class="text-danger"></span>
+            <span asp-validation-for="Capacity" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="BusDescription">Description</label>
             <input asp-for="BusDescription" class="form-control" />
-            <span asp-validation-for="@Model.BusDescription" class="text-danger"></span>
+            <span asp-validation-for="BusDescription" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="BusTransmission">Transmission</label>
             <input asp-for="BusTransmission" class="form-control" />
-            <span asp-validation-for="@Model.BusTransmission" class="text-danger"></span>
+            <span asp-validation-for="BusTransmission" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="BusHorsePower">Horse Power</label>
             <input asp-for="BusHorsePower" type="number" class="form-control" />
-            <span asp-validation-for="@Model.BusHorsePower" class="text-danger"></span>
+            <span asp-validation-for="BusHorsePower" class="text-danger"></span>
         </div>
     </div>
 
@@ -114,7 +114,7 @@
         <div>
             <label asp-for="Kw">Kilowatts (Kw)</label>
             <input asp-for="Kw" type="number" class="form-control" />
-            <span asp-validation-for="@Model.Kw" class="text-danger"></span>
+            <span asp-validation-for="Kw" class="text-danger"></span>
         </div>
     </div>
 
@@ -123,37 +123,37 @@
         <div>
             <label asp-for="SuperCarKilometers">Kilometers</label>
             <input asp-for="SuperCarKilometers" type="number" class="form-control" />
-            <span asp-validation-for="@Model.SuperCarKilometers" class="text-danger"></span>
+            <span asp-validation-for="SuperCarKilometers" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="SuperCarDoors">Number of Doors</label>
             <input asp-for="SuperCarDoors" type="number" class="form-control" />
-            <span asp-validation-for="@Model.SuperCarDoors" class="text-danger"></span>
+            <span asp-validation-for="SuperCarDoors" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="SuperCarDescription">Description</label>
             <input asp-for="SuperCarDescription" class="form-control" />
-            <span asp-validation-for="@Model.SuperCarDescription" class="text-danger"></span>
+            <span asp-validation-for="SuperCarDescription" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="SuperCarTransmission">Transmission</label>
             <input asp-for="SuperCarTransmission" class="form-control" />
-            <span asp-validation-for="@Model.SuperCarTransmission" class="text-danger"></span>
+            <span asp-validation-for="SuperCarTransmission" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="SuperCarHorsePower">Horse Power</label>
             <input asp-for="SuperCarHorsePower" type="number" class="form-control" />
-            <span asp-validation-for="@Model.SuperCarHorsePower" class="text-danger"></span>
+            <span asp-validation-for="SuperCarHorsePower" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="MaxSpeed">Max Speed</label>
             <input asp-for="MaxSpeed" class="form-control" />
-            <span asp-validation-for="@Model.MaxSpeed" class="text-danger"></span>
+            <span asp-validation-for="MaxSpeed" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Weight">Weight</label>
             <input asp-for="Weight" class="form-control" />
-            <span asp-validation-for="@Model.Weight" class="text-danger"></span>
+            <span asp-validation-for="Weight" class="text-danger"></span>
         </div>
     </div>
 
@@ -162,27 +162,27 @@
         <div>
             <label asp-for="CargoCapacity">Cargo Capacity</label>
             <input asp-for="CargoCapacity" type="number" class="form-control" />
-            <span asp-validation-for="@Model.CargoCapacity" class="text-danger"></span>
+            <span asp-validation-for="CargoCapacity" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="EuroNumber">Euro Number</label>
             <input asp-for="EuroNumber" class="form-control" />
-            <span asp-validation-for="@Model.EuroNumber" class="text-danger"></span>
+            <span asp-validation-for="EuroNumber" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="TruckDescription">Description</label>
             <input asp-for="TruckDescription" class="form-control" />
-            <span asp-validation-for="@Model.TruckDescription" class="text-danger"></span>
+            <span asp-validation-for="TruckDescription" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="TruckTransmission">Transmission</label>
             <input asp-for="TruckTransmission" class="form-control" />
-            <span asp-validation-for="@Model.TruckTransmission" class="text-danger"></span>
+            <span asp-validation-for="TruckTransmission" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="TruckHorsePower">Horse Power</label>
             <input asp-for="TruckHorsePower" type="number" class="form-control" />
-            <span asp-validation-for="@Model.TruckHorsePower" class="text-danger"></span>
+            <span asp-validation-for="TruckHorsePower" class="text-danger"></span>
         </div>
     </div>
 

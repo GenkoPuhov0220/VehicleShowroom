@@ -15,7 +15,7 @@ namespace VehicleShowroom.Common
             public const int ColorMaxLenght = 70;
             public const int FuelTypeMinLenght = 2;
             public const int FuelTypeMaxLenght = 50;
-            public const string YearFormating = "dd.MM.yyyy";
+            public const string YearFormating = "dd/MM/yyyy";
         
         //SuperCar
             public const int SuperCarDescriptionMinLenght = 10;

@@ -37,6 +37,9 @@ namespace VehicleShowroom.Data.Configuration
                 .WithOne(m => m.Vehicle)
                 .HasForeignKey(m => m.VehicleId)
                 .OnDelete(DeleteBehavior.NoAction);
+            builder
+                .Property(v => v.IsDelete)
+                .HasDefaultValue(false);
 
             builder
                 .Property(v => v.Price)

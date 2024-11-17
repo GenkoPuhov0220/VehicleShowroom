@@ -4,6 +4,7 @@ using System.Globalization;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
 using static VehicleShowroom.Common.EntityValidationConstants;
+
 namespace VehicleShowroom.Web.Controllers
 {
     public class VehicleController : Controller
@@ -35,7 +36,7 @@ namespace VehicleShowroom.Web.Controllers
 
             if (!IsReleasedDateValis)
             {
-                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: dd/MM/yyyy");
+                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: ${}dd/MM/yyyy");
 
             }
             if (!ModelState.IsValid)
