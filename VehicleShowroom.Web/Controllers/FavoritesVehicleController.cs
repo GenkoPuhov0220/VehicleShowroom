@@ -79,5 +79,31 @@ namespace VehicleShowroom.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromFavorite(int vehicleId)
+        {
+            var vehicle = await context
+               .Vehicles
+               .FirstOrDefaultAsync(v => v.VehicleId == vehicleId);
+
+            if (vehicle == null)
+            {
+                return RedirectToAction("Index", "Vehicle");
+            }
+
+            var userId = userManager.GetUserId(User)!;
+
+            ApplicationUserVehicle? applicationUserVehicle = await context
+                .UsersVehicles
+                .FirstOrDefaultAsync(uv => uv.ApplicationUserId == userId && uv.VehicleId == vehicleId);
+
+            if (applicationUserVehicle != null)
+            {
+                context.UsersVehicles.Remove(applicationUserVehicle);
+                await context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

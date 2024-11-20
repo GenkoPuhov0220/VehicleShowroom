@@ -2,7 +2,6 @@
 
 @model  IEnumerable<ApplicationUserFavoriteList>
 
-
 @{
     ViewData["Title"] = "Favorite";
 }
@@ -14,22 +13,27 @@
     <div class="row">
         @foreach (var vehicle in Model)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2" style="width: auto;" />
-
-                    <div class="card-body">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2" style="width: 600px;" />
+                    </div>
+                    <div class="col-md-8">
                         <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
-                        <p class="card-text">
+                        <div class="card-body">
+                            <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
                             <strong>Type:</strong> @vehicle.VehicleType<br />
                             <strong>Year:</strong> @vehicle.Year<br />
                             <strong>Price:</strong> @vehicle.Price.ToString("C")<br />
                             <strong>Color:</strong> @vehicle.Color<br />
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
-                        </p>
-                    </div>   
-                    <div>
-                        <a asp-action=""RemoveFromFavorite" asp-route-vehicleid ="@vehicle.VehicleId" class="btn btn-danger">Remove</a>
+                        </div>
+                        <div>
+                            <form asp-controller="FavoritesVehicle" asp-action="RemoveFromFavorite" method="post" class="d-inline">
+                                <input type="hidden" name="vehicleId" value="@vehicle.VehicleId" />
+                                <button type="submit" class="btn btn-warning">Remove Vehicle</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
