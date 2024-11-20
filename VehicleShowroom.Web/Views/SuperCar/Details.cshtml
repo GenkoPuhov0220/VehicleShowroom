@@ -30,7 +30,10 @@
         </p>
         <div>
             <a asp-action="Index" class="btn btn-primary me-2">Back</a>
-            <a asp-action="AddToFavorite" class="btn btn-secondary">Add to favorite</a>
+            <form asp-controller="FavoritesVehicle" asp-action="AddToFavorite" method="post" class="d-inline">
+                <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
+                <button type="submit" class="btn btn-warning">AddToFavorite</button>
+            </form>
         </div>
     </div>
 </div>

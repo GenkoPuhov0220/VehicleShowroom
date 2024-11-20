@@ -26,7 +26,7 @@ namespace VehicleShowroom.Data
         public virtual DbSet<Motorcycle> Motorcycles { get; set; } = null!;
         public virtual DbSet<Truck> Trucks { get; set; } = null!;
         public virtual DbSet<SuperCar> SuperCars { get; set; } = null!;
-
+        public virtual DbSet<ApplicationUserVehicle> UsersVehicles { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
