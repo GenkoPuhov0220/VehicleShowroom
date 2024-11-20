@@ -9,6 +9,7 @@ namespace VehicleShowroom.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
+        public virtual ICollection<ApplicationUserVehicle> ApplicationUserVehicles { get; set; }
+            = new HashSet<ApplicationUserVehicle>();
     }
 }

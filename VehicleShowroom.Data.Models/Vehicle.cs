@@ -24,11 +24,22 @@ namespace VehicleShowroom.Data.Models
         public string ImageUrl { get; set; } = null!;
         public bool IsDelete { get; set; }
 
-        public IList<Car> Cars = new List<Car>();
-        public ICollection<Bus> Buses = new List<Bus>();
-        public ICollection<Truck> Trucks = new List<Truck>();
-        public ICollection<Motorcycle> Motorcycles = new List<Motorcycle>();
-        public ICollection<SuperCar> SuperCars = new List<SuperCar>();
+        public IList<Car> Cars 
+            = new List<Car>();
 
+        public ICollection<Bus> Buses 
+            = new List<Bus>();
+
+        public ICollection<Truck> Trucks 
+            = new List<Truck>();
+
+        public ICollection<Motorcycle> Motorcycles 
+            = new List<Motorcycle>();
+
+        public ICollection<SuperCar> SuperCars 
+            = new List<SuperCar>();
+
+        public ICollection<ApplicationUserVehicle> UserVehicles
+            = new List<ApplicationUserVehicle>();
     }
 }
