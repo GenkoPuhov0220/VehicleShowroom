@@ -22,15 +22,11 @@
                         <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
                         <p class="card-text">
                             <strong>Type:</strong> @vehicle.VehicleType<br />
-                            <strong>Year:</strong> @vehicle.Year.ToString(YearFormating)<br />
-                            <strong>Price:</strong> @vehicle.Price.ToString("C")<br />
+                            <strong>Year:</strong> @vehicle.Year<br />
+                            <strong>Price:</strong> @vehicle.Price<br />
                             <strong>Color:</strong> @vehicle.Color<br />
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
-                    </div>
-                    <div>
-                        <a asp-action="Edit" class="btn btn-primary me-2">Edit vehicle</a>
-                        <a asp-action="Delete" class="btn btn-secondary">Delete vehicle</a>
                     </div>
                 </div>
             </div>

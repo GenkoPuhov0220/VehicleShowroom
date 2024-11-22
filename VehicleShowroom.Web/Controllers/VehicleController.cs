@@ -30,11 +30,11 @@ namespace VehicleShowroom.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddVehicle(AddVehicleViewModel models)
         {
-            bool IsReleasedDateValis = DateTime
+            bool IsYearValid = DateTime
                 .TryParseExact(models.Year, YearFormating, CultureInfo.InvariantCulture, DateTimeStyles.None,
-                out DateTime releaseDate);
+                out DateTime yearValid);
 
-            if (!IsReleasedDateValis)
+            if (!IsYearValid)
             {
                 ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: dd/MM/yyyy");
 
@@ -48,7 +48,7 @@ namespace VehicleShowroom.Web.Controllers
                 VehicleType = models.VehicleType,
                 Make = models.Make,
                 Model = models.Model,
-                Year = releaseDate,
+                Year = yearValid,
                 Price = models.Price,
                 Color = models.Color,
                 FuelType = models.FuelType,

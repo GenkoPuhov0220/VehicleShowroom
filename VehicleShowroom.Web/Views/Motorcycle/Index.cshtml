@@ -1,5 +1,4 @@
 ﻿@using VehicleShowroom.Data.Models
-@using static VehicleShowroom.Common.EntityValidationConstants
 @model IEnumerable<Vehicle>
 
 
@@ -15,8 +14,8 @@
                         <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
                         <p class="card-text">
                             <strong>Type:</strong> @vehicle.VehicleType<br />
-                            <strong>Year:</strong> @vehicle.Year.ToString(YearFormating)<br />
-                            <strong>Price:</strong> @vehicle.Price.ToString("C")<br />
+                            <strong>Year:</strong> @vehicle.Year<br />
+                            <strong>Price:</strong> @vehicle.Price<br />
                             <strong>Color:</strong> @vehicle.Color<br />
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
