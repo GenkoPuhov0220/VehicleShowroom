@@ -17,6 +17,7 @@ namespace VehicleShowroom.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var AllVehicle = await context.Vehicles
+                .Where(v => v.IsDelete == false)
                 .ToListAsync();
                
             return  View(AllVehicle);
@@ -29,7 +30,6 @@ namespace VehicleShowroom.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddVehicle(AddVehicleViewModel models)
         {
-
             bool IsReleasedDateValis = DateTime
                 .TryParseExact(models.Year, YearFormating, CultureInfo.InvariantCulture, DateTimeStyles.None,
                 out DateTime releaseDate);
@@ -128,7 +128,8 @@ namespace VehicleShowroom.Web.Controllers
             }
 
             await context.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
