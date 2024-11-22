@@ -63,11 +63,10 @@ namespace VehicleShowroom.Web.Controllers
             var vehicle = await context
                .Cars
                .Include(c => c.Vehicle)
-               .Where(c => c.CarId == id)
+               .Where(c => c.VehicleId == id)
                .Select(c => new CarEditViewModel
                  {
-                     // Vehicle properties
-                    // VehicleId = c.Vehicle.VehicleId,
+
                      VehicleType = c.Vehicle.VehicleType,
                      Make = c.Vehicle.Make,
                      Model = c.Vehicle.Model,
@@ -77,7 +76,6 @@ namespace VehicleShowroom.Web.Controllers
                      FuelType = c.Vehicle.FuelType,
                      ImageUrl = c.Vehicle.ImageUrl,
 
-                     // Car properties
                      CarId = c.CarId,
                      Kilometers = c.Kilometers,
                      NumberOfDoors = c.NumberOfDoors,
@@ -120,7 +118,6 @@ namespace VehicleShowroom.Web.Controllers
                 return NotFound();
             }
 
-            // Update Vehicle properties
             car.Vehicle.VehicleType = models.VehicleType;
             car.Vehicle.Make = models.Make;
             car.Vehicle.Model = models.Model;
@@ -130,14 +127,12 @@ namespace VehicleShowroom.Web.Controllers
             car.Vehicle.FuelType = models.FuelType;
             car.Vehicle.ImageUrl = models.ImageUrl;
 
-            // Update Car properties
             car.Kilometers = models.Kilometers;
             car.NumberOfDoors = models.NumberOfDoors;
             car.Description = models.Description ?? string.Empty;
             car.Transmission = models.Transmission ?? string.Empty;
             car.HorsePower = models.HorsePower;
 
-            // Save changes
             await context.SaveChangesAsync();
 
             return RedirectToAction("Index");

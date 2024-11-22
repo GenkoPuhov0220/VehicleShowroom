@@ -2,8 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using static VehicleShowroom.Common.EntityValidationMessages;
-
-    public class CarEditViewModel
+    public class BusEditViewModel
     {
         public int VehicleId { get; set; }
 
@@ -31,10 +30,9 @@
         [Required]
         public string ImageUrl { get; set; } = null!;
 
-        //Car
-        public int CarId { get; set; }
-        public int Kilometers { get; set; }
-        public int NumberOfDoors { get; set; }
+        //Bus
+        public int BusId { get; set; }
+        public int Capacity { get; set; }
         public string? Description { get; set; }
         public string? Transmission { get; set; }
         public int HorsePower { get; set; }
