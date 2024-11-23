@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
-using static VehicleShowroom.Common.EntityValidationConstants;
 
 namespace VehicleShowroom.Web.Controllers
 {
+    using static VehicleShowroom.Common.EntityValidationConstants;
     public class VehicleController : Controller
     {
         private readonly VehicleDbContext context;
@@ -130,6 +130,6 @@ namespace VehicleShowroom.Web.Controllers
             await context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-        }
+        } 
     }
 }

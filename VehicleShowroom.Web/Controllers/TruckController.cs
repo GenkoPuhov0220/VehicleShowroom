@@ -17,6 +17,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var AllVehicle = await context.Vehicles
                 .Include(v => v.Trucks)
+                .Where(c => c.IsDelete == false)
                 .Where(v => v.VehicleType == "Truck".ToLower())
                 .ToListAsync();
 
@@ -27,6 +28,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var motorcycle = await context.Trucks
                 .Include(c => c.Vehicle)
+                .Where(c => c.IsDelete == false)
                 .Where(c => c.VehicleId == id)
                 .Select(c => new TruckDetailsViewModel
                 {
@@ -61,6 +63,7 @@ namespace VehicleShowroom.Web.Controllers
             var vehicle = await context
                .Trucks
                .Include(b => b.Vehicle)
+               .Where(c => c.IsDelete == false)
                .Where(b => b.VehicleId == id)
                .Select(b => new TruckEditViewModel
                {
@@ -109,6 +112,7 @@ namespace VehicleShowroom.Web.Controllers
             var truck = await context
                 .Trucks
                 .Include(b => b.Vehicle)
+                .Where(c => c.IsDelete == false)
                 .FirstOrDefaultAsync(b => b.TruckId == models.TruckId);
             if (truck == null)
             {

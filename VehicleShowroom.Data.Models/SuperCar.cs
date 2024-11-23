@@ -24,6 +24,7 @@ namespace VehicleShowroom.Data.Models
         public string MaxSpeed { get; set; } = null!;
         [Required]
         public string Weight { get; set; } = null!;
+        public bool IsDelete { get; set; }
         [Required]
         [ForeignKey(nameof(VehicleId))]
         public int VehicleId { get; set; }

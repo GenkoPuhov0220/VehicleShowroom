@@ -22,6 +22,7 @@ namespace VehicleShowroom.Web
             builder.Services
                 .AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
+
                     ConfigureIdentity(builder, options);
                 })
                 .AddRoles<IdentityRole>()
@@ -80,7 +81,7 @@ namespace VehicleShowroom.Web
             options.Password.RequiredUniqueChars =
                    builder.Configuration.GetValue<int>("Identity:Password:RequiredUniqueCharacters");
             //SignIn
-            options.SignIn.RequireConfirmedAccount =
+           options.SignIn.RequireConfirmedAccount =
                    builder.Configuration.GetValue<bool>("Identity:SingIn:RequireConfirmedAccount");
             options.SignIn.RequireConfirmedEmail =
                    builder.Configuration.GetValue<bool>("Identity:SingIn:RequireConfirmedEmail");

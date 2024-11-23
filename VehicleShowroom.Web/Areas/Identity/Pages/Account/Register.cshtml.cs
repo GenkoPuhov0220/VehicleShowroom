@@ -110,6 +110,7 @@ namespace VehicleShowroom.Web.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
                 user.Email = Input.Email;
+
                 await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

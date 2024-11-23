@@ -13,6 +13,7 @@ namespace VehicleShowroom.Data.Models
         [Key]
         public int MotorcycleId { get; set; }
         public int Kw { get; set; }
+        public bool IsDelete { get; set; }
 
         [Required]
         [ForeignKey(nameof(VehicleId))]

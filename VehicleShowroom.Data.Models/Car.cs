@@ -17,10 +17,10 @@ namespace VehicleShowroom.Data.Models
         public int NumberOfDoors { get; set; }
         [Required]
         public string Description { get; set; } = null!;
-       
         [Required]
         public string Transmission { get; set; } = null!;
-        public int HorsePower { get; set; } 
+        public int HorsePower { get; set; }
+        public bool IsDelete { get; set; }
         [Required]
         [ForeignKey(nameof(VehicleId))]
         public int VehicleId { get; set; }

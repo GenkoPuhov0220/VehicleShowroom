@@ -12,8 +12,8 @@ using VehicleShowroom.Data;
 namespace VehicleShowroom.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    [Migration("20241120095239_AddDbSetApplicationUserVehicle")]
-    partial class AddDbSetApplicationUserVehicle
+    [Migration("20241122235611_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -257,6 +257,9 @@ namespace VehicleShowroom.Data.Migrations
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Transmission")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -278,6 +281,7 @@ namespace VehicleShowroom.Data.Migrations
                             Capacity = 66,
                             Description = "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.",
                             HorsePower = 445,
+                            IsDelete = false,
                             Transmission = "Automatic",
                             VehicleId = 4
                         });
@@ -298,6 +302,9 @@ namespace VehicleShowroom.Data.Migrations
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Kilometers")
                         .HasColumnType("int");
@@ -325,6 +332,7 @@ namespace VehicleShowroom.Data.Migrations
                             CarId = 1,
                             Description = "Fast and comfort",
                             HorsePower = 245,
+                            IsDelete = false,
                             Kilometers = 150000,
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
@@ -335,6 +343,7 @@ namespace VehicleShowroom.Data.Migrations
                             CarId = 2,
                             Description = "Lazy car",
                             HorsePower = 224,
+                            IsDelete = false,
                             Kilometers = 300000,
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
@@ -345,6 +354,7 @@ namespace VehicleShowroom.Data.Migrations
                             CarId = 3,
                             Description = "Luxury car",
                             HorsePower = 356,
+                            IsDelete = false,
                             Kilometers = 22200,
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
@@ -359,6 +369,9 @@ namespace VehicleShowroom.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MotorcycleId"));
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Kw")
                         .HasColumnType("int");
@@ -376,6 +389,7 @@ namespace VehicleShowroom.Data.Migrations
                         new
                         {
                             MotorcycleId = 1,
+                            IsDelete = false,
                             Kw = 45,
                             VehicleId = 5
                         });
@@ -396,6 +410,9 @@ namespace VehicleShowroom.Data.Migrations
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Kilometers")
                         .HasColumnType("int");
@@ -433,6 +450,7 @@ namespace VehicleShowroom.Data.Migrations
                             SuperCarId = 1,
                             Description = "The F8 Tributo uses the same engine from the 488 Pista, a 3.9 L twin-turbocharged V8 engine with a power output of 720 PS (530 kW; 710 hp) at 8000 rpm and 770 N⋅m (568 lb⋅ft) of torque at 3250 rpm",
                             HorsePower = 710,
+                            IsDelete = false,
                             Kilometers = 8500,
                             MaxSpeed = "350",
                             NumberOfDoors = 2,
@@ -445,6 +463,7 @@ namespace VehicleShowroom.Data.Migrations
                             SuperCarId = 2,
                             Description = "The Pagani Huayra is a masterpiece of automotive engineering, renowned for its breathtaking design and performance. With an aerodynamic, lightweight body crafted from carbon-titanium, it achieves exceptional speed and agility. The Huayra’s performance is complemented by luxurious Italian craftsmanship and cutting-edge technology, making it a unique blend of art and science on wheels.",
                             HorsePower = 791,
+                            IsDelete = false,
                             Kilometers = 1500,
                             MaxSpeed = "383",
                             NumberOfDoors = 2,
@@ -457,6 +476,7 @@ namespace VehicleShowroom.Data.Migrations
                             SuperCarId = 3,
                             Description = "The Lamborghini Aventador is an iconic supercar that combines Lamborghini's signature aggressive design with world-class performance. Equipped with a naturally aspirated V12 engine, it delivers a raw and thrilling driving experience. The Aventador is known for its sharp lines, scissor doors, and a commanding presence, making it a favorite among supercar enthusiasts.",
                             HorsePower = 769,
+                            IsDelete = false,
                             Kilometers = 3200,
                             MaxSpeed = "355",
                             NumberOfDoors = 2,
@@ -487,6 +507,9 @@ namespace VehicleShowroom.Data.Migrations
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Transmission")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -507,6 +530,7 @@ namespace VehicleShowroom.Data.Migrations
                             Description = "Best truck",
                             EuroNumber = "Euro 6",
                             HorsePower = 650,
+                            IsDelete = false,
                             Transmission = "Automatic",
                             TruckId = 1
                         });

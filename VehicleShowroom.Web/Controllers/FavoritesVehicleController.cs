@@ -52,6 +52,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var vehicle = await context
                 .Vehicles
+                .Where(v => v.IsDelete == false)
                 .FirstOrDefaultAsync(v => v.VehicleId == vehicleId);
 
             if (vehicle == null)
@@ -84,6 +85,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var vehicle = await context
                .Vehicles
+               .Where(v => v.IsDelete == false)
                .FirstOrDefaultAsync(v => v.VehicleId == vehicleId);
 
             if (vehicle == null)

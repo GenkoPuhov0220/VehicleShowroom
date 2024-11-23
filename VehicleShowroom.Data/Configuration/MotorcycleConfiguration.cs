@@ -10,7 +10,9 @@ namespace VehicleShowroom.Data.Configuration
         public void Configure(EntityTypeBuilder<Motorcycle> builder)
         {
             builder.HasKey(m => m.MotorcycleId);
-
+           // builder
+              //  .Property(v => v.IsDelete)
+              //  .HasDefaultValue(false);
             builder
                 .HasData(this.SeedMotorcycles());
         }

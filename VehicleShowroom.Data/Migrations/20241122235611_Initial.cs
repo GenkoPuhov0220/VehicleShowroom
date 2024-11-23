@@ -189,6 +189,7 @@ namespace VehicleShowroom.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     HorsePower = table.Column<int>(type: "int", nullable: false),
                     Transmission = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -212,6 +213,7 @@ namespace VehicleShowroom.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Transmission = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     HorsePower = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -231,6 +233,7 @@ namespace VehicleShowroom.Data.Migrations
                     MotorcycleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Kw = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -256,6 +259,7 @@ namespace VehicleShowroom.Data.Migrations
                     HorsePower = table.Column<int>(type: "int", nullable: false),
                     MaxSpeed = table.Column<string>(type: "nvarchar(600)", maxLength: 600, nullable: false),
                     Weight = table.Column<string>(type: "nvarchar(1700)", maxLength: 1700, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -278,7 +282,8 @@ namespace VehicleShowroom.Data.Migrations
                     EuroNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Transmission = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    HorsePower = table.Column<int>(type: "int", nullable: false)
+                    HorsePower = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -288,6 +293,30 @@ namespace VehicleShowroom.Data.Migrations
                         column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "VehicleId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsersVehicles",
+                columns: table => new
+                {
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsersVehicles", x => new { x.ApplicationUserId, x.VehicleId });
+                    table.ForeignKey(
+                        name: "FK_UsersVehicles_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UsersVehicles_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "VehicleId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -308,38 +337,38 @@ namespace VehicleShowroom.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Buses",
-                columns: new[] { "BusId", "Capacity", "Description", "HorsePower", "Transmission", "VehicleId" },
-                values: new object[] { 1, 66, "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.", 445, "Automatic", 4 });
+                columns: new[] { "BusId", "Capacity", "Description", "HorsePower", "IsDelete", "Transmission", "VehicleId" },
+                values: new object[] { 1, 66, "Volvo 9700 DD is an extremely flexible double decker that offers impressive capacity and possibilities for different kinds of operations.", 445, false, "Automatic", 4 });
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "CarId", "Description", "HorsePower", "Kilometers", "NumberOfDoors", "Transmission", "VehicleId" },
+                columns: new[] { "CarId", "Description", "HorsePower", "IsDelete", "Kilometers", "NumberOfDoors", "Transmission", "VehicleId" },
                 values: new object[,]
                 {
-                    { 1, "Fast and comfort", 245, 150000, 4, "Automatic", 1 },
-                    { 2, "Lazy car", 224, 300000, 4, "Automatic", 2 },
-                    { 3, "Luxury car", 356, 22200, 4, "Automatic", 3 }
+                    { 1, "Fast and comfort", 245, false, 150000, 4, "Automatic", 1 },
+                    { 2, "Lazy car", 224, false, 300000, 4, "Automatic", 2 },
+                    { 3, "Luxury car", 356, false, 22200, 4, "Automatic", 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Motorcycles",
-                columns: new[] { "MotorcycleId", "Kw", "VehicleId" },
-                values: new object[] { 1, 45, 5 });
+                columns: new[] { "MotorcycleId", "IsDelete", "Kw", "VehicleId" },
+                values: new object[] { 1, false, 45, 5 });
 
             migrationBuilder.InsertData(
                 table: "SuperCars",
-                columns: new[] { "SuperCarId", "Description", "HorsePower", "Kilometers", "MaxSpeed", "NumberOfDoors", "Transmission", "VehicleId", "Weight" },
+                columns: new[] { "SuperCarId", "Description", "HorsePower", "IsDelete", "Kilometers", "MaxSpeed", "NumberOfDoors", "Transmission", "VehicleId", "Weight" },
                 values: new object[,]
                 {
-                    { 1, "The F8 Tributo uses the same engine from the 488 Pista, a 3.9 L twin-turbocharged V8 engine with a power output of 720 PS (530 kW; 710 hp) at 8000 rpm and 770 N⋅m (568 lb⋅ft) of torque at 3250 rpm", 710, 8500, "350", 2, "Dual-Clutch Automatic", 7, "1400" },
-                    { 2, "The Pagani Huayra is a masterpiece of automotive engineering, renowned for its breathtaking design and performance. With an aerodynamic, lightweight body crafted from carbon-titanium, it achieves exceptional speed and agility. The Huayra’s performance is complemented by luxurious Italian craftsmanship and cutting-edge technology, making it a unique blend of art and science on wheels.", 791, 1500, "383", 2, "7-Speed Sequential Manual", 8, "1350" },
-                    { 3, "The Lamborghini Aventador is an iconic supercar that combines Lamborghini's signature aggressive design with world-class performance. Equipped with a naturally aspirated V12 engine, it delivers a raw and thrilling driving experience. The Aventador is known for its sharp lines, scissor doors, and a commanding presence, making it a favorite among supercar enthusiasts.", 769, 3200, "355", 2, "7-Speed Automated Manual (ISR)", 9, "1575" }
+                    { 1, "The F8 Tributo uses the same engine from the 488 Pista, a 3.9 L twin-turbocharged V8 engine with a power output of 720 PS (530 kW; 710 hp) at 8000 rpm and 770 N⋅m (568 lb⋅ft) of torque at 3250 rpm", 710, false, 8500, "350", 2, "Dual-Clutch Automatic", 7, "1400" },
+                    { 2, "The Pagani Huayra is a masterpiece of automotive engineering, renowned for its breathtaking design and performance. With an aerodynamic, lightweight body crafted from carbon-titanium, it achieves exceptional speed and agility. The Huayra’s performance is complemented by luxurious Italian craftsmanship and cutting-edge technology, making it a unique blend of art and science on wheels.", 791, false, 1500, "383", 2, "7-Speed Sequential Manual", 8, "1350" },
+                    { 3, "The Lamborghini Aventador is an iconic supercar that combines Lamborghini's signature aggressive design with world-class performance. Equipped with a naturally aspirated V12 engine, it delivers a raw and thrilling driving experience. The Aventador is known for its sharp lines, scissor doors, and a commanding presence, making it a favorite among supercar enthusiasts.", 769, false, 3200, "355", 2, "7-Speed Automated Manual (ISR)", 9, "1575" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Trucks",
-                columns: new[] { "VehicleId", "CargoCapacity", "Description", "EuroNumber", "HorsePower", "Transmission", "TruckId" },
-                values: new object[] { 6, 12000, "Best truck", "Euro 6", 650, "Automatic", 1 });
+                columns: new[] { "VehicleId", "CargoCapacity", "Description", "EuroNumber", "HorsePower", "IsDelete", "Transmission", "TruckId" },
+                values: new object[] { 6, 12000, "Best truck", "Euro 6", 650, false, "Automatic", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -399,6 +428,11 @@ namespace VehicleShowroom.Data.Migrations
                 name: "IX_SuperCars_VehicleId",
                 table: "SuperCars",
                 column: "VehicleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersVehicles_VehicleId",
+                table: "UsersVehicles",
+                column: "VehicleId");
         }
 
         /// <inheritdoc />
@@ -433,6 +467,9 @@ namespace VehicleShowroom.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Trucks");
+
+            migrationBuilder.DropTable(
+                name: "UsersVehicles");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

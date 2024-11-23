@@ -18,6 +18,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var AllVehicle = await context.Vehicles
                 .Include(v => v.SuperCars)
+                .Where(c => c.IsDelete == false)
                 .Where(v => v.VehicleType == "Supercar".ToLower())
                 .ToListAsync();
 
@@ -28,6 +29,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var superCar = await context.SuperCars
                 .Include(c => c.Vehicle)
+                .Where(c => c.IsDelete == false)
                 .Where(c => c.VehicleId == id)
                 .Select(c => new SuperCarDetailsViewModel
                 {
@@ -63,6 +65,7 @@ namespace VehicleShowroom.Web.Controllers
             var vehicle = await context
                .SuperCars
                .Include(c => c.Vehicle)
+               .Where(c => c.IsDelete == false)
                .Where(c => c.VehicleId == id)
                .Select(c => new SuperCarEditVieModel
                {
@@ -114,6 +117,7 @@ namespace VehicleShowroom.Web.Controllers
             var superCar = await context
                 .SuperCars
                 .Include(c => c.Vehicle)
+                .Where(c => c.IsDelete == false)
                 .FirstOrDefaultAsync(c => c.SuperCarId == models.SuperCarId);
             if (superCar == null)
             {

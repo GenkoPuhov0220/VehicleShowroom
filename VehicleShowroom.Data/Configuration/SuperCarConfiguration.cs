@@ -27,6 +27,9 @@ namespace VehicleShowroom.Data.Configuration
                .Property(c => c.Weight)
                .IsRequired()
                .HasMaxLength(SuperCarWeightMaxLenght);
+            //builder
+              //  .Property(v => v.IsDelete)
+               // .HasDefaultValue(false);
             builder
                 .HasData(this.SeedSuperCar());
         }

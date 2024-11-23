@@ -18,6 +18,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var AllVehicle = await context.Vehicles
                 .Include(v => v.Buses)
+                .Where(v => v.IsDelete == false)
                 .Where(v => v.VehicleType == "Bus".ToLower())
                 .ToListAsync();
 
@@ -28,6 +29,7 @@ namespace VehicleShowroom.Web.Controllers
         {
             var bus = await context.Buses
                 .Include(c => c.Vehicle)
+                .Where(c => c.IsDelete == false)
                 .Where(c => c.VehicleId == id)
                 .Select(c => new BusDetailsViewModel
                 {
@@ -58,6 +60,7 @@ namespace VehicleShowroom.Web.Controllers
             var vehicle = await context
                .Buses
                .Include(b => b.Vehicle)
+               .Where(c => c.IsDelete == false)
                .Where(b => b.VehicleId == id)
                .Select(b => new BusEditViewModel
                {
@@ -105,6 +108,7 @@ namespace VehicleShowroom.Web.Controllers
             var bus = await context
                 .Buses
                 .Include(b => b.Vehicle)
+                .Where(c => c.IsDelete == false)
                 .FirstOrDefaultAsync(b => b.BusId == models.BusId);
             if (bus == null)
             {
@@ -128,6 +132,60 @@ namespace VehicleShowroom.Web.Controllers
             await context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vehicle = await context.Buses
+                .Include(v => v.Vehicle)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new BusDeleteViewModel
+            {
+                VehicleId = vehicle.VehicleId,
+                VehicleType = vehicle.Vehicle.VehicleType,
+                Make = vehicle.Vehicle.Model,
+                Model = vehicle.Vehicle.Model,
+                Year = vehicle.Vehicle.Year.ToString(YearFormating),
+                Price = vehicle.Vehicle.Price,
+                Color = vehicle.Vehicle.Color,
+                FuelType = vehicle.Vehicle.FuelType,
+                ImageUrl = vehicle.Vehicle.ImageUrl,
+
+                BusId = vehicle.BusId,
+               Capacity = vehicle.Capacity,
+               Description = vehicle.Description,
+               HorsePower = vehicle.HorsePower,
+               Transmission = vehicle.Transmission
+            };
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmedDelete(BusDeleteViewModel viewModel, int id)
+        {
+            var vehicle = await context.Vehicles
+                .Include(v => v.Buses)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return BadRequest();
+            }
+
+            vehicle.IsDelete = true;
+
+            foreach (var bus in vehicle.Buses)
+            {
+                bus.IsDelete = true;
+            }
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
