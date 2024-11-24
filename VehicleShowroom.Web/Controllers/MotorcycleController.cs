@@ -126,5 +126,54 @@ namespace VehicleShowroom.Web.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vehicle = await context.Motorcycles
+                .Include(v => v.Vehicle)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new MotorcycleDeleteViewModel
+            {
+                VehicleId = vehicle.VehicleId,
+                VehicleType = vehicle.Vehicle.VehicleType,
+                Make = vehicle.Vehicle.Model,
+                Model = vehicle.Vehicle.Model,
+                Year = vehicle.Vehicle.Year.ToString(YearFormating),
+                Price = vehicle.Vehicle.Price,
+                Color = vehicle.Vehicle.Color,
+                FuelType = vehicle.Vehicle.FuelType,
+                ImageUrl = vehicle.Vehicle.ImageUrl,
+                Kw = vehicle.Kw
+            };
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmedDelete(MotorcycleDeleteViewModel viewModel, int id)
+        {
+            var vehicle = await context.Vehicles
+                .Include(v => v.Motorcycles)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return BadRequest();
+            }
+
+            vehicle.IsDelete = true;
+
+            foreach (var motorcycle in vehicle.Motorcycles)
+            {
+                motorcycle.IsDelete = true;
+            }
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

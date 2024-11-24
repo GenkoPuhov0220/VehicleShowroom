@@ -161,6 +161,7 @@ namespace VehicleShowroom.Web.Controllers
                 FuelType = vehicle.Vehicle.FuelType,
                 ImageUrl = vehicle.Vehicle.ImageUrl,
 
+                TruckId = vehicle.TruckId,
                 EuroNumber = vehicle.EuroNumber,
                 CargoCapacity = vehicle.CargoCapacity,
                 Description = vehicle.Description,
