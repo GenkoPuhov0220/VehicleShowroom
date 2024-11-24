@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using VehicleShowroom.Data;
+using VehicleShowroom.Web;
 
 namespace VehicleShowroom.Web.Controllers
 {
@@ -144,6 +145,65 @@ namespace VehicleShowroom.Web.Controllers
             await context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vehicle = await context.SuperCars
+                .Include(v => v.Vehicle)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new SuperCarDeleteViewModel
+            {
+                VehicleId = vehicle.VehicleId,
+                VehicleType = vehicle.Vehicle.VehicleType,
+                Make = vehicle.Vehicle.Model,
+                Model = vehicle.Vehicle.Model,
+                Year = vehicle.Vehicle.Year.ToString(YearFormating),
+                Price = vehicle.Vehicle.Price,
+                Color = vehicle.Vehicle.Color,
+                FuelType = vehicle.Vehicle.FuelType,
+                ImageUrl = vehicle.Vehicle.ImageUrl,
+
+                SuperCarId = vehicle.SuperCarId,
+                Kilometers = vehicle.Kilometers,
+                NumberOfDoors = vehicle.NumberOfDoors,
+                Description = vehicle.Description,
+                Transmission = vehicle.Transmission,
+                HorsePower = vehicle.HorsePower,
+                Weight = vehicle.Weight,
+                MaxSpeed = vehicle.MaxSpeed
+
+
+            };
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmedDelete(SuperCarDeleteViewModel viewModel, int id)
+        {
+            var vehicle = await context.Vehicles
+                .Include(v => v.SuperCars)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return BadRequest();
+            }
+
+            vehicle.IsDelete = true;
+
+            foreach (var superCar in vehicle.SuperCars)
+            {
+                superCar.IsDelete = true;
+            }
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
