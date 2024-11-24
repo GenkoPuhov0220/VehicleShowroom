@@ -3,33 +3,61 @@
     ViewData["Title"] = "Vehicle Delete";
 }
 
-<div>
-    <h3>Are you sure you want to delete this vehicle?</h3>
-    <div>
-        <h4>Vehicle Details</h4>
-        <p><strong>Vehicle Type:</strong> @Model.VehicleType</p>
-        <p><strong>Make:</strong> @Model.Make</p>
-        <p><strong>Model:</strong> @Model.Model</p>
-        <p><strong>Year:</strong> @Model.Year</p>
-        <p><strong>Price:</strong> @Model.Price</p>
-        <p><strong>Color:</strong> @Model.Color</p>
-        <p><strong>Fuel Type:</strong> @Model.FuelType</p>
-        <img src="@Model.ImageUrl" alt="Vehicle Image" style="max-width: 300px;" />
-
-        @if (Model.CarId != null)
-        {
-            <h4>Car Details</h4>
-            <p><strong>Kilometers:</strong> @Model.Kilometers</p>
-            <p><strong>Number of Doors:</strong> @Model.NumberOfDoors</p>
-            <p><strong>Description:</strong> @Model.Description</p>
-            <p><strong>Transmission:</strong> @Model.Transmission</p>
-            <p><strong>Horse Power:</strong> @Model.HorsePower</p>
-        }
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="text-danger">Delete Vehicle</h1>
+        <p class="lead">Are you sure you want to delete this vehicle?</p>
     </div>
 
-    <form asp-action="ConfirmedDelete" method="post">
-        <input type="hidden" name="id" value="@Model.VehicleId" />
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-    </form>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">Vehicle Details</h4>
+                    <div class="mb-3">
+                        <p><strong>Vehicle Type:</strong> @Model.VehicleType</p>
+                        <p><strong>Make:</strong> @Model.Make</p>
+                        <p><strong>Model:</strong> @Model.Model</p>
+                        <p><strong>Year:</strong> @Model.Year</p>
+                        <p><strong>Price:</strong> @Model.Price</p>
+                        <p><strong>Color:</strong> @Model.Color</p>
+                        <p><strong>Fuel Type:</strong> @Model.FuelType</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="@Model.ImageUrl" alt="Vehicle Image" class="img-fluid rounded shadow-sm" style="max-width: 300px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.CarId != null)
+    {
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Bus Details</h4>
+                        <div class="mb-3">
+                            <p><strong>Kilometers:</strong> @Model.Kilometers</p>
+                            <p><strong>Description:</strong> @Model.NumberOfDoors</p>
+                            <p><strong>Description:</strong> @Model.Description</p>
+                            <p><strong>Transmission:</strong> @Model.Transmission</p>
+                            <p><strong>Horse Power:</strong> @Model.HorsePower</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8 text-center">
+            <form asp-action="ConfirmedDelete" method="post">
+                <input type="hidden" name="id" value="@Model.VehicleId" />
+                <button type="submit" class="btn btn-danger me-3">Delete</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
 </div>

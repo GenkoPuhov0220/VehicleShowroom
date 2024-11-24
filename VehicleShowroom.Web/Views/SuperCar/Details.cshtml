@@ -34,7 +34,7 @@
                 <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
                 <button type="submit" class="btn btn-warning">Add To Favorite</button>
                 <a asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn btn-primary">Edit Vehicle</a>
-                <a asp-action="Delete" class="btn btn-secondary">Delete vehicle</a>
+                <a asp-action="Delete" asp-route-id="@Model.VehicleId" class="btn btn-secondary">Delete vehicle</a>
             </form>
         </div>
     </div>
