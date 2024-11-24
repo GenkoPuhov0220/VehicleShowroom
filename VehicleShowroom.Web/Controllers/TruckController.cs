@@ -137,5 +137,60 @@ namespace VehicleShowroom.Web.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vehicle = await context.Trucks
+                .Include(v => v.Vehicle)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new TruckDeleteViewModel
+            {
+                VehicleId = vehicle.VehicleId,
+                VehicleType = vehicle.Vehicle.VehicleType,
+                Make = vehicle.Vehicle.Model,
+                Model = vehicle.Vehicle.Model,
+                Year = vehicle.Vehicle.Year.ToString(YearFormating),
+                Price = vehicle.Vehicle.Price,
+                Color = vehicle.Vehicle.Color,
+                FuelType = vehicle.Vehicle.FuelType,
+                ImageUrl = vehicle.Vehicle.ImageUrl,
+
+                EuroNumber = vehicle.EuroNumber,
+                CargoCapacity = vehicle.CargoCapacity,
+                Description = vehicle.Description,
+                Transmission = vehicle.Transmission,
+                HorsePower = vehicle.HorsePower,
+               
+            };
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmedDelete(TruckDeleteViewModel viewModel, int id)
+        {
+            var vehicle = await context.Vehicles
+                .Include(v => v.Trucks)
+                .FirstOrDefaultAsync(v => v.VehicleId == id);
+
+            if (vehicle == null)
+            {
+                return BadRequest();
+            }
+
+            vehicle.IsDelete = true;
+
+            foreach (var truck in vehicle.Trucks)
+            {
+                truck.IsDelete = true;
+            }
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
