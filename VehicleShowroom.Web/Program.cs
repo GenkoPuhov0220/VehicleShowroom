@@ -37,7 +37,9 @@ namespace VehicleShowroom.Web
                 options.LoginPath = "/Identity/Account/Login";
             });
 
+            //Add Services
             builder.Services.AddScoped<IVehicleServices, VehicleServices>();
+            builder.Services.AddScoped<ICarServices, CarServices>();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();

@@ -112,7 +112,7 @@ namespace VehicleShowroom.Services.Data
                     break;
             }
 
-            //await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
 
     }

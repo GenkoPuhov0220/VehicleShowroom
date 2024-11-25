@@ -10,11 +10,10 @@ namespace VehicleShowroom.Web.Controllers
     using static VehicleShowroom.Common.EntityValidationConstants;
     public class VehicleController : Controller
     {
-        private readonly VehicleDbContext context;
         private readonly IVehicleServices vehicleServices;
-        public VehicleController(VehicleDbContext _context, IVehicleServices _vehicleServices)
+        public VehicleController(IVehicleServices _vehicleServices)
         {
-            context = _context;
+            
             vehicleServices = _vehicleServices;
         }
         public async Task<IActionResult> Index()
@@ -46,9 +45,9 @@ namespace VehicleShowroom.Web.Controllers
             {
               return View(models);
             }
+
             await vehicleServices.AddVehicleAsync(models);
-           
-            await context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         } 
     }
