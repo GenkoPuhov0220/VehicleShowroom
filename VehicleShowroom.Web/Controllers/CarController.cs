@@ -11,17 +11,16 @@ namespace VehicleShowroom.Web.Controllers
     using static VehicleShowroom.Common.EntityValidationConstants;
     public class CarController : Controller
     {
-        private readonly VehicleDbContext context;
         private readonly ICarServices carServices;
-        public CarController(VehicleDbContext _context, ICarServices _carServices)
+        public CarController( ICarServices _carServices)
         {
-            context = _context;
+           
             carServices = _carServices;
         }
         public async Task<IActionResult> Index()
         {
             var AllVehicle = await carServices
-                .GetAllVehiclesAsync();
+                .GetAllCarsAsync();
 
             return View(AllVehicle);
         }

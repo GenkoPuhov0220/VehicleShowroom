@@ -21,7 +21,7 @@ namespace VehicleShowroom.Services.Data
         {
             context = _context;
         }
-        public async Task<IEnumerable<Vehicle>> GetAllVehiclesAsync()
+        public async Task<IEnumerable<Vehicle>> GetAllCarsAsync()
         {
               return await context.Vehicles
                 .Include(v => v.Cars)

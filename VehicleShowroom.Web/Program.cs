@@ -40,6 +40,7 @@ namespace VehicleShowroom.Web
             //Add Services
             builder.Services.AddScoped<IVehicleServices, VehicleServices>();
             builder.Services.AddScoped<ICarServices, CarServices>();
+            builder.Services.AddScoped<IBusServices, BusServices>();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
