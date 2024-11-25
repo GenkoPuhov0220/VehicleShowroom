@@ -1,51 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using VehicleShowroom.Data;
+using VehicleShowroom.Services.Data.Interfaces;
 
 namespace VehicleShowroom.Web.Controllers
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
     public class MotorcycleController : Controller
     {
-        private readonly VehicleDbContext context;
-        public MotorcycleController(VehicleDbContext _context)
+        private readonly IMotorcycleServices motorcycleServices;
+        public MotorcycleController(VehicleDbContext _context,
+            IMotorcycleServices _motorcycleServices)
         {
-            context = _context;
+            motorcycleServices = _motorcycleServices;
         }
         public async Task<IActionResult> Index()
         {
-            var AllVehicle = await context.Vehicles
-                .Include(v => v.Motorcycles)
-                .Where(v => v.IsDelete == false)
-                .Where(v => v.VehicleType == "Motorcycle".ToLower())
-                .ToListAsync();
+            var AllVehicle = await motorcycleServices
+                .GetAllMotorcycleAsync();
 
             return View(AllVehicle);
         }
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var motorcycle = await context.Motorcycles
-                .Include(c => c.Vehicle)
-                .Where(c => c.IsDelete == false)
-                .Where(c => c.VehicleId == id)
-                .Select(c => new MotorcycleDeteilsViewModel
-                {
+            var motorcycle = await motorcycleServices
+                .GetMotrocycleDetailsAsync(id);
 
-                    VehicleId = c.Vehicle.VehicleId,
-                    VehicleType = c.Vehicle.VehicleType,
-                    Make = c.Vehicle.Make,
-                    Model = c.Vehicle.Model,
-                    Year = c.Vehicle.Year.ToString(),
-                    Price = c.Vehicle.Price,
-                    Color = c.Vehicle.Color,
-                    FuelType = c.Vehicle.FuelType,
-                    ImageUrl = c.Vehicle.ImageUrl,
-                    Kw = c.Kw
-
-                })
-                .FirstOrDefaultAsync();
             if (motorcycle == null)
             {
                 return RedirectToAction(nameof(Index));
@@ -55,28 +38,8 @@ namespace VehicleShowroom.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var vehicle = await context
-               .Motorcycles
-               .Include(c => c.Vehicle)
-               .Where(c => c.IsDelete == false)
-               .Where(c => c.VehicleId == id)
-               .Select(c => new MotorcycleEditViewModel
-               {
-
-                   VehicleType = c.Vehicle.VehicleType,
-                   Make = c.Vehicle.Make,
-                   Model = c.Vehicle.Model,
-                   Year = c.Vehicle.Year.ToString(YearFormating),
-                   Price = c.Vehicle.Price,
-                   Color = c.Vehicle.Color,
-                   FuelType = c.Vehicle.FuelType,
-                   ImageUrl = c.Vehicle.ImageUrl,
-
-                   MotorcycleId = c.MotorcycleId,
-                   Kw = c.Kw,
-
-               })
-                .FirstOrDefaultAsync();
+           var vehicle = await motorcycleServices
+                .GetMotorcycleForEditAsync(id);
 
             if (vehicle == null)
             {
@@ -102,77 +65,39 @@ namespace VehicleShowroom.Web.Controllers
                 return View(models);
             }
 
-            var motorcycle = await context
-                .Motorcycles
-                .Include(c => c.Vehicle)
-                .Where(c => c.IsDelete == false)
-                .FirstOrDefaultAsync(c => c.MotorcycleId == models.MotorcycleId);
+            var motorcycle = await motorcycleServices
+                .EditMotorcycleAsync(models);
+
             if (motorcycle == null)
             {
                 return NotFound();
             }
-
-            motorcycle.Vehicle.VehicleType = models.VehicleType;
-            motorcycle.Vehicle.Make = models.Make;
-            motorcycle.Vehicle.Model = models.Model;
-            motorcycle.Vehicle.Year = yearValid;
-            motorcycle.Vehicle.Price = models.Price;
-            motorcycle.Vehicle.Color = models.Color;
-            motorcycle.Vehicle.FuelType = models.FuelType;
-            motorcycle.Vehicle.ImageUrl = models.ImageUrl;
-
-            motorcycle.Kw = models.Kw;
-            await context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var vehicle = await context.Motorcycles
-                .Include(v => v.Vehicle)
-                .FirstOrDefaultAsync(v => v.VehicleId == id);
+           var viewModel = await motorcycleServices
+                .DeleteMotorcycleAsync(id);
 
-            if (vehicle == null)
+            if (viewModel == null)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-            var viewModel = new MotorcycleDeleteViewModel
-            {
-                VehicleId = vehicle.VehicleId,
-                VehicleType = vehicle.Vehicle.VehicleType,
-                Make = vehicle.Vehicle.Model,
-                Model = vehicle.Vehicle.Model,
-                Year = vehicle.Vehicle.Year.ToString(YearFormating),
-                Price = vehicle.Vehicle.Price,
-                Color = vehicle.Vehicle.Color,
-                FuelType = vehicle.Vehicle.FuelType,
-                ImageUrl = vehicle.Vehicle.ImageUrl,
-                Kw = vehicle.Kw
-            };
-
+           
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> ConfirmedDelete(MotorcycleDeleteViewModel viewModel, int id)
+        public async Task<IActionResult> ConfirmedDelete( int id)
         {
-            var vehicle = await context.Vehicles
-                .Include(v => v.Motorcycles)
-                .FirstOrDefaultAsync(v => v.VehicleId == id);
+            var vehicle = await motorcycleServices
+                .MotorcycleConfirmDeleteAsync(id);
 
             if (vehicle == null)
             {
                 return BadRequest();
             }
-
-            vehicle.IsDelete = true;
-
-            foreach (var motorcycle in vehicle.Motorcycles)
-            {
-                motorcycle.IsDelete = true;
-            }
-            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

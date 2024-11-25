@@ -12,11 +12,9 @@ namespace VehicleShowroom.Web.Controllers
     using static VehicleShowroom.Common.EntityValidationMessages;
     public class SuperCarController : Controller
     {
-        private readonly VehicleDbContext context;
         private readonly ISuperCarServices superCarServices;
-        public SuperCarController(VehicleDbContext _context, ISuperCarServices _superCarServices)
+        public SuperCarController(ISuperCarServices _superCarServices)
         {
-            context = _context;
             superCarServices = _superCarServices;
         }
         public async Task<IActionResult> Index()
