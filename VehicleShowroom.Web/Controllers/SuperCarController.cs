@@ -1,59 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NPOI.OpenXmlFormats.Dml;
 using System.Globalization;
 using VehicleShowroom.Data;
+using VehicleShowroom.Services.Data.Interfaces;
 using VehicleShowroom.Web;
 
 namespace VehicleShowroom.Web.Controllers
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
-
+    using static VehicleShowroom.Common.EntityValidationMessages;
     public class SuperCarController : Controller
     {
         private readonly VehicleDbContext context;
-        public SuperCarController(VehicleDbContext _context)
+        private readonly ISuperCarServices superCarServices;
+        public SuperCarController(VehicleDbContext _context, ISuperCarServices _superCarServices)
         {
             context = _context;
+            superCarServices = _superCarServices;
         }
         public async Task<IActionResult> Index()
         {
-            var AllVehicle = await context.Vehicles
-                .Include(v => v.SuperCars)
-                .Where(c => c.IsDelete == false)
-                .Where(v => v.VehicleType == "Supercar".ToLower())
-                .ToListAsync();
+          var AllVehicle = await superCarServices
+                .GetAllSuperCarAsync();
 
             return View(AllVehicle);
         }
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var superCar = await context.SuperCars
-                .Include(c => c.Vehicle)
-                .Where(c => c.IsDelete == false)
-                .Where(c => c.VehicleId == id)
-                .Select(c => new SuperCarDetailsViewModel
-                {
+            var superCar = await superCarServices
+                .GetSuperCarDetailsAsync(id);
 
-                    VehicleId = c.Vehicle.VehicleId,
-                    VehicleType = c.Vehicle.VehicleType,
-                    Make = c.Vehicle.Make,
-                    Model = c.Vehicle.Model,
-                    Year = c.Vehicle.Year.ToString(YearFormating),
-                    Price = c.Vehicle.Price,
-                    Color = c.Vehicle.Color,
-                    FuelType = c.Vehicle.FuelType,
-                    ImageUrl = c.Vehicle.ImageUrl,
-                    Kilometers = c.Kilometers,
-                    NumberOfDoors = c.NumberOfDoors,
-                    Description = c.Description,
-                    Transmission = c.Transmission,
-                    MaxSpeed = c.MaxSpeed,
-                    Weight = c.Weight,
-                    HorsePower = c.HorsePower
-                   
-                })
-                .FirstOrDefaultAsync();
             if (superCar == null)
             {
                 return RedirectToAction(nameof(Index));
@@ -63,33 +41,8 @@ namespace VehicleShowroom.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var vehicle = await context
-               .SuperCars
-               .Include(c => c.Vehicle)
-               .Where(c => c.IsDelete == false)
-               .Where(c => c.VehicleId == id)
-               .Select(c => new SuperCarEditVieModel
-               {
-
-                   VehicleType = c.Vehicle.VehicleType,
-                   Make = c.Vehicle.Make,
-                   Model = c.Vehicle.Model,
-                   Year = c.Vehicle.Year.ToString(YearFormating),
-                   Price = c.Vehicle.Price,
-                   Color = c.Vehicle.Color,
-                   FuelType = c.Vehicle.FuelType,
-                   ImageUrl = c.Vehicle.ImageUrl,
-
-                   SuperCarId = c.SuperCarId,
-                   MaxSpeed = c.MaxSpeed,
-                   Weight = c.Weight,
-                   Kilometers = c.Kilometers,
-                   Doors = c.NumberOfDoors,
-                   Description = c.Description,
-                   Transmission = c.Transmission,
-                   HorsePower = c.HorsePower
-               })
-                .FirstOrDefaultAsync();
+            var vehicle = await superCarServices
+                .GetSuperForEditAsync(id);
 
             if (vehicle == null)
             {
@@ -114,95 +67,37 @@ namespace VehicleShowroom.Web.Controllers
             {
                 return View(models);
             }
-
-            var superCar = await context
-                .SuperCars
-                .Include(c => c.Vehicle)
-                .Where(c => c.IsDelete == false)
-                .FirstOrDefaultAsync(c => c.SuperCarId == models.SuperCarId);
+            var superCar = await superCarServices.EditCarAsync(models);
             if (superCar == null)
             {
                 return NotFound();
             }
-
-            superCar.Vehicle.VehicleType = models.VehicleType;
-            superCar.Vehicle.Make = models.Make;
-            superCar.Vehicle.Model = models.Model;
-            superCar.Vehicle.Year = yearValid;
-            superCar.Vehicle.Price = models.Price;
-            superCar.Vehicle.Color = models.Color;
-            superCar.Vehicle.FuelType = models.FuelType;
-            superCar.Vehicle.ImageUrl = models.ImageUrl;
-
-            superCar.Kilometers = models.Kilometers;
-            superCar.NumberOfDoors = models.Doors;
-            superCar.Description = models.Description ?? string.Empty;
-            superCar.Transmission = models.Transmission ?? string.Empty;
-            superCar.HorsePower = models.HorsePower;
-            superCar.MaxSpeed = models.MaxSpeed ?? string.Empty;
-            superCar.Weight = models.Weight ?? string.Empty;
-
-            await context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var vehicle = await context.SuperCars
-                .Include(v => v.Vehicle)
-                .FirstOrDefaultAsync(v => v.VehicleId == id);
+            var viewModel = await superCarServices
+                .GetSuperCarForDeleteAsync(id);
 
-            if (vehicle == null)
+            if (viewModel == null)
             {
                 return NotFound();
             }
 
-            var viewModel = new SuperCarDeleteViewModel
-            {
-                VehicleId = vehicle.VehicleId,
-                VehicleType = vehicle.Vehicle.VehicleType,
-                Make = vehicle.Vehicle.Model,
-                Model = vehicle.Vehicle.Model,
-                Year = vehicle.Vehicle.Year.ToString(YearFormating),
-                Price = vehicle.Vehicle.Price,
-                Color = vehicle.Vehicle.Color,
-                FuelType = vehicle.Vehicle.FuelType,
-                ImageUrl = vehicle.Vehicle.ImageUrl,
-
-                SuperCarId = vehicle.SuperCarId,
-                Kilometers = vehicle.Kilometers,
-                NumberOfDoors = vehicle.NumberOfDoors,
-                Description = vehicle.Description,
-                Transmission = vehicle.Transmission,
-                HorsePower = vehicle.HorsePower,
-                Weight = vehicle.Weight,
-                MaxSpeed = vehicle.MaxSpeed
-
-
-            };
-
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> ConfirmedDelete(SuperCarDeleteViewModel viewModel, int id)
+        public async Task<IActionResult> ConfirmedDelete( int id)
         {
-            var vehicle = await context.Vehicles
-                .Include(v => v.SuperCars)
-                .FirstOrDefaultAsync(v => v.VehicleId == id);
+            var superCar = await superCarServices
+                .ConfirmDeleteAsync(id);
 
-            if (vehicle == null)
+            if (superCar == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            vehicle.IsDelete = true;
-
-            foreach (var superCar in vehicle.SuperCars)
-            {
-                superCar.IsDelete = true;
-            }
-            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

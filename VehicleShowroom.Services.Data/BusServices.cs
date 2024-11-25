@@ -7,9 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
+using VehicleShowroom.Services.Data.Interfaces;
 using VehicleShowroom.Web;
 
-namespace VehicleShowroom.Services.Data.Interfaces
+namespace VehicleShowroom.Services.Data
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
     public class BusServices : IBusServices

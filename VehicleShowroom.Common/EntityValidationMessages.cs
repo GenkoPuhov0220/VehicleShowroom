@@ -23,5 +23,6 @@ namespace VehicleShowroom.Common
 
         public const string VehicleFuelTypeMessages = "FuelType is required.";
 
+        public const string NotVehicle = "There are currently no such vehicle";
     }
 }

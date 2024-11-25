@@ -11,11 +11,9 @@ namespace VehicleShowroom.Web.Controllers
     using static VehicleShowroom.Common.EntityValidationConstants;
     public class BusController : Controller
     {
-        private readonly VehicleDbContext context;
         private readonly IBusServices busServices;
-        public BusController(VehicleDbContext _context, IBusServices _busServices)
+        public BusController(IBusServices _busServices)
         {
-            context = _context;
             busServices = _busServices;
         }
         public async Task<IActionResult> Index()
