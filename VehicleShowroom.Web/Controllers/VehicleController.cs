@@ -3,24 +3,27 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
+using VehicleShowroom.Services.Data.Interfaces;
+using static VehicleShowroom.Common.EntityValidationConstants;
 
 namespace VehicleShowroom.Web.Controllers
 {
-    using static VehicleShowroom.Common.EntityValidationConstants;
     public class VehicleController : Controller
     {
         private readonly VehicleDbContext context;
-        public VehicleController(VehicleDbContext _context)
+        private readonly IVehicleServices vehicleServices;
+        public VehicleController(VehicleDbContext _context, IVehicleServices _vehicleServices)
         {
             context = _context;
+            vehicleServices = _vehicleServices;
         }
         public async Task<IActionResult> Index()
         {
-            var AllVehicle = await context.Vehicles
-                .Where(v => v.IsDelete == false)
-                .ToListAsync();
+            var AllVehicle = await vehicleServices
+                .IndexGetAllAsync();
                
             return  View(AllVehicle);
+           
         }
         [HttpGet]
         public  IActionResult Create()

@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    @if (Model.TruckId != null)
+    @if (Model?.TruckId != null)
     {
         <div class="row justify-content-center mt-4">
             <div class="col-md-8">
@@ -54,7 +54,7 @@
     <div class="row justify-content-center mt-4">
         <div class="col-md-8 text-center">
             <form asp-action="ConfirmedDelete" method="post">
-                <input type="hidden" name="id" value="@Model.VehicleId" />
+                <input type="hidden" name="id" value="@Model?.VehicleId" />
                 <button type="submit" class="btn btn-danger me-3">Delete</button>
                 <a asp-action="Index" class="btn btn-secondary">Cancel</a>
             </form>

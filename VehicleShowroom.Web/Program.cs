@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
+using VehicleShowroom.Services.Data;
+using VehicleShowroom.Services.Data.Interfaces;
 using VehicleShowroom.Web;
 
 
@@ -35,9 +37,12 @@ namespace VehicleShowroom.Web
                 options.LoginPath = "/Identity/Account/Login";
             });
 
+            builder.Services.AddScoped<IVehicleServices, VehicleServices>();
+
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
-            var app = builder.Build();
+
+            WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
