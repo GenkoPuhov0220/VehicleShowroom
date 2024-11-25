@@ -9,7 +9,7 @@ namespace VehicleShowroom.Common
             public const int VehicleTypeMaxLenght = 50;
             public const int MakeMinLenght = 2;
             public const int MakeMaxLenght = 150;
-            public const int ModelMinLenght = 3;
+            public const int ModelMinLenght = 1;
             public const int ModelMaxLenght = 150;
             public const int ColorMinLenght = 2;
             public const int ColorMaxLenght = 70;
