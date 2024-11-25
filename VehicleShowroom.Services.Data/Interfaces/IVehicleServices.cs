@@ -10,5 +10,6 @@ namespace VehicleShowroom.Services.Data.Interfaces
         Task<IEnumerable<Vehicle>> IndexGetAllAsync();
         Task AddVehicleAsync(AddVehicleViewModel models);
 
+
     }
 }
