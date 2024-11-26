@@ -1,6 +1,12 @@
-﻿@model MotorcycleEditViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using VehicleShowroom.Data.Models
+@inject SignInManager<ApplicationUser> SingInManager
+@inject UserManager<ApplicationUser> UserManager
+@model MotorcycleEditViewModel
 
-<h2 class="mb-4">Edit Truck</h2>
+@if (User.IsInRole("Admin"))
+{    
+<h2 class="mb-4">Edit Motorcycle</h2>
 
 <form asp-action="Edit" class="needs-validation" novalidate>
     <input type="hidden" asp-for="MotorcycleId" />
@@ -70,3 +76,4 @@
         <a asp-action="Index" class="btn btn-secondary">Back</a>
     </div>
 </form>
+}

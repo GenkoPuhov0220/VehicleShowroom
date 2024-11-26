@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using VehicleShowroom.Data;
@@ -9,6 +10,7 @@ using VehicleShowroom.Web;
 namespace VehicleShowroom.Web.Controllers
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
+    [Authorize]
     public class CarController : Controller
     {
         private readonly ICarServices carServices;
@@ -17,6 +19,7 @@ namespace VehicleShowroom.Web.Controllers
            
             carServices = _carServices;
         }
+
         public async Task<IActionResult> Index()
         {
             var AllVehicle = await carServices
@@ -24,6 +27,7 @@ namespace VehicleShowroom.Web.Controllers
 
             return View(AllVehicle);
         }
+
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -34,6 +38,8 @@ namespace VehicleShowroom.Web.Controllers
             }
             return View(car);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -45,6 +51,8 @@ namespace VehicleShowroom.Web.Controllers
 
             return View(vehicle);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(CarEditViewModel models)
         {
@@ -69,6 +77,8 @@ namespace VehicleShowroom.Web.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -79,6 +89,8 @@ namespace VehicleShowroom.Web.Controllers
             }
             return View(viewModel);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> ConfirmedDelete( int id)
         {

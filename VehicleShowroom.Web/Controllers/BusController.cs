@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using VehicleShowroom.Data;
@@ -9,6 +10,7 @@ using VehicleShowroom.Services.Data.Interfaces;
 namespace VehicleShowroom.Web.Controllers
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
+    [Authorize]
     public class BusController : Controller
     {
         private readonly IBusServices busServices;
@@ -34,6 +36,7 @@ namespace VehicleShowroom.Web.Controllers
             }
             return View(bus);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -46,6 +49,7 @@ namespace VehicleShowroom.Web.Controllers
 
             return View(vehicle);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(BusEditViewModel models)
         {
@@ -69,6 +73,7 @@ namespace VehicleShowroom.Web.Controllers
             }
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -79,6 +84,7 @@ namespace VehicleShowroom.Web.Controllers
             }
             return View(viewModel);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> ConfirmedDelete(int id)
         {

@@ -9,6 +9,7 @@ using VehicleShowroom.Services.Data.Interfaces;
 namespace VehicleShowroom.Web.Controllers
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
+    [Authorize]
     public class VehicleController : Controller
     {
         private readonly IVehicleServices vehicleServices;

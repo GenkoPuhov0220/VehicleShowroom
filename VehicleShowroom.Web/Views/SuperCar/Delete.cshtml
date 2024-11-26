@@ -1,8 +1,13 @@
-﻿@model SuperCarDeleteViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using VehicleShowroom.Data.Models
+@inject SignInManager<ApplicationUser> SingInManager
+@inject UserManager<ApplicationUser> UserManager
+@model SuperCarDeleteViewModel
 @{
     ViewData["Title"] = "Vehicle Delete";
 }
-
+@if (User.IsInRole("Admin"))
+{   
 <div class="container mt-5">
     <div class="text-center">
         <h1 class="text-danger">Delete Vehicle</h1>
@@ -63,3 +68,4 @@
         </div>
     </div>
 </div>
+}

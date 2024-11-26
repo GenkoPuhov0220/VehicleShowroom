@@ -1,6 +1,12 @@
-﻿@model SuperCarEditVieModel
+﻿@using Microsoft.AspNetCore.Identity
+@using VehicleShowroom.Data.Models
+@inject SignInManager<ApplicationUser> SingInManager
+@inject UserManager<ApplicationUser> UserManager
+@model SuperCarEditVieModel
 
-<h2 class="mb-4">Edit Truck</h2>
+@if (User.IsInRole("Admin"))
+{    
+<h2 class="mb-4">Edit SuperCar</h2>
 
 <form asp-action="Edit" class="needs-validation" novalidate>
     <input type="hidden" asp-for="SuperCarId" />
@@ -106,3 +112,4 @@
         <a asp-action="Index" class="btn btn-secondary">Back</a>
     </div>
 </form>
+}

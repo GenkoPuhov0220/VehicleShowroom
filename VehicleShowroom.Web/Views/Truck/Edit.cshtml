@@ -1,5 +1,11 @@
-﻿@model TruckEditViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using VehicleShowroom.Data.Models
+@inject SignInManager<ApplicationUser> SingInManager
+@inject UserManager<ApplicationUser> UserManager
+@model TruckEditViewModel
 
+@if (User.IsInRole("Admin"))
+{  
 <h2 class="mb-4">Edit Truck</h2>
 
 <form asp-action="Edit" class="needs-validation" novalidate>
@@ -94,3 +100,4 @@
         <a asp-action="Index" class="btn btn-secondary">Back</a>
     </div>
 </form>
+}
