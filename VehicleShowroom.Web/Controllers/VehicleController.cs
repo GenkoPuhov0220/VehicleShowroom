@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
@@ -24,11 +25,13 @@ namespace VehicleShowroom.Web.Controllers
             return  View(AllVehicle);
            
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public  IActionResult Create()
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddVehicle(AddVehicleViewModel models)
         { 

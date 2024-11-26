@@ -39,5 +39,6 @@
         public string? Description { get; set; }
         public string? Transmission { get; set; }
         public int HorsePower { get; set; }
+        public int NumberOfDoors { get; set; }
     }
 }

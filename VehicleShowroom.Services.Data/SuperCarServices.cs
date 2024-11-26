@@ -61,6 +61,7 @@ namespace VehicleShowroom.Services.Data
                       Weight = c.Weight,
                       HorsePower = c.HorsePower
 
+
                   })
                   .FirstOrDefaultAsync();
 
@@ -92,7 +93,8 @@ namespace VehicleShowroom.Services.Data
                    Doors = c.NumberOfDoors,
                    Description = c.Description,
                    Transmission = c.Transmission,
-                   HorsePower = c.HorsePower
+                   HorsePower = c.HorsePower,
+                   NumberOfDoors = c.NumberOfDoors
                })
                 .FirstOrDefaultAsync();
 

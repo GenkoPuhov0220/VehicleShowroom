@@ -1,5 +1,8 @@
-﻿@using VehicleShowroom.Data.Models
+﻿@using Microsoft.AspNetCore.Identity
+@using VehicleShowroom.Data.Models
 @using static VehicleShowroom.Common.EntityValidationConstants
+@inject SignInManager<ApplicationUser> SingInManager
+@inject UserManager<ApplicationUser> UserManager
 @model IEnumerable<Vehicle>
 
 @{
@@ -7,7 +10,11 @@
 }
 <div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
     <h1>All vehicle in showroom</h1>
+    @if (User.IsInRole("Admin"))
+    {
         <a asp-action="Create" class="btn btn-primary">Add new Vehicle</a>
+        
+    }
 </div>
 
 <div class="container">
