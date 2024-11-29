@@ -72,6 +72,11 @@ namespace VehicleShowroom.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseStatusCodePagesWithRedirects("Home/Error/{0}");
+
+            app.MapControllerRoute(
+               name: "Error",
+               pattern: "{controller=Home}/{action=Index}/{statusCode}");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
