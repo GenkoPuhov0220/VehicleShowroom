@@ -2,7 +2,6 @@
 @using static VehicleShowroom.Common.EntityValidationConstants
 @model IEnumerable<Vehicle>
 
-
 <div class="container">
     <div class="row">
         @foreach (var vehicle in Model)
@@ -21,7 +20,7 @@
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
                     </div>
-                    <a asp-action="Details" asp-route-id = "@vehicle.VehicleId" class="btn btn-primary">Details</a>
+                    <a asp-action="Details" asp-route-id ="@vehicle.VehicleId" class="btn btn-primary">Details</a>
                 </div>
             </div>
         }

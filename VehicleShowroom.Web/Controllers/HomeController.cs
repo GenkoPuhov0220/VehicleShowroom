@@ -7,23 +7,20 @@ namespace VehicleShowroom.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {
-            
-        }
-
+      
         public  IActionResult Index()
         {
             return View();
         }
 
-       public IActionResult Error(int? statusCode = null)
+        public IActionResult Error()
         {
-            if (!statusCode.HasValue)
-            {
-                return View();
-            }
-
+            return View();
+        }
+        [Route("/StatusCodeError/{statusCode}")]
+       public IActionResult Error(int statusCode )
+        {
+           
             if (statusCode == 404)
             {
                 return View("Error404");
@@ -31,5 +28,6 @@ namespace VehicleShowroom.Web.Controllers
            
             return View("Error500");
         }
+        
     }
 }
