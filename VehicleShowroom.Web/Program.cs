@@ -74,9 +74,6 @@ namespace VehicleShowroom.Web
 
             app.UseStatusCodePagesWithRedirects("/StatusCodeError/{0}");
 
-          // app.MapControllerRoute(
-            //  name: "Errors",
-              // pattern: "{controller=Home}/{action=Index}/{statusCode}");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

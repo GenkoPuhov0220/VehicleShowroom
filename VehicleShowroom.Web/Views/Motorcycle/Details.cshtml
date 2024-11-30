@@ -27,7 +27,7 @@
             <strong>Kw: </strong>@Model.Kw<br>
         </p>
         <div>
-            <a asp-action="Index" class="btn btn-primary me-2">Back</a>
+            <a asp-controller ="Motorcycle" asp-action="Index" class="btn btn-primary me-2">Back</a>
             <form asp-controller="FavoritesVehicle" asp-action="AddToFavorite" method="post" class="d-inline">
                 <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
                 <button type="submit" class="btn btn-warning">Add To Favorite</button>
