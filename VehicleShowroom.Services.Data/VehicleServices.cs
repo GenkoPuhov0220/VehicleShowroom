@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.Globalization;
 using VehicleShowroom.Data;
 using VehicleShowroom.Data.Models;
@@ -22,7 +23,7 @@ namespace VehicleShowroom.Services.Data
                .Where(v => v.IsDelete == false)
                .ToListAsync();
         }
-        public async Task AddVehicleAsync(AddVehicleViewModel models)
+        public async Task<bool> AddVehicleAsync(AddVehicleViewModel models)
         {
             bool IsYearValid = DateTime
                .TryParseExact(models.Year, YearFormating, CultureInfo.InvariantCulture, DateTimeStyles.None,
@@ -30,7 +31,7 @@ namespace VehicleShowroom.Services.Data
 
             if (!IsYearValid)
             {
-                throw new ArgumentException("The Year must be in the following format: dd/MM/yyyy", nameof(models.Year));
+                return false;
             }
             var vehicle = new Vehicle
             {
@@ -45,12 +46,12 @@ namespace VehicleShowroom.Services.Data
             };
 
             context.Vehicles.Add(vehicle);
-            await context.SaveChangesAsync();
+            //await context.SaveChangesAsync();
 
             switch (models.VehicleType)
             {
                 case "Car":
-                    var car = new Car
+                    Car car = new Car
                     {
                         VehicleId = vehicle.VehicleId,
                         Kilometers = models.Kilometers ?? 0,
@@ -63,7 +64,7 @@ namespace VehicleShowroom.Services.Data
                     break;
 
                 case "Bus":
-                    var bus = new Bus
+                    Bus bus = new Bus
                     {
                         VehicleId = vehicle.VehicleId,
                         Capacity = models.Capacity ?? 0,
@@ -75,7 +76,7 @@ namespace VehicleShowroom.Services.Data
                     break;
 
                 case "Motorcycle":
-                    var motorcycle = new Motorcycle
+                    Motorcycle motorcycle = new Motorcycle
                     {
                         VehicleId = vehicle.VehicleId,
                         Kw = models.Kw ?? 0
@@ -84,7 +85,7 @@ namespace VehicleShowroom.Services.Data
                     break;
 
                 case "SuperCar":
-                    var superCar = new SuperCar
+                    SuperCar superCar = new SuperCar
                     {
                         VehicleId = vehicle.VehicleId,
                         Kilometers = models.SuperCarKilometers ?? 0,
@@ -99,7 +100,7 @@ namespace VehicleShowroom.Services.Data
                     break;
 
                 case "Truck":
-                    var truck = new Truck
+                    Truck truck = new Truck
                     {
                         VehicleId = vehicle.VehicleId,
                         CargoCapacity = models.CargoCapacity ?? 0,
@@ -113,6 +114,7 @@ namespace VehicleShowroom.Services.Data
             }
 
             await context.SaveChangesAsync();
+            return true;
         }
 
         

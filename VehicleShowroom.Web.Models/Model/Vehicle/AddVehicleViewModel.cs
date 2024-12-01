@@ -23,7 +23,7 @@ namespace VehicleShowroom.Web
         [MaxLength(ModelMaxLenght, ErrorMessage = VehicleModelMaxLenghtMessages)]
         public  string Model { get; set; } = null!;
 
-        [Required]
+        [Required(ErrorMessage = YearMassager)]
         public  string Year { get; set; } = null!;
 
         [Required(ErrorMessage = VehiclePriceMessages)]

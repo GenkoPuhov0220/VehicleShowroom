@@ -1,62 +1,65 @@
-﻿
-@model AddVehicleViewModel
+﻿@model AddVehicleViewModel
 
 @{
-    ViewData["Title"] = "Add New Vehicle";
+	ViewData["Title"] = "Add New Vehicle";
 }
 
-<h2>Add New Vehicle</h2>
+<div class="container mt-4">
+	<h2 class="mb-4">Add New Vehicle</h2>
+	<form asp-action="AddVehicle" method="post" enctype="multipart/form-data" class="row g-3">
+		<div class="col-md-6">
+			<label asp-for="@Model.VehicleType" class="form-label">Vehicle Type</label>
+			<select asp-for="@Model.VehicleType" class="form-select" id="vehicleType">
+				<option value="Car">Car</option>
+				<option value="Bus">Bus</option>
+				<option value="Motorcycle">Motorcycle</option>
+				<option value="SuperCar">SuperCar</option>
+				<option value="Truck">Truck</option>
+			</select>
+		</div>
 
-<form asp-action="AddVehicle" method="post" enctype="multipart/form-data">
-    <div>
-        <label asp-for="@Model.VehicleType">Vehicle Type</label>
-        <select asp-for="@Model.VehicleType" class="form-control" id="vehicleType">
-            <option value="Car">Car</option>
-            <option value="Bus">Bus</option>
-            <option value="Motorcycle">Motorcycle</option>
-            <option value="SuperCar">SuperCar</option>
-            <option value="Truck">Truck</option>
-        </select>
-    </div>
+		<div class="col-md-6">
+			<label asp-for="Make" class="form-label">Make</label>
+			<input asp-for="Make" class="form-control" />
+			<span asp-validation-for="Make" class="text-danger"></span>
+		</div>
 
-   
-    <div>
-        <label asp-for="@Model.Make" class="form-label-add-edit">Make</label>
-        <input asp-for="@Model.Make" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.Make" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="@Model.Model" class="form-label-add-edit">Model</label>
-        <input asp-for="@Model.Model" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.Model" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="@Model.Year" class="form-label-add-edit">Year</label>
-        <input asp-for="@Model.Year" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.Year" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="@Model.Price" class="form-label-add-edit">Price</label>
-        <input asp-for="@Model.Price" type="number" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.Price" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="@Model.Color" class="form-label-add-edit">Color</label>
-        <input asp-for="@Model.Color" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.Color" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="@Model.FuelType" class="form-label-add-edit">Fuel Type</label>
-        <input asp-for="@Model.FuelType" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.FuelType" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="@Model.ImageUrl" class="form-label-add-edit">Image URL</label>
-        <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
-        <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
-    </div>
+		<div class="col-md-6">
+			<label asp-for="Model" class="form-label">Model</label>
+			<input asp-for="Model" class="form-control" />
+			<span asp-validation-for="Model" class="text-danger"></span>
+		</div>
 
-    <div id="carFields" style="display:none;">
+		<div class="col-md-6">
+			<label asp-for="Year" class="form-label">Year</label>
+			<input asp-for="Year" type="number" class="form-control" />
+			<span asp-validation-for="Year" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-6">
+			<label asp-for="Price" class="form-label">Price</label>
+			<input asp-for="Price" type="number" class="form-control" />
+			<span asp-validation-for="Price" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-6">
+			<label asp-for="Color" class="form-label">Color</label>
+			<input asp-for="Color" class="form-control" />
+			<span asp-validation-for="Color" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-6">
+			<label asp-for="FuelType" class="form-label">Fuel Type</label>
+			<input asp-for="FuelType" class="form-control" />
+			<span asp-validation-for="FuelType" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-6">
+			<label asp-for="ImageUrl" class="form-label">Image URL</label>
+			<input asp-for="ImageUrl" class="form-control" />
+			<span asp-validation-for="ImageUrl" class="text-danger"></span>
+		</div>
+ <div id="carFields" style="display:none;">
         <h4>Car Details</h4>
         <div>
             <label asp-for="Kilometers">Kilometers</label>
@@ -186,34 +189,36 @@
         </div>
     </div>
 
+    </form>
     <button type="submit" class="btn btn-primary">Add Vehicle</button>
     <a asp-action="Index" class="btn btn-primary me-2">Back</a>
-</form>
+</div>
+
 
 @section Scripts {
-    <script>
-        document.getElementById("vehicleType").addEventListener("change", function () {
-            var vehicleType = this.value;
+	<script>
+		document.getElementById("vehicleType").addEventListener("change", function () {
+			var vehicleType = this.value;
 
-            
-            document.getElementById("carFields").style.display = "none";
-            document.getElementById("busFields").style.display = "none";
-            document.getElementById("motorcycleFields").style.display = "none";
-            document.getElementById("superCarFields").style.display = "none";
-            document.getElementById("truckFields").style.display = "none";
 
-            
-            if (vehicleType === "Car") {
-                document.getElementById("carFields").style.display = "block";
-            } else if (vehicleType === "Bus") {
-                document.getElementById("busFields").style.display = "block";
-            } else if (vehicleType === "Motorcycle") {
-                document.getElementById("motorcycleFields").style.display = "block";
-            } else if (vehicleType === "SuperCar") {
-                document.getElementById("superCarFields").style.display = "block";
-            } else if (vehicleType === "Truck") {
-                document.getElementById("truckFields").style.display = "block";
-            }
-        });
-    </script>
+			document.getElementById("carFields").style.display = "none";
+			document.getElementById("busFields").style.display = "none";
+			document.getElementById("motorcycleFields").style.display = "none";
+			document.getElementById("superCarFields").style.display = "none";
+			document.getElementById("truckFields").style.display = "none";
+
+
+			if (vehicleType === "Car") {
+				document.getElementById("carFields").style.display = "block";
+			} else if (vehicleType === "Bus") {
+				document.getElementById("busFields").style.display = "block";
+			} else if (vehicleType === "Motorcycle") {
+				document.getElementById("motorcycleFields").style.display = "block";
+			} else if (vehicleType === "SuperCar") {
+				document.getElementById("superCarFields").style.display = "block";
+			} else if (vehicleType === "Truck") {
+				document.getElementById("truckFields").style.display = "block";
+			}
+		});
+	</script>
 }

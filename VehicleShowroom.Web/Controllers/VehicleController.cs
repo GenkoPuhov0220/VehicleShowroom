@@ -9,6 +9,7 @@ using VehicleShowroom.Services.Data.Interfaces;
 namespace VehicleShowroom.Web.Controllers
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
+    using static VehicleShowroom.Common.EntityValidationMessages;
     [Authorize]
     public class VehicleController : Controller
     {
@@ -36,21 +37,18 @@ namespace VehicleShowroom.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddVehicle(AddVehicleViewModel models)
         { 
-            bool IsYearValid = DateTime
-                .TryParseExact(models.Year, YearFormating, CultureInfo.InvariantCulture, DateTimeStyles.None,
-                out DateTime yearValid);
-            
-            if (!IsYearValid)
-            {
-                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: dd/MM/yyyy");
-
-            }
             if (!ModelState.IsValid)
             {
               return View(models);
             }
 
-            await vehicleServices.AddVehicleAsync(models);
+           bool result =  await vehicleServices.AddVehicleAsync(models);
+
+            if (result == false)
+            {
+                ModelState.AddModelError(nameof(models.Year), YearMassager);
+                return View(models);
+            }
 
             return RedirectToAction(nameof(Index));
         } 

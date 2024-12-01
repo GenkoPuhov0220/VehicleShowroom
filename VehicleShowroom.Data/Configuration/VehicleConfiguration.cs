@@ -75,6 +75,7 @@ namespace VehicleShowroom.Data.Configuration
             builder
               .Property(b => b.Year)
               .IsRequired();
+
             builder
                 .HasData(this.SeedVehicle());
 

@@ -17,15 +17,14 @@ namespace VehicleShowroom.Web.Controllers
         {
             return View();
         }
+
         [Route("/StatusCodeError/{statusCode}")]
-       public IActionResult Error(int statusCode )
+        public IActionResult Error(int statusCode)
         {
-           
             if (statusCode == 404)
             {
                 return View("Error404");
             }
-           
             return View("Error500");
         }
         
