@@ -46,7 +46,7 @@ namespace VehicleShowroom.Services.Data
             };
 
             context.Vehicles.Add(vehicle);
-            //await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             switch (models.VehicleType)
             {

@@ -8,7 +8,6 @@ using VehicleShowroom.Services.Data.Interfaces;
 
 namespace VehicleShowroom.Web.Controllers
 {
-    using static VehicleShowroom.Common.EntityValidationConstants;
     using static VehicleShowroom.Common.EntityValidationMessages;
     [Authorize]
     public class VehicleController : Controller
@@ -47,7 +46,7 @@ namespace VehicleShowroom.Web.Controllers
             if (result == false)
             {
                 ModelState.AddModelError(nameof(models.Year), YearMassager);
-                return View(models);
+                return View();
             }
 
             return RedirectToAction(nameof(Index));
