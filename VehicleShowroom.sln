@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Data", "Veh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9B97D0E2-6C86-4DBD-BB21-99292D1E9C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Services.Data", "VehicleShowroom.Services.Data\VehicleShowroom.Services.Data.csproj", "{78151081-1A0C-472D-A9C7-E503FB34E99A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Services.Data", "VehicleShowroom.Services.Data\VehicleShowroom.Services.Data.csproj", "{78151081-1A0C-472D-A9C7-E503FB34E99A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Web.Models", "VehicleShowroom.Web.Models\VehicleShowroom.Web.Models.csproj", "{37F07D05-4D5E-42D0-9CA5-C8F6B4824829}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Web.Models", "VehicleShowroom.Web.Models\VehicleShowroom.Web.Models.csproj", "{37F07D05-4D5E-42D0-9CA5-C8F6B4824829}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8636201A-31A9-46D7-8190-5D76627C69D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

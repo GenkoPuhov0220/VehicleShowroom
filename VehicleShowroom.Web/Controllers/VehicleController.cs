@@ -46,7 +46,7 @@ namespace VehicleShowroom.Web.Controllers
             if (result == false)
             {
                 ModelState.AddModelError(nameof(models.Year), YearMassager);
-                return View();
+                return View(models);
             }
 
             return RedirectToAction(nameof(Index));
