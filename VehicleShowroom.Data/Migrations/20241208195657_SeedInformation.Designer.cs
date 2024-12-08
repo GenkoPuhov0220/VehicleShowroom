@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleShowroom.Data;
 
@@ -11,9 +12,11 @@ using VehicleShowroom.Data;
 namespace VehicleShowroom.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    partial class VehicleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241208195657_SeedInformation")]
+    partial class SeedInformation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -356,116 +359,6 @@ namespace VehicleShowroom.Data.Migrations
                             NumberOfDoors = 4,
                             Transmission = "Automatic",
                             VehicleId = 3
-                        },
-                        new
-                        {
-                            CarId = 4,
-                            Description = "Powerful and reliable",
-                            HorsePower = 375,
-                            IsDelete = false,
-                            Kilometers = 5000,
-                            NumberOfDoors = 4,
-                            Transmission = "Automatic",
-                            VehicleId = 10
-                        },
-                        new
-                        {
-                            CarId = 5,
-                            Description = "Spacious and efficient",
-                            HorsePower = 203,
-                            IsDelete = false,
-                            Kilometers = 25000,
-                            NumberOfDoors = 5,
-                            Transmission = "CVT",
-                            VehicleId = 11
-                        },
-                        new
-                        {
-                            CarId = 6,
-                            Description = "Luxury electric sedan",
-                            HorsePower = 1020,
-                            IsDelete = false,
-                            Kilometers = 10000,
-                            NumberOfDoors = 4,
-                            Transmission = "Automatic",
-                            VehicleId = 12
-                        },
-                        new
-                        {
-                            CarId = 7,
-                            Description = "Luxury sedan",
-                            HorsePower = 204,
-                            IsDelete = false,
-                            Kilometers = 60000,
-                            NumberOfDoors = 4,
-                            Transmission = "Automatic",
-                            VehicleId = 13
-                        },
-                        new
-                        {
-                            CarId = 8,
-                            Description = "Off-road capable",
-                            HorsePower = 285,
-                            IsDelete = false,
-                            Kilometers = 58912,
-                            NumberOfDoors = 5,
-                            Transmission = "Manual",
-                            VehicleId = 14
-                        },
-                        new
-                        {
-                            CarId = 9,
-                            Description = "Compact and efficient",
-                            HorsePower = 158,
-                            IsDelete = false,
-                            Kilometers = 30000,
-                            NumberOfDoors = 4,
-                            Transmission = "Automatic",
-                            VehicleId = 15
-                        },
-                        new
-                        {
-                            CarId = 10,
-                            Description = "Powerful sports car",
-                            HorsePower = 450,
-                            IsDelete = false,
-                            Kilometers = 5000,
-                            NumberOfDoors = 2,
-                            Transmission = "Manual",
-                            VehicleId = 16
-                        },
-                        new
-                        {
-                            CarId = 11,
-                            Description = "Stylish and fast",
-                            HorsePower = 650,
-                            IsDelete = false,
-                            Kilometers = 15000,
-                            NumberOfDoors = 2,
-                            Transmission = "Automatic",
-                            VehicleId = 17
-                        },
-                        new
-                        {
-                            CarId = 12,
-                            Description = "Reliable and affordable",
-                            HorsePower = 147,
-                            IsDelete = false,
-                            Kilometers = 20000,
-                            NumberOfDoors = 4,
-                            Transmission = "Automatic",
-                            VehicleId = 18
-                        },
-                        new
-                        {
-                            CarId = 13,
-                            Description = "Sporty and compact",
-                            HorsePower = 186,
-                            IsDelete = false,
-                            Kilometers = 10000,
-                            NumberOfDoors = 4,
-                            Transmission = "Automatic",
-                            VehicleId = 19
                         });
                 });
 
@@ -812,136 +705,6 @@ namespace VehicleShowroom.Data.Migrations
                             Price = 550000m,
                             VehicleType = "Supercar",
                             Year = new DateTime(2023, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 10,
-                            Color = "Black",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://di-uploads-pod39.dealerinspire.com/portorchardford/uploads/2016/12/18-f150.jpg",
-                            IsDelete = false,
-                            Make = "Ford",
-                            Model = "F-150",
-                            Price = 35000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2018, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 11,
-                            Color = "Blue",
-                            FuelType = "Hybrid",
-                            ImageUrl = "https://www.seegertoyota.com/static/dealer-12152/2020_Rav4_US_XLE-FWD_08W9_002.png",
-                            IsDelete = false,
-                            Make = "Toyota",
-                            Model = "RAV4",
-                            Price = 30000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2020, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 12,
-                            Color = "Red",
-                            FuelType = "Electric",
-                            ImageUrl = "https://ev-database.org/img/auto/Tesla_Model_S_2016/Tesla_Model_S_2016-01@2x.jpg",
-                            IsDelete = false,
-                            Make = "Tesla",
-                            Model = "Model S",
-                            Price = 79999m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 13,
-                            Color = "Grey",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://images.clickdealer.co.uk/vehicles/5833/5833074/large1/136953099.jpg",
-                            IsDelete = false,
-                            Make = "Audi",
-                            Model = "A6",
-                            Price = 32000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2017, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 14,
-                            Color = "Green",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://example.com/jeep-wrangler.jpg",
-                            IsDelete = false,
-                            Make = "Jeep",
-                            Model = "Wrangler",
-                            Price = 42000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 15,
-                            Color = "Blue",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://media.ed.edmunds-media.com/honda/civic/2019/oem/2019_honda_civic_sedan_si_fq_oem_1_1600.jpg",
-                            IsDelete = false,
-                            Make = "Honda",
-                            Model = "Civic",
-                            Price = 20000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2019, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 16,
-                            Color = "Yellow",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://i.redd.it/lp5hnu6nyui51.jpg",
-                            IsDelete = false,
-                            Make = "Ford",
-                            Model = "Mustang",
-                            Price = 55000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2021, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 17,
-                            Color = "Orange",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1G0QIvzNfjUC6aBI2TBa1SJsAMs9SSCDsJA&s",
-                            IsDelete = false,
-                            Make = "Chevrolet",
-                            Model = "Camaro",
-                            Price = 62000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2020, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 18,
-                            Color = "White",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://www.earnhardthyundai.com/blogs/4378/wp-content/uploads/2021/08/What-Are-the-2022-Hyundai-Elantra-N-Performance-Specs_o.jpg",
-                            IsDelete = false,
-                            Make = "Hyundai",
-                            Model = "Elantra",
-                            Price = 22000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2022, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 19,
-                            Color = "Red",
-                            FuelType = "Gasoline",
-                            ImageUrl = "https://www.carscoops.com/wp-content/uploads/2019/11/2020-Mazda3.jpg",
-                            IsDelete = false,
-                            Make = "Mazda",
-                            Model = "Mazda3",
-                            Price = 23000m,
-                            VehicleType = "Car",
-                            Year = new DateTime(2021, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

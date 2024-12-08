@@ -58,7 +58,107 @@ namespace VehicleShowroom.Data.Configuration
                     Transmission = "Automatic",
                     HorsePower = 356,
                     VehicleId = 3
-                }
+                },
+                new Car
+                {
+                    CarId = 4,
+                    Kilometers = 5000,
+                    NumberOfDoors = 4,
+                    Description = "Powerful and reliable",
+                    Transmission = "Automatic",
+                    HorsePower = 375,
+                    VehicleId = 10
+                },
+                new Car
+                {
+                    CarId = 5,
+                    Kilometers = 25000,
+                    NumberOfDoors = 5,
+                    Description = "Spacious and efficient",
+                    Transmission = "CVT",
+                    HorsePower = 203,
+                    VehicleId = 11
+                },
+                new Car
+                {
+                    CarId = 6,
+                    Kilometers = 10000,
+                    NumberOfDoors = 4,
+                    Description = "Luxury electric sedan",
+                    Transmission = "Automatic",
+                    HorsePower = 1020,
+                    VehicleId = 12
+                },
+                new Car
+                {
+                    CarId = 7,
+                    Kilometers = 60000,
+                    NumberOfDoors = 4,
+                    Description = "Luxury sedan",
+                    Transmission = "Automatic",
+                    HorsePower = 204,
+                    VehicleId = 13
+                },
+                new Car
+                {
+                    CarId = 8,
+                    Kilometers = 58912,
+                    NumberOfDoors = 5,
+                    Description = "Off-road capable",
+                    Transmission = "Manual",
+                    HorsePower = 285,
+                    VehicleId = 14
+                },
+                new Car
+                {
+                    CarId = 9,
+                    Kilometers = 30000,
+                    NumberOfDoors = 4,
+                    Description = "Compact and efficient",
+                    Transmission = "Automatic",
+                    HorsePower = 158,
+                    VehicleId = 15
+                },
+                new Car
+                {
+                    CarId = 10,
+                    Kilometers = 5000,
+                    NumberOfDoors = 2,
+                    Description = "Powerful sports car",
+                    Transmission = "Manual",
+                    HorsePower = 450,
+                    VehicleId = 16
+                },
+                new Car
+                {
+                    CarId = 11,
+                    Kilometers = 15000,
+                    NumberOfDoors = 2,
+                    Description = "Stylish and fast",
+                    Transmission = "Automatic",
+                    HorsePower = 650,
+                    VehicleId = 17
+                },
+                new Car
+                {
+                    CarId = 12,
+                    Kilometers = 20000,
+                    NumberOfDoors = 4,
+                    Description = "Reliable and affordable",
+                    Transmission = "Automatic",
+                    HorsePower = 147,
+                    VehicleId = 18
+                },
+                new Car
+                {
+                    CarId = 13,
+                    Kilometers = 10000,
+                    NumberOfDoors = 4,
+                    Description = "Sporty and compact",
+                    Transmission = "Automatic",
+                    HorsePower = 186,
+                    VehicleId = 19
+                },
             };
             return cars;
         }
