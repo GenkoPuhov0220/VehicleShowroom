@@ -7,39 +7,43 @@
 @{
     ViewData["Title"] = "Vehicle Details";
 }
-<div class="row g-0 bg-body-secondary position-relative">
-    <div class="col-md-6 mb-md-0 p-md-4">
-        <img src="@Model.ImageUrl" alt="Bus image" class="card-img-top" style="width: auto;" />
-    </div>
-    <div class="col-md-6 p-4 ps-md-0">
-        <h5 class="mt-0">Vehicle Details</h5>
-        <p>
-            <strong>Vehicle Type: </strong>@Model.VehicleType<br>
-            <strong>Make: </strong>@Model.Make<br>
-            <strong>Model: </strong>@Model.Model<br>
-            <strong>Year: </strong>@Model.Year<br>
-            <strong>Price: </strong>@Model.Price<br>
-            <strong>Color: </strong>@Model.Color<br>
-            <strong>Fuel Type: </strong>@Model.FuelType<br>
-        </p>
-        <h6>Bus Details</h6>
-        <p>
-            <strong>Capacity: </strong>@Model.Capacity<br>
-            <strong>Transmission: </strong>@Model.Transmission<br>
-            <strong>HorsePower: </strong>@Model.HorsePower<br>
-            <strong>Description: </strong>@Model.Description
-        </p>
-        <div>
-            <a asp-action="Index" class="btn btn-primary me-2">Back</a>
-            <form asp-controller="FavoritesVehicle" asp-action="AddToFavorite" method="post" class="d-inline">
-                <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
-                <button type="submit" class="btn btn-warning">Add To Favorite</button>
+<div class="container py-4">
+    <div class="row g-4">
+        <div class="col-12 col-md-6 d-flex justify-content-center">
+            <img src="@Model.ImageUrl" alt="Bus image" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;" />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <h5 class="mb-4">Vehicle Details</h5>
+            <p>
+                <strong>Vehicle Type: </strong>@Model.VehicleType<br>
+                <strong>Make: </strong>@Model.Make<br>
+                <strong>Model: </strong>@Model.Model<br>
+                <strong>Year: </strong>@Model.Year<br>
+                <strong>Price: </strong>@Model.Price<br>
+                <strong>Color: </strong>@Model.Color<br>
+                <strong>Fuel Type: </strong>@Model.FuelType<br>
+            </p>
+            <h6>Bus Details</h6>
+            <p>
+                <strong>Capacity: </strong>@Model.Capacity<br>
+                <strong>Transmission: </strong>@Model.Transmission<br>
+                <strong>HorsePower: </strong>@Model.HorsePower<br>
+                <strong>Description: </strong>@Model.Description
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-action="Index" class="btn btn-primary">Back</a>
+                <form asp-controller="FavoritesVehicle" asp-action="AddToFavorite" method="post" class="d-inline">
+                    <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
+                    <button type="submit" class="btn btn-warning">Add To Favorite</button>
+                </form>
                 @if (User.IsInRole("Admin"))
+
                 {
-                     <a asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn btn-primary">Edit Vehicle</a>
-                    <a asp-action="Delete" asp-route-id="@Model.VehicleId" class="btn btn-secondary">Delete vehicle</a>
+                    <a asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn btn-success">Edit Vehicle</a>
+                    <a asp-action="Delete" asp-route-id="@Model.VehicleId" class="btn btn-danger">Delete Vehicle</a>
                 }
-            </form>
+            </div>
         </div>
     </div>
 </div>
