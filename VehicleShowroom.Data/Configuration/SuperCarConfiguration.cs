@@ -27,9 +27,7 @@ namespace VehicleShowroom.Data.Configuration
                .Property(c => c.Weight)
                .IsRequired()
                .HasMaxLength(SuperCarWeightMaxLenght);
-            //builder
-              //  .Property(v => v.IsDelete)
-               // .HasDefaultValue(false);
+            
             builder
                 .HasData(this.SeedSuperCar());
         }
@@ -72,7 +70,79 @@ namespace VehicleShowroom.Data.Configuration
                    MaxSpeed = "355",
                    Weight = "1575",
                    VehicleId = 9
-                }
+                },
+                new SuperCar
+                {
+                    SuperCarId = 4,
+                    Kilometers = 3000,
+                    NumberOfDoors = 2,
+                    Description = "The Huracán EVO features a naturally aspirated 5.2 L V10 engine producing 640 hp and 600 Nm of torque.",
+                    Transmission = "7-Speed Automatic",
+                    HorsePower = 640,
+                    MaxSpeed = "325",
+                    Weight = "1382",
+                    VehicleId = 20
+                },
+                new SuperCar
+                {
+                    SuperCarId = 5,
+                    Kilometers = 500,
+                    NumberOfDoors = 2,
+                    Description = "The Bugatti Chiron boasts an 8.0 L quad-turbocharged W16 engine with 1,479 hp and 1,600 Nm of torque.",
+                    Transmission = "7-Speed Dual-Clutch",
+                    HorsePower = 1479,
+                    MaxSpeed = "420",
+                    Weight = "1995",
+                    VehicleId = 21
+                },
+                new SuperCar
+                {
+                    SuperCarId = 6,
+                    Kilometers = 12000,
+                    NumberOfDoors = 2,
+                    Description = "Powered by a 4.0 L twin-turbocharged V8 engine, the McLaren 720S produces 710 hp and 770 Nm of torque.",
+                    Transmission = "7-Speed Dual-Clutch",
+                    HorsePower = 710,
+                    MaxSpeed = "341",
+                    Weight = "1283",
+                    VehicleId = 22
+                },
+                new SuperCar
+                {
+                    SuperCarId = 7,
+                    Kilometers = 8000,
+                    NumberOfDoors = 2,
+                    Description = "The 911 Turbo S comes with a 3.8 L twin-turbocharged flat-six engine, producing 640 hp and 800 Nm of torque.",
+                    Transmission = "8-Speed PDK",
+                    HorsePower = 640,
+                    MaxSpeed = "330",
+                    Weight = "1640",
+                    VehicleId = 23
+                },
+                new SuperCar
+                {
+                    SuperCarId = 8,
+                    Kilometers = 1000,
+                    NumberOfDoors = 2,
+                    Description = "The Valkyrie has a 6.5 L naturally aspirated V12 engine paired with an electric motor, producing a combined output of 1160 hp.",
+                    Transmission = "7-Speed Single Clutch",
+                    HorsePower = 1160,
+                    MaxSpeed = "402",
+                    Weight = "1130",
+                    VehicleId = 24
+                },
+                new SuperCar
+                {
+                    SuperCarId = 9,
+                    Kilometers = 200,
+                    NumberOfDoors = 2,
+                    Description = "The Jesko Absolut is powered by a 5.0 L twin-turbocharged V8 engine producing 1600 hp with E85 fuel.",
+                    Transmission = "9-Speed Koenigsegg Light Speed Transmission",
+                    HorsePower = 1600,
+                    MaxSpeed = "483",
+                    Weight = "1320",
+                    VehicleId = 25
+                },
             };
             return superCars;
         }

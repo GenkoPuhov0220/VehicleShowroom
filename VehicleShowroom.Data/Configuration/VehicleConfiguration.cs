@@ -313,6 +313,79 @@ namespace VehicleShowroom.Data.Configuration
                      FuelType = "Gasoline",
                      ImageUrl = "https://www.carscoops.com/wp-content/uploads/2019/11/2020-Mazda3.jpg"
                   },
+                  new Vehicle
+                  {
+                     VehicleId = 20,
+                     VehicleType = "Supercar",
+                     Make = "Lamborghini",
+                     Model = "Huracán EVO",
+                     Year = new DateTime(2023, 4, 15),
+                     Price = 260000,
+                     Color = "Verde Mantis",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://www.ilusso.com/imagetag/3092/main/l/Used-2023-Lamborghini-Huracan-EVO-Spyder-1712261384.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 21,
+                     VehicleType = "Supercar",
+                     Make = "Bugatti",
+                     Model = "Chiron",
+                     Year = new DateTime(2021, 12, 25),
+                     Price = 3000000,
+                     Color = "Blue/Black",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://news.dupontregistry.com/wp-content/uploads/2023/08/download---2023-07-26t155244.828-scaled.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 22,
+                     VehicleType = "Supercar",
+                     Make = "McLaren",
+                     Model = "720S",
+                     Year = new DateTime(2022, 6, 18),
+                     Price = 310000,
+                     Color = "Aurora Blue",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://www.alastairbols.com/wp-content/uploads/2020/03/McLaren-720S-Performance-Aurora-Blue-for-sale-18-of-33.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 23,
+                     VehicleType = "Supercar",
+                     Make = "Porsche",
+                     Model = "911 Turbo S",
+                     Year = new DateTime(2023, 1, 5),
+                     Price = 230000,
+                     Color = "Jet Black Metallic",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://vehicle-images.dealerinspire.com/8b2a-210007648/WP0AD2A99PS259634/450d491619af6ccbc6f3ad2e0f1a647e.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 24,
+                     VehicleType = "Supercar",
+                     Make = "Aston Martin",
+                     Model = "Valkyrie",
+                     Year = new DateTime(2023, 2, 12),
+                     Price = 3000000,
+                     Color = "British Racing Green",
+                     FuelType = "Hybrid",
+                     ImageUrl = "https://www.astonmartin.com/-/media/aston-martin/images/default-source/models/valkyrie/valkyrie-retouched-nov21.jpg?mw=1920&rev=1e80dbb7953e4852bce3dfc43db4f69a&hash=2C97098139E6221C651689CFD85A296E"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 25,
+                     VehicleType = "Supercar",
+                     Make = "Koenigsegg",
+                     Model = "Jesko Absolut",
+                     Year = new DateTime(2022, 8, 22),
+                     Price = 3500000,
+                     Color = "Gunpowder Grey",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://imodels.com.pl/wp-content/uploads/2023/11/9207180cb86955e787bd27e64fe07933-scaled.jpg"
+                  },
+
             };
 
             return vehicles;
