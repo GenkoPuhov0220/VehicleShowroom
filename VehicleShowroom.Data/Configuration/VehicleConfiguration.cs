@@ -385,7 +385,126 @@ namespace VehicleShowroom.Data.Configuration
                      FuelType = "Petrol",
                      ImageUrl = "https://imodels.com.pl/wp-content/uploads/2023/11/9207180cb86955e787bd27e64fe07933-scaled.jpg"
                   },
-
+                  new Vehicle
+                  {
+                     VehicleId = 26,
+                     VehicleType = "Motorcycle",
+                     Make = "Yamaha",
+                     Model = "MT-07",
+                     Year = new DateTime(2023, 1, 15),
+                     Price = 7800,
+                     Color = "Blue",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/94/0D/940D9D71-4E7E-4D5B-8D0A-6453F832FCED.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 27,
+                     VehicleType = "Motorcycle",
+                     Make = "Kawasaki",
+                     Model = "Ninja ZX-10R",
+                     Year = new DateTime(2021, 5, 20),
+                     Price = 15000,
+                     Color = "Green",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://imotorbike-wp-media.s3.ap-southeast-1.amazonaws.com/2020/11/2021-Kawasaki-Ninja-ZX-10RR-2-1-1000x600.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 28,
+                     VehicleType = "Motorcycle",
+                     Make = "Suzuki",
+                     Model = "GSX-R750",
+                     Year = new DateTime(2022, 3, 10),
+                     Price = 12500,
+                     Color = "Red",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://suzukicycles.com/-/media/project/cycles/images/products/motorcycles/gsx-r750/2022/promo/2022_gsx-r750_header_2500x1227.jpg?mw=2560&w=2560&hash=4F73518A00243A0350150515346531DA"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 29,
+                     VehicleType = "Motorcycle",
+                     Make = "Ducati",
+                     Model = "Panigale V2",
+                     Year = new DateTime(2023, 7, 5),
+                     Price = 18000,
+                     Color = "White",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://images.ctfassets.net/o6sr41tx16eu/7M52Hm6hoBznVK87muKiTM/646a09e80cd8dbd7c6b60a4228a46d10/DUCATI_PANIGALE_V2__2__UC173828_High_1920x960.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 30,
+                     VehicleType = "Motorcycle",
+                     Make = "BMW",
+                     Model = "S1000RR",
+                     Year = new DateTime(2021, 11, 18),
+                     Price = 19000,
+                     Color = "Black",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://img.gta5-mods.com/q95/images/bmw-s1000rr-2021-black-livery/eb828f-bmws1000rr1-compressed.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 31,
+                     VehicleType = "Motorcycle",
+                     Make = "Harley-Davidson",
+                     Model = "Sportster S",
+                     Year = new DateTime(2022, 8, 12),
+                     Price = 15000,
+                     Color = "Orange",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://ricks-motorcycles.com/wp-content/uploads/2021/11/Harley-Davidson-Sportster-S-Ricks-Custombike-002.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 32,
+                     VehicleType = "Motorcycle",
+                     Make = "Triumph",
+                     Model = "Street Triple",
+                     Year = new DateTime(2023, 4, 22),
+                     Price = 12000,
+                     Color = "Silver",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://cdn.dealerwebs.co.uk/uploads/images/triumph/2023/street-triple-765-r/street-triple-r-f-2.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 33,
+                     VehicleType = "Motorcycle",
+                     Make = "KTM",
+                     Model = "Duke 890",
+                     Year = new DateTime(2022, 6, 30),
+                     Price = 11000,
+                     Color = "Orange",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://press.ktm.com/Content/598149/26736ab1-8a7c-450c-8339-26e87cad5364/1200/2400/.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 34,
+                     VehicleType = "Motorcycle",
+                     Make = "Honda",
+                     Model = "CBR600RR",
+                     Year = new DateTime(2021, 9, 15),
+                     Price = 14000,
+                     Color = "Red",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://riders.drivemag.com/wp-content/uploads/2020/08/2021-Honda-CBR600RR-production-form-01.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 35,
+                     VehicleType = "Motorcycle",
+                     Make = "Aprilia",
+                     Model = "RS 660",
+                     Year = new DateTime(2023, 2, 10),
+                     Price = 13500,
+                     Color = "Blue",
+                     FuelType = "Petrol",
+                     ImageUrl = "https://www.philharmonicmoto.com/wp-content/uploads/2024/11/01-Aprilia_RS-660_Blue-Marlin-600x450.jpg"
+                  }
             };
 
             return vehicles;
