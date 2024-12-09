@@ -9,7 +9,7 @@ using VehicleShowroom.Web;
 
 namespace VehicleShowroom.Web.Controllers
 {
-    using static VehicleShowroom.Common.EntityValidationConstants;
+    using static VehicleShowroom.Common.EntityValidationMessages;
     [Authorize]
     public class CarController : Controller
     {
@@ -56,25 +56,18 @@ namespace VehicleShowroom.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(CarEditViewModel models)
         {
-            bool IsYearValid = DateTime
-               .TryParseExact(models.Year, YearFormating, CultureInfo.InvariantCulture, DateTimeStyles.None,
-               out DateTime yearValid);
-
-            if (!IsYearValid)
-            {
-                ModelState.AddModelError(nameof(models.Year), "The Year must be in the following format: dd/MM/yyyy");
-
-            }
             if (!ModelState.IsValid)
             {
                 return View(models);
             }
 
-            var car = await carServices.EditCarAsync(models);
-            if (car == null)
+            bool car = await carServices.EditCarAsync(models);
+            if (car == false)
             {
-                return NotFound();
+                ModelState.AddModelError(nameof(models.Year), YearMassager);
+                return View(models);
             }
+
             return RedirectToAction("Index");
         }
 
@@ -94,8 +87,9 @@ namespace VehicleShowroom.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmedDelete( int id)
         {
-            var vehicle = await carServices.ConfirmDeleteAsync(id);
-            if (vehicle == null)
+            bool vehicle = await carServices.ConfirmDeleteAsync(id);
+
+            if (vehicle == false)
             {
                 return NotFound();
             }

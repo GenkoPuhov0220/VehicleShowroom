@@ -108,8 +108,7 @@ namespace VehicleShowroom.Services.Data
 
             if (!IsYearValid)
             {
-                throw new ArgumentException("The Year must be in the following format: dd/MM/yyyy", nameof(models.Year));
-
+                return false;
             }
 
             var superCar = await context

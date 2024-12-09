@@ -80,7 +80,7 @@ namespace VehicleShowroom.Services.Data
 
                })
                 .FirstOrDefaultAsync();
-            
+           
             return vehicle;
         }
         public async Task<bool> EditMotorcycleAsync(MotorcycleEditViewModel models)
@@ -91,13 +91,15 @@ namespace VehicleShowroom.Services.Data
 
             if (!IsYearValid)
             {
-                throw new ArgumentException("The Year must be in the following format: dd/MM/yyyy", nameof(models.Year));
+                return false;
             }
+
             var motorcycle = await context
                .Motorcycles
                .Include(c => c.Vehicle)
                .Where(c => c.IsDelete == false)
                .FirstOrDefaultAsync(c => c.MotorcycleId == models.MotorcycleId);
+
             if (motorcycle == null)
             {
                 return false;
