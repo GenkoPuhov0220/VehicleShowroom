@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleShowroom.Data;
 
@@ -11,9 +12,11 @@ using VehicleShowroom.Data;
 namespace VehicleShowroom.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    partial class VehicleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241209113348_SeedBus")]
+    partial class SeedBus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -848,105 +851,6 @@ namespace VehicleShowroom.Data.Migrations
                             IsDelete = false,
                             Transmission = "Automatic",
                             TruckId = 1
-                        },
-                        new
-                        {
-                            VehicleId = 42,
-                            CargoCapacity = 14000,
-                            Description = "Efficient hauler",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 750,
-                            IsDelete = false,
-                            Transmission = "Manual",
-                            TruckId = 2
-                        },
-                        new
-                        {
-                            VehicleId = 43,
-                            CargoCapacity = 13000,
-                            Description = "Heavy-duty performer",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 700,
-                            IsDelete = false,
-                            Transmission = "Automatic",
-                            TruckId = 3
-                        },
-                        new
-                        {
-                            VehicleId = 44,
-                            CargoCapacity = 15000,
-                            Description = "Long-haul specialist",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 800,
-                            IsDelete = false,
-                            Transmission = "Automatic",
-                            TruckId = 4
-                        },
-                        new
-                        {
-                            VehicleId = 45,
-                            CargoCapacity = 16000,
-                            Description = "Reliable and powerful",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 850,
-                            IsDelete = false,
-                            Transmission = "Manual",
-                            TruckId = 5
-                        },
-                        new
-                        {
-                            VehicleId = 46,
-                            CargoCapacity = 14000,
-                            Description = "Modern and efficient",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 780,
-                            IsDelete = false,
-                            Transmission = "Automatic",
-                            TruckId = 6
-                        },
-                        new
-                        {
-                            VehicleId = 47,
-                            CargoCapacity = 12500,
-                            Description = "Durable and agile",
-                            EuroNumber = "Euro 5",
-                            HorsePower = 690,
-                            IsDelete = false,
-                            Transmission = "Manual",
-                            TruckId = 7
-                        },
-                        new
-                        {
-                            VehicleId = 48,
-                            CargoCapacity = 13500,
-                            Description = "Cost-effective",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 720,
-                            IsDelete = false,
-                            Transmission = "Automatic",
-                            TruckId = 8
-                        },
-                        new
-                        {
-                            VehicleId = 49,
-                            CargoCapacity = 14500,
-                            Description = "High-performance",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 760,
-                            IsDelete = false,
-                            Transmission = "Manual",
-                            TruckId = 9
-                        },
-                        new
-                        {
-                            VehicleId = 50,
-                            CargoCapacity = 15500,
-                            Description = "Future-ready",
-                            EuroNumber = "Euro 6",
-                            HorsePower = 810,
-                            IsDelete = false,
-                            Transmission = "Automatic",
-                            TruckId = 10
                         });
                 });
 
@@ -1535,123 +1439,6 @@ namespace VehicleShowroom.Data.Migrations
                             Price = 220000m,
                             VehicleType = "Bus",
                             Year = new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 42,
-                            Color = "White",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://cdn.truckscout24.com/data/listing/img/hdv/ts/18/68/17618278-01.jpg?v=1730896061",
-                            IsDelete = false,
-                            Make = "Volvo",
-                            Model = "FH16",
-                            Price = 220000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 43,
-                            Color = "Blue",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://img.youtube.com/vi/BMjpiXe9MEY/sddefault.jpg",
-                            IsDelete = false,
-                            Make = "Scania",
-                            Model = "R500",
-                            Price = 210000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2019, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 44,
-                            Color = "Silver",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://www.modelsnavigator.com/buxus/images/fotogaleria/modelsnavigator.com/katalog_produktov/modely_uzitkovych_vozidiel/modely_kamionov/mercedes-benz_actros_mp4_strieborna_farba/TR124.22.jpg",
-                            IsDelete = false,
-                            Make = "Mercedes",
-                            Model = "Actros",
-                            Price = 230000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2020, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 45,
-                            Color = "Red",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://www.truckpages.co.uk/wp-content/uploads/2024/08/29/1a0034d8d5.jpg.webp",
-                            IsDelete = false,
-                            Make = "DAF",
-                            Model = "XF",
-                            Price = 240000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 46,
-                            Color = "Black",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://cdn.webshopapp.com/shops/76444/files/418915046/650x650x2/solarguard-onderspoiler-iveco-s-way.jpg",
-                            IsDelete = false,
-                            Make = "Iveco",
-                            Model = "S-Way",
-                            Price = 250000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2022, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 47,
-                            Color = "Green",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://d29qvoplt93a6w.cloudfront.net/efs/wp/domains/www.exceltruckgroup.com/wp-content/uploads/2022/11/1667569543479.jpg",
-                            IsDelete = false,
-                            Make = "Kenworth",
-                            Model = "T680",
-                            Price = 200000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2017, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 48,
-                            Color = "Yellow",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://static.truckmarket.com/wp-content/uploads/trucks/129413/2018-peterbilt-579-daycab-472914-23.jpg",
-                            IsDelete = false,
-                            Make = "Peterbilt",
-                            Model = "579",
-                            Price = 205000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2018, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 49,
-                            Color = "Brown",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://www.macktrucks.com/mack-news/2019/media_13ab286fb6f1e4155c5f435b46c86e439cd34075f.png?width=1200&format=pjpg&optimize=medium",
-                            IsDelete = false,
-                            Make = "Mack",
-                            Model = "Anthem",
-                            Price = 215000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2019, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            VehicleId = 50,
-                            Color = "Purple",
-                            FuelType = "Diesel",
-                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLN308QJPQH7M4ymPQ2SCWu8MFjnAIAwI_Aw&s",
-                            IsDelete = false,
-                            Make = "Freightliner",
-                            Model = "Cascadia",
-                            Price = 225000m,
-                            VehicleType = "Truck",
-                            Year = new DateTime(2020, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

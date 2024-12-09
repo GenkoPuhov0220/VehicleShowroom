@@ -504,7 +504,188 @@ namespace VehicleShowroom.Data.Configuration
                      Color = "Blue",
                      FuelType = "Petrol",
                      ImageUrl = "https://www.philharmonicmoto.com/wp-content/uploads/2024/11/01-Aprilia_RS-660_Blue-Marlin-600x450.jpg"
-                  }
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 36,
+                     VehicleType = "Bus",
+                     Make = "Volvo",
+                     Model = "9900 DD",
+                     Year = new DateTime(2022, 9, 10),
+                     Price = 198222,
+                     Color = "Brown",
+                     FuelType = "Diesel",
+                     ImageUrl = "https://www.volvobuses.com/content/dam/volvo-buses/markets/master/coaches/complete-coaches/volvo-9900/2326x800-volvo-9900-CGI.jpg"
+                  },
+                  new Vehicle
+                  {
+                      VehicleId = 37,
+                      VehicleType = "Bus",
+                      Make = "Mercedes-Benz",
+                      Model = "Tourismo",
+                      Year = new DateTime(2021, 6, 12),
+                      Price = 210000,
+                      Color = "White",
+                      FuelType = "Diesel",
+                      ImageUrl = "https://www.route-one.net/wp-content/uploads/2021/07/MB-Tourismo-Access-test-drive-1.jpg"
+                  },
+                  new Vehicle
+                  {
+                        VehicleId = 38,
+                        VehicleType = "Bus",
+                        Make = "Scania",
+                        Model = "Interlink HD",
+                        Year = new DateTime(2023, 5, 20),
+                        Price = 195000,
+                        Color = "Blue",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://apecauto.com/images/seo/model/scania/interlink.png"
+                    },
+                  new Vehicle
+                    {
+                        VehicleId = 39,
+                        VehicleType = "Bus",
+                        Make = "MAN",
+                        Model = "Lion's Coach",
+                        Year = new DateTime(2022, 3, 25),
+                        Price = 205000,
+                        Color = "Silver",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://man.com.ge/storage/213/conversions/man-bus-lions-coach-technical-data-stage-16-9_width_800_height_450-webp.webp"
+                    },
+                  new Vehicle
+                    {
+                        VehicleId = 40,
+                        VehicleType = "Bus",
+                        Make = "Iveco",
+                        Model = "Crossway",
+                        Year = new DateTime(2021, 7, 15),
+                        Price = 175000,
+                        Color = "Yellow",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://www.truck1.eu/img/auto/fullview/9831/9831_8025162586282.jpg"
+                    },
+                  new Vehicle
+                  {
+                     VehicleId = 41,
+                     VehicleType = "Bus",
+                     Make = "Setra",
+                     Model = "S 531 DT",
+                     Year = new DateTime(2023, 9, 10),
+                     Price = 220000,
+                     Color = "Red",
+                     FuelType = "Diesel",
+                     ImageUrl = "https://p.turbosquid.com/ts-thumb/xu/9lCBc6/qWUpWEQM/setra_s_531_dt_tourist_bus_0006_02_2560x1440/jpg/1557836774/1920x1080/fit_q87/a84af1ae08057a519cbe2f1bce71f7ea2523dafa/setra_s_531_dt_tourist_bus_0006_02_2560x1440.jpg"
+                  },
+                  new Vehicle
+                  {
+                     VehicleId = 42,
+                     VehicleType = "Truck",
+                     Make = "Volvo",
+                     Model = "FH16",
+                     Year = new DateTime(2018, 5, 14),
+                     Price = 220000,
+                     Color = "White",
+                     FuelType = "Diesel",
+                     ImageUrl = "https://cdn.truckscout24.com/data/listing/img/hdv/ts/18/68/17618278-01.jpg?v=1730896061"
+                  },
+                  new Vehicle
+                  {
+                        VehicleId = 43,
+                        VehicleType = "Truck",
+                        Make = "Scania",
+                        Model = "R500",
+                        Year = new DateTime(2019, 3, 19),
+                        Price = 210000,
+                        Color = "Blue",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://img.youtube.com/vi/BMjpiXe9MEY/sddefault.jpg"
+                  },
+                  new Vehicle
+                  {
+                        VehicleId = 44,
+                        VehicleType = "Truck",
+                        Make = "Mercedes",
+                        Model = "Actros",
+                        Year = new DateTime(2020, 7, 22),
+                        Price = 230000,
+                        Color = "Silver",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://www.modelsnavigator.com/buxus/images/fotogaleria/modelsnavigator.com/katalog_produktov/modely_uzitkovych_vozidiel/modely_kamionov/mercedes-benz_actros_mp4_strieborna_farba/TR124.22.jpg"
+                  },
+                    new Vehicle
+                    {
+                        VehicleId = 45,
+                        VehicleType = "Truck",
+                        Make = "DAF",
+                        Model = "XF",
+                        Year = new DateTime(2021, 1, 15),
+                        Price = 240000,
+                        Color = "Red",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://www.truckpages.co.uk/wp-content/uploads/2024/08/29/1a0034d8d5.jpg.webp"
+                    },
+                    new Vehicle
+                    {
+                        VehicleId = 46,
+                        VehicleType = "Truck",
+                        Make = "Iveco",
+                        Model = "S-Way",
+                        Year = new DateTime(2022, 6, 10),
+                        Price = 250000,
+                        Color = "Black",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://cdn.webshopapp.com/shops/76444/files/418915046/650x650x2/solarguard-onderspoiler-iveco-s-way.jpg"
+                    },
+                    new Vehicle
+                    {
+                        VehicleId = 47,
+                        VehicleType = "Truck",
+                        Make = "Kenworth",
+                        Model = "T680",
+                        Year = new DateTime(2017, 4, 18),
+                        Price = 200000,
+                        Color = "Green",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://d29qvoplt93a6w.cloudfront.net/efs/wp/domains/www.exceltruckgroup.com/wp-content/uploads/2022/11/1667569543479.jpg"
+                    },
+                    new Vehicle
+                    {
+                        VehicleId = 48,
+                        VehicleType = "Truck",
+                        Make = "Peterbilt",
+                        Model = "579",
+                        Year = new DateTime(2018, 2, 20),
+                        Price = 205000,
+                        Color = "Yellow",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://static.truckmarket.com/wp-content/uploads/trucks/129413/2018-peterbilt-579-daycab-472914-23.jpg"
+                    },
+                    new Vehicle
+                    {
+                        VehicleId = 49,
+                        VehicleType = "Truck",
+                        Make = "Mack",
+                        Model = "Anthem",
+                        Year = new DateTime(2019, 11, 25),
+                        Price = 215000,
+                        Color = "Brown",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://www.macktrucks.com/mack-news/2019/media_13ab286fb6f1e4155c5f435b46c86e439cd34075f.png?width=1200&format=pjpg&optimize=medium"
+                    },
+                    new Vehicle
+                    {
+                        VehicleId = 50,
+                        VehicleType = "Truck",
+                        Make = "Freightliner",
+                        Model = "Cascadia",
+                        Year = new DateTime(2020, 8, 30),
+                        Price = 225000,
+                        Color = "Purple",
+                        FuelType = "Diesel",
+                        ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLN308QJPQH7M4ymPQ2SCWu8MFjnAIAwI_Aw&s"
+                    }
+
             };
 
             return vehicles;
