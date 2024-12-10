@@ -24,7 +24,6 @@ namespace VehicleShowroom.Web
             builder.Services
                 .AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
-
                     ConfigureIdentity(builder, options);
                 })
                 .AddRoles<IdentityRole>()

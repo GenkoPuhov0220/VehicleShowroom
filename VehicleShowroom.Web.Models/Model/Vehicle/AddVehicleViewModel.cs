@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using static VehicleShowroom.Common.EntityValidationConstants;
 using static VehicleShowroom.Common.EntityValidationMessages;
 namespace VehicleShowroom.Web
@@ -24,6 +25,7 @@ namespace VehicleShowroom.Web
         public  string Model { get; set; } = null!;
 
         [Required(ErrorMessage = YearMassager)]
+        [RegexStringValidator(@"^\d{2}-\d{2}-\d{4}$")]
         public  string Year { get; set; } = null!;
 
         [Required(ErrorMessage = VehiclePriceMessages)]
