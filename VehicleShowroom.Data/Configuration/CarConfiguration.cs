@@ -19,9 +19,7 @@ namespace VehicleShowroom.Data.Configuration
                 .Property(c => c.Transmission)
                 .IsRequired()
                 .HasMaxLength(CarTransmissionMaxLenght);
-            //builder
-              //   .Property(v => v.IsDelete)
-              //   .HasDefaultValue(false);
+            
             builder
                 .HasData(this.SeedCar());
         }

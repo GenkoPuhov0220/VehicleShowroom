@@ -10,7 +10,7 @@ using VehicleShowroom.Web;
 namespace VehicleShowroom.Services.Tests
 {
     [TestFixture]
-    public class Tests
+    public class VehicleServicesTests
     {
         private Mock<VehicleDbContext> mockDbContext;
         private VehicleServices vehicleServices;
