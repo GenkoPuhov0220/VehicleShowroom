@@ -18,12 +18,14 @@ namespace VehicleShowroom.Web.Controllers
             
             vehicleServices = _vehicleServices;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
+            int pageSize = 9;
+
             var AllVehicle = await vehicleServices
                 .IndexGetAllAsync();
                
-            return  View(AllVehicle);
+            return View(PaginatedList<Vehicle>.Create(AllVehicle, pageNumber ?? 1, pageSize) );
            
         }
         [Authorize(Roles = "Admin")]

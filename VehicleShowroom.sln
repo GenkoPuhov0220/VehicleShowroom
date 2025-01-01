@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Web.Models"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8636201A-31A9-46D7-8190-5D76627C69D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleShowroom.Services.Tests", "VehicleShowroom.Services.Tests\VehicleShowroom.Services.Tests.csproj", "{1658A215-38DF-4D6A-B886-1A759A17DBE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleShowroom.Services.Tests", "VehicleShowroom.Services.Tests\VehicleShowroom.Services.Tests.csproj", "{1658A215-38DF-4D6A-B886-1A759A17DBE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

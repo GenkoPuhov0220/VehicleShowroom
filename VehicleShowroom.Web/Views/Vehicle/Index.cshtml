@@ -3,8 +3,7 @@
 @using VehicleShowroom.Data.Models
 @inject SignInManager<ApplicationUser> SingInManager
 @inject UserManager<ApplicationUser> UserManager
-@model IEnumerable<Vehicle>
-
+@model PaginatedList<Vehicle>
 @{
     ViewData["Title"] = "Vehicle List";
 }
@@ -39,5 +38,18 @@
             </div>
         }
     </div>
-    
+</div>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<div class="buttons text-center">
+<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" 
+   class="btn btn-outline-primary @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" 
+   class="btn btn-outline-primary @nextDisabled">
+    Next
+</a>
 </div>
