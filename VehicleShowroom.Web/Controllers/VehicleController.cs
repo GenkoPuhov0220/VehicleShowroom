@@ -18,13 +18,17 @@ namespace VehicleShowroom.Web.Controllers
             
             vehicleServices = _vehicleServices;
         }
-        public async Task<IActionResult> Index(int? pageNumber)
+        public async Task<IActionResult> Index(int? pageNumber, string searchString)
         {
             int pageSize = 9;
 
             var AllVehicle = await vehicleServices
                 .IndexGetAllAsync();
-               
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                AllVehicle = AllVehicle
+                    .Where(a => a.Make.ToLower().Contains(searchString.ToLower())).ToList();
+            }
             return View(PaginatedList<Vehicle>.Create(AllVehicle, pageNumber ?? 1, pageSize) );
            
         }
