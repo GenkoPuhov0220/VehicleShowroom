@@ -1,44 +1,54 @@
 ﻿@using static VehicleShowroom.Common.EntityValidationConstants
-
-@model  IEnumerable<ApplicationUserFavoriteList>
+@model IEnumerable<ApplicationUserFavoriteList>
 
 @{
-    ViewData["Title"] = "Favorite";
+    ViewData["Title"] = "My Favorites";
 }
-<div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
-    <h1>All vehicle in your favorite list </h1>
-</div>
 
-<div class="container">
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">My Favorite Vehicles</h1>
+
     <div class="row">
         @foreach (var vehicle in Model)
         {
-            <div class="card mb-3" style="max-width: auto;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2" style="width: 600px;" />
-                    </div>
-                    <div class="col-md-8">
-                        <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
-                        <div class="card-body">
-                            <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
+            <div class="col-md-6 mb-4">
+                <div class="card favorite-card h-100 shadow-sm">
+                    <img src="@vehicle.ImageUrl"
+                         class="card-img-top favorite-img"
+                         alt="Vehicle image">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-success">
+                            @vehicle.Make @vehicle.Model
+                        </h5>
+
+                        <p class="card-text">
                             <strong>Type:</strong> @vehicle.VehicleType<br />
                             <strong>Year:</strong> @vehicle.Year<br />
                             <strong>Price:</strong> @vehicle.Price<br />
                             <strong>Color:</strong> @vehicle.Color<br />
-                            <strong>Fuel Type:</strong> @vehicle.FuelType<br />
-                        </div>
-                        <div>
-                            <form asp-controller="FavoritesVehicle" asp-action="RemoveFromFavorite" method="post" class="d-inline">
-                                <input type="hidden" name="vehicleId" value="@vehicle.VehicleId" />
-                                <button type="submit" class="btn btn-warning">Remove Vehicle</button>
-                            </form>
-                            <a asp-controller ="Car" asp-action="Index" class="btn btn-primary me-2">Back</a>
-                        </div>
+                            <strong>Fuel Type:</strong> @vehicle.FuelType
+                        </p>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between bg-transparent border-0">
+                        <form asp-controller="FavoritesVehicle"
+                              asp-action="RemoveFromFavorite"
+                              method="post">
+                            <input type="hidden" name="vehicleId" value="@vehicle.VehicleId" />
+                            <button type="submit" class="btn btn-outline-danger">
+                                Remove
+                            </button>
+                        </form>
+
+                        <a asp-controller="Car"
+                           asp-action="Index"
+                           class="btn btn-outline-success">
+                            Back
+                        </a>
                     </div>
                 </div>
             </div>
         }
     </div>
-
 </div>

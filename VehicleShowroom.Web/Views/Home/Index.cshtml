@@ -2,83 +2,101 @@
     ViewData["Title"] = "Vehicle Showroom";
 }
 
-<div class="container-fluid bg-light text-dark py-5 text-center">
-    <h1>Welcome to Our Vehicle Showroom</h1>
-    <p class="lead">Find your dream vehicle with us today!</p>
+<!-- HERO SECTION -->
+<div class="hero-section text-center">
+    <div class="container py-5">
+        <h1 class="display-4 fw-bold text-success">Vehicle Showroom</h1>
+        <p class="lead text-light">Power. Style. Performance.</p>
+    </div>
 </div>
 
+<!-- CAROUSEL -->
 <div class="container my-5 carousel-container">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
         <div class="carousel-indicators">
             @for (int i = 0; i < 5; i++)
             {
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")" aria-current="true" aria-label="Slide @(i + 1)"></button>
+                <button type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide-to="@i"
+                        class="@(i == 0 ? "active" : "")"></button>
             }
         </div>
+
         <div class="carousel-inner">
             @{
-                var images = new List<string> {
-            "https://bmw-mcar.bg/files/slider/gkl-slider-1680x756.jpg?c9ae40fd51",
-            "https://www.valgardena.it/fileadmin/files/_processed_/6/c/csm_Anreise_mit_dem_Bus_1b557ef1cb.jpg",
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9yDNnrCk1zDxhqIXyqrqAossHfsh9hi5DuQ&s",
-            "https://f1rst-motors.s3.me-central-1.amazonaws.com/cars/1714771477000-7_af30cb62ef.jpg",
-            "https://www.daimlertruck.com/fileadmin/_processed_/3/d/csm_Motiv2_240327_2_LoRes_1fa62eec2b.jpg"
-            };
+                var images = new List<string>
+                        {
+                        "https://bmw-mcar.bg/files/slider/gkl-slider-1680x756.jpg?c9ae40fd51",
+                        "https://www.valgardena.it/fileadmin/files/_processed_/6/c/csm_Anreise_mit_dem_Bus_1b557ef1cb.jpg",
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9yDNnrCk1zDxhqIXyqrqAossHfsh9hi5DuQ&s",
+                        "https://f1rst-motors.s3.me-central-1.amazonaws.com/cars/1714771477000-7_af30cb62ef.jpg",
+                        "https://www.daimlertruck.com/fileadmin/_processed_/3/d/csm_Motiv2_240327_2_LoRes_1fa62eec2b.jpg"
+                        };
             }
+
             @for (int i = 0; i < images.Count; i++)
             {
                 <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <img src="@images[i]" class="d-block mx-auto" style="max-width: 650px; height: auto;" alt="Slide @(i + 1)">
+                    <img src="@images[i]" class="carousel-img" alt="Slide @(i + 1)">
                 </div>
             }
         </div>
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon"></span>
         </button>
+
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon"></span>
         </button>
     </div>
 </div>
 
+<!-- VEHICLES -->
 <div class="container my-5" id="vehicles">
-    <h2 class="text-center mb-4">Featured Vehicles</h2>
+    <h2 class="text-center section-title mb-5">Featured Vehicles</h2>
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @{
             var vehicles = new List<(string Image, string Title, string Description)>
-        {
-        ("https://motionservice.eu/wp-content/uploads/2020/08/predstavyame-novite-bmw-m5-i-bmw-m5-competition-1592382789_big.jpg", 
-        "BMW M5 Competition",
-        "The BMW M5 is a high-performance variant of the BMW 5 Series marketed under the BMW M sub-brand. It is considered an iconic vehicle in the sports saloon category.[1][2] The M5 has always been produced in the saloon (sedan, US English) body style, but in some countries the M5 has also been available as an estate (wagon, US English) from 1992 to 1995, from 2006 to 2010, and since 2024"),
-        ("https://images5.1000ps.net/b-f_W3011844-neue-yamaha-r1-race-und-r1-gytr-2025-638623277884390799.jpg?format=webp&quality=80&scale=both&width=2816&height=1584&mode=crop",
-        "Yamaha R1",
-        "The Slide Control System on the R1 is the first on a production motorcycle. Information is fed to the bike through a six-axis inertial measurement unit and other sensors over 100 times a second. Power delivery is tapered through throttle valve manipulation and ignition and fuel cuts."),
-        ("https://cdn.motor1.com/images/mgl/VzMq0z/s3/bugatti-chiron-1500.jpg",
-        "Bugatti Chiron",
-        "All Chiron models are motivated by an 8.0-liter 16-cylinder powerplant. This beast of an engine employs four turbochargers to generate a mighty 1500 horsepower and 1180 pound-feet of torque. Bugatti claims that the Chiron makes the dash from zero to 60 mph in a mere 2.3 seconds, and it has a top speed of 261 mph."),
-        ("https://www.mercedes-benz-bus.com/content/dam/mbo/markets/common/models/tourismo-rhd/images/teaser/tourismo-rhd-teaser-01-EB43722.jpg",
-        "Mercedes-Benz Tourismo",
-        "Tourismo combines maximum comfort, reliability and superior economy. The universal bus brings you returns from day one. You can choose between four different models with two or three axles between 12.3 and 13.9 meters in length."),
-        ("https://www.maersk.com/~/media_sc9/maersk/news/press-releases/images/2023/06/volvo-bus_1024x576.jpg?w=877&hash=5551BB65795B842C3129A7C70ECF5575",
-        "Volvo",
-        "Volvo Trucks is a world-leading truck manufacturer, committed to driving progress and shaping the future landscape of transport. We provide total transport solutions and offer support to customers in more than 130 countries. Our foundation is our core values of quality, safety, and environmental care. ")
-        };
-        }
-        @foreach (var vehicle in vehicles)
+                {
+                ("https://motionservice.eu/wp-content/uploads/2020/08/predstavyame-novite-bmw-m5-i-bmw-m5-competition-1592382789_big.jpg",
+                "BMW M5 Competition",
+                "Iconic sports sedan combining luxury and extreme performance."),
 
+                ("https://images5.1000ps.net/b-f_W3011844-neue-yamaha-r1-race-und-r1-gytr-2025-638623277884390799.jpg",
+                "Yamaha R1",
+                "Track-focused superbike with cutting-edge electronics."),
+
+                ("https://cdn.motor1.com/images/mgl/VzMq0z/s3/bugatti-chiron-1500.jpg",
+                "Bugatti Chiron",
+                "1500 HP hypercar redefining speed and engineering."),
+
+                ("https://www.mercedes-benz-bus.com/content/dam/mbo/markets/common/models/tourismo-rhd/images/teaser/tourismo-rhd-teaser-01-EB43722.jpg",
+                "Mercedes-Benz Tourismo",
+                "Premium long-distance comfort and efficiency."),
+
+                ("https://www.maersk.com/~/media_sc9/maersk/news/press-releases/images/2023/06/volvo-bus_1024x576.jpg",
+                "Volvo Truck",
+                "Reliability, safety and sustainability combined.")
+                };
+        }
+
+        @foreach (var vehicle in vehicles)
         {
             <div class="col">
-                <div class="card h-100">
+                <div class="card vehicle-card h-100">
                     <img src="@vehicle.Image" class="card-img-top" alt="@vehicle.Title">
                     <div class="card-body">
-                        <h5 class="card-title">@vehicle.Title</h5>
-                        <p class="card-text">@vehicle.Description</p>
+                        <h5 class="card-title text-success">@vehicle.Title</h5>
+                        <p class="card-text text-light">@vehicle.Description</p>
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+
 

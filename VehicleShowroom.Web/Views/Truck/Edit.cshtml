@@ -6,13 +6,13 @@
 
 @if (User.IsInRole("Admin"))
 {  
-<h2 class="mb-4">Edit Truck</h2>
+<h2 class="mb-4 text-success">Edit Truck</h2>
 
-<form asp-action="Edit" class="needs-validation" novalidate>
+<form asp-action="Edit" class="vehicle-form needs-validation" novalidate>
     <input type="hidden" asp-for="TruckId" />
     <input type="hidden" asp-for="VehicleId" />
 
-    <h3 class="mb-3">Vehicle Information</h3>
+    <h3 class="mb-3 text-success">Vehicle Information</h3>
     <div class="row mb-3">
         <div class="col-md-6">
             <label asp-for="VehicleType" class="form-label"></label>
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <h3 class="mb-3">Truck Specifications</h3>
+    <h3 class="mb-3 text-success">Truck Specifications</h3>
     <div class="row mb-3">
         <div class="col-md-6">
             <label asp-for="CargoCapacity" class="form-label"></label>
@@ -95,9 +95,9 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-start">
-        <button type="submit" class="btn btn-primary me-2">Save</button>
-        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    <div class="d-flex justify-content-start gap-2">
+        <button type="submit" class="btn btn-add-vehicle">Save</button>
+        <a asp-action="Index" class="btn btn-vehicle-back">Back</a>
     </div>
 </form>
 }

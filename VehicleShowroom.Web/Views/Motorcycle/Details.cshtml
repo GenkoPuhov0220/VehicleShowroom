@@ -8,41 +8,43 @@
     ViewData["Title"] = "Vehicle Details";
 }
 
-<div class="container mt-4">
-    <div class="row g-4 bg-body-secondary border rounded p-3">
-        <div class="col-lg-6 col-md-12 text-center">
-            <img src="@Model.ImageUrl" alt="Motorcycle image" class="img-fluid rounded shadow" />
+<div class="container vehicle-details py-4">
+    <div class="row g-4">
+        <div class="col-md-12 col-lg-6 d-flex justify-content-center">
+            <div class="vehicle-image-wrapper">
+                <img src="@Model.ImageUrl" alt="Motorcycle image" class="vehicle-image" />
+            </div>
         </div>
 
-        <div class="col-lg-6 col-md-12">
-            <h5 class="mt-0 mb-3">Vehicle Details</h5>
-            <p>
-                <strong>Vehicle Type:</strong> @Model.VehicleType<br>
-                <strong>Make:</strong> @Model.Make<br>
-                <strong>Model:</strong> @Model.Model<br>
-                <strong>Year:</strong> @Model.Year<br>
-                <strong>Price:</strong> @Model.Price<br>
-                <strong>Color:</strong> @Model.Color<br>
-                <strong>Fuel Type:</strong> @Model.FuelType<br>
-            </p>
+        <div class=" col-md-12 col-lg-6">
+            <h5 class="mb-3 text-success">Vehicle Details</h5>
+            <div class="vehicle-info mb-3">
+                <p><strong>Vehicle Type:</strong> @Model.VehicleType</p>
+                <p><strong>Make:</strong> @Model.Make</p>
+                <p><strong>Model:</strong> @Model.Model</p>
+                <p><strong>Year:</strong> @Model.Year</p>
+                <p><strong>Price:</strong> @Model.Price</p>
+                <p><strong>Color:</strong> @Model.Color</p>
+                <p><strong>Fuel Type:</strong> @Model.FuelType</p>
+            </div>
 
-            <h6>Motorcycle Details</h6>
-            <p>
-                <strong>Kw:</strong> @Model.Kw<br>
-            </p>
+            <h6 class="text-success">Motorcycle Specifications</h6>
+            <div class="vehicle-info mb-3">
+                <p><strong>Kw:</strong> @Model.Kw</p>
+            </div>
 
-            <div class="d-flex flex-wrap gap-2">
-                <a asp-controller="Motorcycle" asp-action="Index" class="btn btn-primary">Back</a>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                <a asp-controller="Motorcycle" asp-action="Index" class="btn btn-back">Back</a>
                 <form asp-controller="FavoritesVehicle" asp-action="AddToFavorite" method="post" class="d-inline">
                     <input type="hidden" name="vehicleId" value="@Model.VehicleId" />
-                    <button type="submit" class="btn btn-warning">Add To Favorite</button>
+                    <button type="submit" class="btn btn-favorite">Add To Favorite</button>
                 </form>
 
                 @if (User.IsInRole("Admin"))
 
                 {
-                    <a asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn btn-success">Edit Vehicle</a>
-                    <a asp-action="Delete" asp-route-id="@Model.VehicleId" class="btn btn-danger">Delete Vehicle</a>
+                    <a asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn btn-edit">Edit Vehicle</a>
+                    <a asp-action="Delete" asp-route-id="@Model.VehicleId" class="btn btn-delete">Delete Vehicle</a>
                 }
             </div>
         </div>

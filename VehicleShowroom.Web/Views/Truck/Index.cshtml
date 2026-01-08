@@ -3,13 +3,13 @@
 @model IEnumerable<Vehicle>
 
 
-<div class="container">
+<div class="container my-4">
     <div class="row">
         @foreach (var vehicle in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2" style="width: auto;" />
+                <div class="card vehicle-card h-100">
+                    <img src="@vehicle.ImageUrl" alt="@vehicle.Make @vehicle.Model" class="img-fluid card-img-top vehicle-img" />
 
                     <div class="card-body">
                         <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
@@ -21,7 +21,7 @@
                             <strong>Fuel Type:</strong> @vehicle.FuelType<br />
                         </p>
                     </div>
-                    <a asp-action="Details" asp-route-id="@vehicle.VehicleId" class="btn btn-primary">Details</a>
+                    <a asp-action="Details" asp-route-id="@vehicle.VehicleId" class="btn btn-vehicle-details">Details</a>
                 </div>
             </div>
         }

@@ -7,44 +7,45 @@
 @{
     ViewData["Title"] = "Vehicle List";
 }
-<div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 20px;">
-    <h1>All vehicle in showroom</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+    <h1 class="text-success">All vehicles in showroom</h1>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create" class="btn btn-primary">Add new Vehicle</a>
-        
+        <a asp-action="Create" class="btn btn-admin">Add new Vehicle</a>
     }
 </div>
+
 <div class="container my-4">
     <div class="text-center mb-3">
         <form class="d-flex justify-content-center align-items-center" asp-action="Index" asp-controller="Vehicle">
             <input name="searchString"
-                   class="form-control me-2 w-50"
+                   class="form-control me-2 w-50 search-input"
                    type="search"
                    placeholder="Search vehicles by make..."
                    aria-label="Search" />
-            <button class="btn btn-dark px-4" type="submit">
+            <button class="btn btn-search px-4" type="submit">
                 <i class="fas fa-search me-1"></i> Search
             </button>
         </form>
     </div>
-    <div class="text-center">
-        <a asp-action="Index" class="btn btn-outline-dark">
+    <div class="text-center mb-3">
+        <a asp-action="Index" class="btn btn-back">
             <i class="fas fa-arrow-left me-1"></i> Back to Full Vehicle List
         </a>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         @foreach (var vehicle in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2" style="width: auto;" />
-                    
+                <div class="card vehicle-card">
+                    <img src="@vehicle.ImageUrl" alt="Car image" class="img-thumbnail mt-2 vehicle-img" />
                     <div class="card-body">
-                        <h5 class="card-title">@vehicle.Make @vehicle.Model</h5>
-                        <p class="card-text">
+                        <h5 class="card-title text-success">@vehicle.Make @vehicle.Model</h5>
+                        <p class="card-text text-light">
                             <strong>Type:</strong> @vehicle.VehicleType<br />
                             <strong>Year:</strong> @vehicle.Year<br />
                             <strong>Price:</strong> @vehicle.Price<br />
@@ -57,17 +58,19 @@
         }
     </div>
 </div>
+
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
-<div class="buttons text-center">
-<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" 
-   class="btn btn-outline-primary @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" 
-   class="btn btn-outline-primary @nextDisabled">
-    Next
-</a>
+
+<div class="buttons text-center my-3">
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-pagination @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-pagination @nextDisabled">
+        Next
+    </a>
 </div>
