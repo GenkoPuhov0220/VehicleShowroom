@@ -35,6 +35,7 @@ namespace VehicleShowroom.Services.Data
         {
             var bus = await context.Buses
                  .Include(c => c.Vehicle)
+                 .ThenInclude(v => v.VehicleImages)
                  .Where(c => c.IsDelete == false)
                  .Where(c => c.VehicleId == id)
                  .Select(c => new BusDetailsViewModel
@@ -47,6 +48,9 @@ namespace VehicleShowroom.Services.Data
                      Price = c.Vehicle.Price,
                      Color = c.Vehicle.Color,
                      FuelType = c.Vehicle.FuelType,
+                     Images = c.Vehicle.VehicleImages
+                        .Select(vi => vi.ImageUrl)
+                        .ToList(),
                      ImageUrl = c.Vehicle.ImageUrl,
                      Capacity = c.Capacity,
                      Description = c.Description,
@@ -62,6 +66,7 @@ namespace VehicleShowroom.Services.Data
             var vehicle = await context
                 .Buses
                 .Include(b => b.Vehicle)
+                .ThenInclude(v => v.VehicleImages)
                 .Where(c => c.IsDelete == false)
                 .Where(b => b.VehicleId == id)
                 .Select(b => new BusEditViewModel
@@ -73,8 +78,17 @@ namespace VehicleShowroom.Services.Data
                     Price = b.Vehicle.Price,
                     Color = b.Vehicle.Color,
                     FuelType = b.Vehicle.FuelType,
-                    ImageUrl = b.Vehicle.ImageUrl,
-
+                    //ImageUrl = b.Vehicle.ImageUrl,
+                    Images = new List<string>()
+                    {
+                        b.Vehicle.ImageUrl
+                    }
+                    .Concat(
+                        b.Vehicle.VehicleImages
+                        .Select(i => i.ImageUrl)
+                    )
+                    .Take(3)
+                    .ToList(),
                     BusId = b.BusId,
                     Capacity = b.Capacity,
                     Description = b.Description,
@@ -82,7 +96,13 @@ namespace VehicleShowroom.Services.Data
                     Transmission = b.Transmission
                 })
                  .FirstOrDefaultAsync();
-
+            if (vehicle.Images.Count < 3)
+            {
+                while (vehicle.Images.Count < 3)
+                {
+                    vehicle.Images.Add(string.Empty);
+                }
+            }
             return vehicle;
         }
         public async Task<bool> EditBusAsync(BusEditViewModel models)
@@ -98,6 +118,7 @@ namespace VehicleShowroom.Services.Data
             var bus = await context
                .Buses
                .Include(b => b.Vehicle)
+               .ThenInclude(v => v.VehicleImages)
                .Where(c => c.IsDelete == false)
                .FirstOrDefaultAsync(b => b.BusId == models.BusId);
             if (bus == null)
@@ -112,8 +133,24 @@ namespace VehicleShowroom.Services.Data
             bus.Vehicle.Price = models.Price;
             bus.Vehicle.Color = models.Color;
             bus.Vehicle.FuelType = models.FuelType;
-            bus.Vehicle.ImageUrl = models.ImageUrl;
+            //bus.Vehicle.ImageUrl = models.ImageUrl;
+            if (models.Images.Any())
+            {
+                bus.Vehicle.ImageUrl = models.Images[0];
+            }
 
+            context.VehiclesImages.RemoveRange(bus.Vehicle.VehicleImages);
+
+            foreach (var imageUrl in models.Images.Skip(1))
+            {
+                if (!string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    bus.Vehicle.VehicleImages.Add(new VehicleImages
+                    {
+                        ImageUrl = imageUrl
+                    });
+                }
+            }
             bus.Capacity = models.Capacity;
             bus.Description = models.Description ?? string.Empty;
             bus.HorsePower = models.HorsePower;

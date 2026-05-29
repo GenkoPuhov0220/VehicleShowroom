@@ -55,11 +55,28 @@
             <input asp-for="FuelType" class="form-control" />
             <span asp-validation-for="FuelType" class="text-danger"></span>
         </div>
+        @*
         <div class="col-md-6">
             <label asp-for="ImageUrl" class="form-label"></label>
             <input asp-for="ImageUrl" class="form-control" />
             <span asp-validation-for="ImageUrl" class="text-danger"></span>
         </div>
+        *@
+            <div class="col-md-12">
+                <label class="form-label">Image 1</label>
+                <input asp-for="Images[0]" class="form-control" />
+            </div>
+
+            <div class="col-md-12 mt-2">
+                <label class="form-label">Image 2</label>
+                <input asp-for="Images[1]" class="form-control" />
+            </div>
+
+            <div class="col-md-12 mt-2">
+                <label class="form-label">Image 3</label>
+                <input asp-for="Images[2]" class="form-control" />
+            </div>
+
     </div>
 
     <h3 class="mb-3 text-success">Motorcycle Specifications</h3>

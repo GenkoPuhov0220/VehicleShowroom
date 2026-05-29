@@ -33,6 +33,7 @@ namespace VehicleShowroom.Services.Data
         {
             var car =  await context.Cars
                 .Include(c => c.Vehicle)
+                .ThenInclude(v => v.VehicleImages)
                 .Where(c => c.IsDelete == false)
                 .Where(c => c.VehicleId == id)
                 .Select(c => new CarDetailsViewModel
@@ -47,6 +48,9 @@ namespace VehicleShowroom.Services.Data
                     Color = c.Vehicle.Color,
                     FuelType = c.Vehicle.FuelType,
                     ImageUrl = c.Vehicle.ImageUrl,
+                    Images = c.Vehicle.VehicleImages
+                        .Select(vi => vi.ImageUrl)
+                        .ToList(),
 
                     Kilometers = c.Kilometers,
                     NumberOfDoors = c.NumberOfDoors,
@@ -64,6 +68,7 @@ namespace VehicleShowroom.Services.Data
             var vehicle = await context
                .Cars
                .Include(c => c.Vehicle)
+               .ThenInclude(c => c.VehicleImages)
                .Where(c => c.IsDelete == false)
                .Where(c => c.VehicleId == id)
                .Select(c => new CarEditViewModel
@@ -76,7 +81,17 @@ namespace VehicleShowroom.Services.Data
                    Price = c.Vehicle.Price,
                    Color = c.Vehicle.Color,
                    FuelType = c.Vehicle.FuelType,
-                   ImageUrl = c.Vehicle.ImageUrl,
+                   //ImageUrl = c.Vehicle.ImageUrl,
+                   Images = new List<string>()
+                    {
+                        c.Vehicle.ImageUrl
+                    }
+                    .Concat(
+                        c.Vehicle.VehicleImages
+                        .Select(i => i.ImageUrl)
+                    )
+                    .Take(3)
+                    .ToList(),
 
                    CarId = c.CarId,
                    Kilometers = c.Kilometers,
@@ -86,7 +101,13 @@ namespace VehicleShowroom.Services.Data
                    HorsePower = c.HorsePower
                })
                 .FirstOrDefaultAsync();
-
+            if (vehicle.Images.Count < 3)
+            {
+                while (vehicle.Images.Count < 3)
+                {
+                    vehicle.Images.Add(string.Empty);
+                }
+            }
             return vehicle;
         }
         public async Task<bool> EditCarAsync(CarEditViewModel models)
@@ -102,6 +123,7 @@ namespace VehicleShowroom.Services.Data
             var car = await context
                 .Cars
                 .Include(c => c.Vehicle)
+                .ThenInclude(c => c.VehicleImages)
                 .Where(c => c.IsDelete == false)
                 .FirstOrDefaultAsync(c => c.CarId == models.CarId);
 
@@ -117,8 +139,24 @@ namespace VehicleShowroom.Services.Data
             car.Vehicle.Price = models.Price;
             car.Vehicle.Color = models.Color;
             car.Vehicle.FuelType = models.FuelType;
-            car.Vehicle.ImageUrl = models.ImageUrl;
+            //car.Vehicle.ImageUrl = models.ImageUrl;
+            if (models.Images.Any())
+            {
+                car.Vehicle.ImageUrl = models.Images[0];
+            }
 
+            context.VehiclesImages.RemoveRange(car.Vehicle.VehicleImages);
+
+            foreach (var imageUrl in models.Images.Skip(1))
+            {
+                if (!string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    car.Vehicle.VehicleImages.Add(new VehicleImages
+                    {
+                        ImageUrl = imageUrl
+                    });
+                }
+            }
             car.Kilometers = models.Kilometers;
             car.NumberOfDoors = models.NumberOfDoors;
             car.Description = models.Description ?? string.Empty;

@@ -6,7 +6,6 @@ using VehicleShowroom.Data.Models;
 using VehicleShowroom.Services.Data.Interfaces;
 using VehicleShowroom.Web;
 
-
 namespace VehicleShowroom.Services.Data
 {
     using static VehicleShowroom.Common.EntityValidationConstants;
@@ -42,12 +41,28 @@ namespace VehicleShowroom.Services.Data
                 Price = models.Price,
                 Color = models.Color,
                 FuelType = models.FuelType,
-                ImageUrl = models.ImageUrl
+                //ImageUrl = models.ImageUrl
+                ImageUrl = models.ImageUrls.FirstOrDefault()
             };
 
             context.Vehicles.Add(vehicle);
             await context.SaveChangesAsync();
 
+            foreach (var imageUrl in models.ImageUrls)
+            {
+                if (!string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    VehicleImages vehicleImage = new VehicleImages
+                    {
+                        VehicleId = vehicle.VehicleId,
+                        ImageUrl = imageUrl
+                    };
+
+                    context.VehiclesImages.Add(vehicleImage);
+                }
+            }
+
+            await context.SaveChangesAsync();
             switch (models.VehicleType)
             {
                 case "Car":

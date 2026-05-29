@@ -32,10 +32,11 @@
         [Required(ErrorMessage = VehicleFuelTypeMessages)]
       
         public string FuelType { get; set; } = null!;
-
+        /*
         [Required]
         public string ImageUrl { get; set; } = null!;
-
+        */
+        public List<string> Images { get; set; } = new List<string>();
         public int TruckId { get; set; }
         public int CargoCapacity { get; set; }
         public string EuroNumber { get; set; } = null!;

@@ -15,6 +15,7 @@ namespace VehicleShowroom.Web
         public string FuelType { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
 
+        public List<string> Images { get; set; } = null!;
         //Car
         public int Kilometers { get; set; }
         public int NumberOfDoors { get; set; }

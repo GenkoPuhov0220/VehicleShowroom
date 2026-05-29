@@ -39,6 +39,7 @@ namespace VehicleShowroom.Services.Data
         {
             var superCar = await context.SuperCars
                   .Include(c => c.Vehicle)
+                  .ThenInclude(v => v.VehicleImages)
                   .Where(c => c.IsDelete == false)
                   .Where(c => c.VehicleId == id)
                   .Select(c => new SuperCarDetailsViewModel
@@ -52,6 +53,9 @@ namespace VehicleShowroom.Services.Data
                       Price = c.Vehicle.Price,
                       Color = c.Vehicle.Color,
                       FuelType = c.Vehicle.FuelType,
+                      Images = c.Vehicle.VehicleImages
+                        .Select(i => i.ImageUrl)
+                        .ToList(),
                       ImageUrl = c.Vehicle.ImageUrl,
                       Kilometers = c.Kilometers,
                       NumberOfDoors = c.NumberOfDoors,
@@ -72,6 +76,7 @@ namespace VehicleShowroom.Services.Data
             var vehicle = await context
                .SuperCars
                .Include(c => c.Vehicle)
+               .ThenInclude(v => v.VehicleImages)
                .Where(c => c.IsDelete == false)
                .Where(c => c.VehicleId == id)
                .Select(c => new SuperCarEditVieModel
@@ -84,8 +89,17 @@ namespace VehicleShowroom.Services.Data
                    Price = c.Vehicle.Price,
                    Color = c.Vehicle.Color,
                    FuelType = c.Vehicle.FuelType,
-                   ImageUrl = c.Vehicle.ImageUrl,
-
+                   //ImageUrl = c.Vehicle.ImageUrl,
+                   Images = new List<string>()
+                    {
+                        c.Vehicle.ImageUrl
+                    }
+                    .Concat(
+                        c.Vehicle.VehicleImages
+                        .Select(i => i.ImageUrl)
+                    )
+                    .Take(3)
+                    .ToList(),
                    SuperCarId = c.SuperCarId,
                    MaxSpeed = c.MaxSpeed,
                    Weight = c.Weight,
@@ -97,7 +111,13 @@ namespace VehicleShowroom.Services.Data
                    NumberOfDoors = c.NumberOfDoors
                })
                 .FirstOrDefaultAsync();
-
+            if (vehicle.Images.Count < 3)
+            {
+                while (vehicle.Images.Count < 3)
+                {
+                    vehicle.Images.Add(string.Empty);
+                }
+            }
             return vehicle;
         }
         public async Task<bool> EditCarAsync(SuperCarEditVieModel models)
@@ -114,6 +134,7 @@ namespace VehicleShowroom.Services.Data
             var superCar = await context
                 .SuperCars
                 .Include(c => c.Vehicle)
+                .ThenInclude(v => v.VehicleImages)
                 .Where(c => c.IsDelete == false)
                 .FirstOrDefaultAsync(c => c.SuperCarId == models.SuperCarId);
             if (superCar == null)
@@ -128,8 +149,24 @@ namespace VehicleShowroom.Services.Data
             superCar.Vehicle.Price = models.Price;
             superCar.Vehicle.Color = models.Color;
             superCar.Vehicle.FuelType = models.FuelType;
-            superCar.Vehicle.ImageUrl = models.ImageUrl;
+            //superCar.Vehicle.ImageUrl = models.ImageUrl;
+            if (models.Images.Any())
+            {
+                superCar.Vehicle.ImageUrl = models.Images[0];
+            }
 
+            context.VehiclesImages.RemoveRange(superCar.Vehicle.VehicleImages);
+
+            foreach (var imageUrl in models.Images.Skip(1))
+            {
+                if (!string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    superCar.Vehicle.VehicleImages.Add(new VehicleImages
+                    {
+                        ImageUrl = imageUrl
+                    });
+                }
+            }
             superCar.Kilometers = models.Kilometers;
             superCar.NumberOfDoors = models.Doors;
             superCar.Description = models.Description ?? string.Empty;

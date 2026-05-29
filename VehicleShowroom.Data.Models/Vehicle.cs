@@ -20,9 +20,11 @@ namespace VehicleShowroom.Data.Models
         public string Color { get; set; } = null!;
         [Required]
         public string FuelType { get; set; } = null!;
-        [Required]
-        public string ImageUrl { get; set; } = null!;
+        public string? ImageUrl { get; set; } = null!;
+
         public bool IsDelete { get; set; }
+        public ICollection<VehicleImages> VehicleImages { get; set; } 
+            = new List<VehicleImages>();
 
         public IList<Car> Cars 
             = new List<Car>();

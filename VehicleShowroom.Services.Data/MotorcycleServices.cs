@@ -35,6 +35,7 @@ namespace VehicleShowroom.Services.Data
         {
             var motorcycle = await context.Motorcycles
               .Include(c => c.Vehicle)
+              .ThenInclude(v => v.VehicleImages)
               .Where(c => c.IsDelete == false)
               .Where(c => c.VehicleId == id)
               .Select(c => new MotorcycleDeteilsViewModel
@@ -48,6 +49,9 @@ namespace VehicleShowroom.Services.Data
                   Price = c.Vehicle.Price,
                   Color = c.Vehicle.Color,
                   FuelType = c.Vehicle.FuelType,
+                  Images = c.Vehicle.VehicleImages
+                    .Select(i => i.ImageUrl)
+                    .ToList(),
                   ImageUrl = c.Vehicle.ImageUrl,
                   Kw = c.Kw
 
@@ -61,6 +65,7 @@ namespace VehicleShowroom.Services.Data
             var vehicle = await context
                .Motorcycles
                .Include(c => c.Vehicle)
+               .ThenInclude(v => v.VehicleImages)
                .Where(c => c.IsDelete == false)
                .Where(c => c.VehicleId == id)
                .Select(c => new MotorcycleEditViewModel
@@ -73,14 +78,29 @@ namespace VehicleShowroom.Services.Data
                    Price = c.Vehicle.Price,
                    Color = c.Vehicle.Color,
                    FuelType = c.Vehicle.FuelType,
-                   ImageUrl = c.Vehicle.ImageUrl,
-
+                   //ImageUrl = c.Vehicle.ImageUrl,
+                   Images = new List<string>()
+                    {
+                        c.Vehicle.ImageUrl
+                    }
+                    .Concat(
+                        c.Vehicle.VehicleImages
+                        .Select(i => i.ImageUrl)
+                    )
+                    .Take(3)
+                    .ToList(),
                    MotorcycleId = c.MotorcycleId,
                    Kw = c.Kw,
 
                })
                 .FirstOrDefaultAsync();
-           
+            if (vehicle.Images.Count < 3)
+            {
+                while (vehicle.Images.Count < 3)
+                {
+                    vehicle.Images.Add(string.Empty);
+                }
+            }
             return vehicle;
         }
         public async Task<bool> EditMotorcycleAsync(MotorcycleEditViewModel models)
@@ -97,6 +117,7 @@ namespace VehicleShowroom.Services.Data
             var motorcycle = await context
                .Motorcycles
                .Include(c => c.Vehicle)
+               .ThenInclude(v => v.VehicleImages)
                .Where(c => c.IsDelete == false)
                .FirstOrDefaultAsync(c => c.MotorcycleId == models.MotorcycleId);
 
@@ -112,8 +133,24 @@ namespace VehicleShowroom.Services.Data
             motorcycle.Vehicle.Price = models.Price;
             motorcycle.Vehicle.Color = models.Color;
             motorcycle.Vehicle.FuelType = models.FuelType;
-            motorcycle.Vehicle.ImageUrl = models.ImageUrl;
+            //motorcycle.Vehicle.ImageUrl = models.ImageUrl;
+            if (models.Images.Any())
+            {
+                motorcycle.Vehicle.ImageUrl = models.Images[0];
+            }
 
+            context.VehiclesImages.RemoveRange(motorcycle.Vehicle.VehicleImages);
+
+            foreach (var imageUrl in models.Images.Skip(1))
+            {
+                if (!string.IsNullOrWhiteSpace(imageUrl))
+                {
+                    motorcycle.Vehicle.VehicleImages.Add(new VehicleImages
+                    {
+                        ImageUrl = imageUrl
+                    });
+                }
+            }
             motorcycle.Kw = models.Kw;
             await context.SaveChangesAsync();
 

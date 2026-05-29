@@ -13,6 +13,7 @@
         public string FuelType { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
 
+        public List<string> Images { get; set; } = null!;
         //Bus
         public int Capacity { get; set; }
         public string Description { get; set; } = null!;

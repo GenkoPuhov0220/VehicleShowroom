@@ -12,7 +12,7 @@
         public string Color { get; set; } = null!;
         public string FuelType { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
-
+        public List<string> Images { get; set; } = null!;
         //Super Car
         public int Kilometers { get; set; }
         public int NumberOfDoors { get; set; }

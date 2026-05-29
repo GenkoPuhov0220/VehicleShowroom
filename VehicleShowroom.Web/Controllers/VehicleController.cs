@@ -40,7 +40,7 @@ namespace VehicleShowroom.Web.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> AddVehicle(AddVehicleViewModel models)
+        public async Task<IActionResult> Create(AddVehicleViewModel models)
         { 
             if (!ModelState.IsValid)
             {

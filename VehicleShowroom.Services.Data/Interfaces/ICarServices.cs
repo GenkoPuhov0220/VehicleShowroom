@@ -12,6 +12,7 @@ namespace VehicleShowroom.Services.Data.Interfaces
     {
         Task<IEnumerable<Vehicle>> GetAllCarsAsync();
         Task<CarDetailsViewModel> GetCarDetailsAsync(int id);
+
         Task<CarEditViewModel> GetCarForEditAsync(int id);
         Task<bool> EditCarAsync(CarEditViewModel models);
         Task<CarDeleteVehicleViewModel> GetCarForDeleteAsync(int id);

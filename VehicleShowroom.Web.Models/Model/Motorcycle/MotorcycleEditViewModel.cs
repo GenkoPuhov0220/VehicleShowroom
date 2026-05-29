@@ -27,10 +27,11 @@
 
         [Required(ErrorMessage = VehicleFuelTypeMessages)]
         public string FuelType { get; set; } = null!;
-
+        /*
         [Required]
         public string ImageUrl { get; set; } = null!;
-
+        */
+        public List<string> Images { get; set; } = new List<string>();
         public int MotorcycleId { get; set; }
         public int Kw { get; set; }
     }

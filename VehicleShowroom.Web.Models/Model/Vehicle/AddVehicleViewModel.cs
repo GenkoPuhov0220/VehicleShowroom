@@ -41,8 +41,10 @@ namespace VehicleShowroom.Web
         [MaxLength(FuelTypeMaxLenght)]
         public  string FuelType { get; set; } = null!;
 
-        [Required]
-        public  string ImageUrl { get; set; } = null!;
+        public string? ImageUrl { get; set; }
+        public List<string> ImageUrls { get; set; }
+        = new List<string>();
+
 
         //Car
         public int? Kilometers { get; set; }
